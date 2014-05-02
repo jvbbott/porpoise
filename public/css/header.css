@@ -11,12 +11,12 @@ src: url('/fonts/ProximaNova-Light.otf');
 
 @font-face {
  font-family: Raleway;
- src: url('/fonts/raleway_thin.otf');   
+ src: url('/fonts/Raleway-Regular.otf');   
 }
 
 @font-face {
- font-family: Gotham;
- src: url('/fonts/GothamMedium.otf');   
+ font-family: Raleway-Light;
+ src: url('/fonts/Raleway-Light.otf');   
 }
 
 
@@ -28,7 +28,7 @@ src: url('/fonts/ProximaNova-Light.otf');
 }
 
 #header {
-    background-color: #DD3133;
+    background-color: #C53922;
     padding: 10px 10px;
     font-family: Raleway;
     font-weight: 100;

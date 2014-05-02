@@ -6,6 +6,11 @@ src: url('/fonts/ProximaNova-Light.otf');
 
 @font-face {
  font-family: Raleway;
+ src: url('/fonts/Raleway-Regular.otf');   
+}
+
+@font-face {
+ font-family: Raleway-Light;
  src: url('/fonts/Raleway-Light.otf');   
 }
 
@@ -14,16 +19,16 @@ html, body {
 }
 
 #main-content {
-    background-color:  whitesmoke;
+    background-color: whitesmoke;
     padding: 15px 10px 15px 10px;
     min-height: 340px;
-    font-family: ProximaNova-Light, "Helvetica-Neue";
+    font-family: Raleway, "Helvetica-Neue";
     font-weight: 400;
     font-size: 14px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: ProximaNova-Light;
+    font-family: Raleway-Light;
 }
 
 .glyphicon-remove {
@@ -50,7 +55,7 @@ a.thumbnail {
     -moz-box-shadow;
     border: none;
     background-color: whitesmoke;
-    color: #DD3133;
+    color: #C53922;
 }
 
 .action-thumbnail {
@@ -96,7 +101,7 @@ button#search-button {
     height: 50px;
     width: 100%;
     color: white;
-    background-color: #DD3133;
+    background-color: #CF332A;
     font-weight: 400;
     border:none;
 }
@@ -139,7 +144,7 @@ div.selected {
 div.result h4 {
     font-size: 14px;
     line-height: 20px;
-    color: #DD3133;
+    color: #CF332A;
 }
 
 h2 {

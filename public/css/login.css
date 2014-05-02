@@ -1,34 +1,57 @@
-
-
-body {
-    background-color: whitesmoke;
+@font-face {
+ font-family: Raleway;
+ src: url('/fonts/Raleway-Regular.otf');   
 }
 
+@font-face {
+ font-family: Raleway-Light;
+ src: url('/fonts/Raleway-Light.otf');   
+}
+
+@font-face
+{
+font-family: ProximaNova-Light;
+src: url('/fonts/ProximaNova-Light.otf');
+}
+
+body {
+    background-color: #C53922;
+    font-family: Raleway;
+}
 
 h2 {
-    margin: 25px auto 0px auto;
+    margin: 5px auto 0px auto;
     text-align: center;
-    color: #2a6496;
+    color: white;
     font-size: 36px;
+    font-family: Raleway-Light;
+    font-weight: 100;
+    padding: 0;
+
 }
 
 
 .main-icon {
-    width: 300px;
+    width: 100px;
     margin: 0px auto;
+    padding: 0px;
 }
 
 
 .icon-wrapper {
-    width: 300px;
-    margin: 0px auto;
+    margin-top: 15%;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
 }
 
 .btn.login {
 	color: white;
-	background-color: #2a6496;
+	background-color: #E16451;
 	width: 100%;
     height: 40px;
+    font-family: Raleway;
 }
 
 p.signup-text {
@@ -36,9 +59,24 @@ p.signup-text {
 	text-align: center;
 }
 
-input.form-control {
+input#email {
 	box-shadow: none;
     -webkit-box-shadow: none;
-    -moz-box-shadow;
+    -moz-box-shadow: none;
+    border-radius: 5px 5px 0px 0px;
+    border-bottom-color: white;
+    -webkit-appearance: none;
+
+}
+
+input#password {
+    inner-shadow: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    border-radius: 0px 0px 5px 5px;
+    border-color: none;
+    -webkit-appearance: none;
+
 }
 
