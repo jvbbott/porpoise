@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+	<head>
+	    <title>Matches</title>  
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	    
+	    <link href="/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	    
+	    <link href="/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet" >
+	    <link href="/css/header.css" rel="stylesheet">
+	    <link href="/css/cliq.css" rel="stylesheet">
+	</head>
+
+	<body>
+	{{> header}}
+
+	<div class="container">
+
+        {{> status_messages }}
+
+        {{#unless all_user_unmatched}}
+            {{#unless all_user_matches}}
+                You have no match requests! Search for a match <a href="/search">here</a>.
+            {{/unless}}
+        {{/unless}}
+
+        
+
+            <div class="matches pending">
+                <h2 class="problems-header">Pending Matches</h2>
+                {{#if all_user_unmatched }}
+                {{#each all_user_unmatched}}
+                     <div class="result row">
+                        <div class="col-xs-12">
+                            <!-- begin accordion-->
+                            <div class="accordion" id="accordion{{id}}">
+                                <div class="accordion-group">
+                                    <div class="accordion-heading">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion{{id}}" href="#collapse{{id}}"> 
+                                            <h4 class="class-name">
+                                                {{course.code}} : {{assignment.name}}
+                                                <i style="float: right;" class="fa fa-chevron-down fa-xs match-item"></i>
+                                             </h4>
+                                        </a>
+                                        <div id="collapse{{id}}" class="accordion-body collapse">
+                                        <div class="details-left match_inf" id="{{id}}">
+                                     
+                                            <div class="toggler row">
+                                                <div id="effect{{id}}" class="unknown col-xs-12 ui-widget-content ui-corner-all">
+                                                    <!-- <div class="problems-label">You need help on problems</div> -->
+                                                    <button class="btn editbtn ui-state-default ui-corner-all" id="edit-{{id}}">
+                                                        <i class="fa fa-pencil fa-med"></i> 
+                                                        Edit Problems
+                                                    </button> 
+                                                    <form action="/delete-match-request" method="post" role="form">
+                                                        <input type="hidden" name="request[id]" class="text" value="{{id}}">
+                                                        <button type="submit" class="btn deletebtn" id="delete-{{id}}">
+                                                            <i class="fa fa-times fa-xs"></i> 
+                                                            Delete Match Request
+                                                        </button>
+                                                    </form>
+                                                    <ul class="problem-list assignment-{{id}}">
+                                                        <p style="text-align: center; margin-left: -20px; color: #2a6496;">Needed Problems</p>
+                                                        {{#each problems_unknown}}
+                                                            <li class="img-rounded unknown {{this}}"><i style="float: left;" class="fa fa-check-circle-o fa-xs matches-icon"></i>Problem {{this}}</li>
+                                                            <input style="opacity: 0; position: absolute;" 
+                                                                checked="checked" type="checkbox" name="checkbox-{{this}} assignment-{{../id}}"></input>
+                                                        {{/each}}
+                                                    <!-- </ul> -->
+                                                <!-- </div>
+                                
+                                                <div class="known col-xs-6"> -->
+                                                    <!-- <div class="problems-label">You know problems</div> -->
+                                                    <!-- <ul class="problem-list"> -->
+                                                    <!-- <br/> -->
+                                                    <!-- <p style="text-align: center; margin-left: -20px; color: #2a6496;">Completed Problems</p> -->
+                                                        {{#each problems_known}}
+                                                            <li class="img-rounded known {{this}}"><i style="float: left;" class="fa fa-plus fa-xs matches-icon"></i>Problem {{this}}</li>
+                                                            <input style="opacity: 0; position: absolute;" 
+                                                            checked="unchecked" type="checkbox" name="checkbox-{{this}} assignment-{{../id}}"></input>
+                                                        {{/each}}
+                                                    </ul>
+
+                                                    
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end accordion -->
+
+
+                        </div>
+                     </div>
+                </div>
+            {{/each}}
+        </div>
+        
+    {{else}}
+            <h4 class="results-header">No pending matches.</h4>
+    {{/if}}
+
+    
+
+    	<div class="matches recent">
+    		<h2 class="problems-header">Recent Matches</h2>
+            {{#if all_user_matches }}
+    		{{#each all_user_matches}}
+    		<div class="result row">
+    		 	<div class="col-xs-12">
+           			<div class="accordion" id="accordion{{id}}">
+            			<div class="accordion-group">
+         			        <div class="accordion-heading">
+                				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion{{id}}" href="#collapse{{id}}"> 
+                    			<h4 class="class-name">
+                        			Match: {{other_user.first_name}} {{other_user.last_name}}
+                        			<i style="float: right;" class="fa fa-chevron-down fa-xs match-item"></i>
+                   				 </h4>
+                                 <h4 class="class-name">
+                                    Assignment: {{course.code}}, {{assignment.name}}
+                                 </h4>
+            					</a>
+            					<div id="collapse{{id}}" class="accordion-body collapse">
+                        			<div class="contact-info details-left col-md-12 match_inf" id="{{id}}">	
+
+                                        <a href="sms:{{other_user.phone_number}}" class="col-md-3 btn text"><i class="fa fa-phone fa-xs"></i> Text</a>
+                                        <a href="tel:{{other_user.phone_number}}" class="col-md-3 btn call"><i class="fa fa-phone fa-xs"></i> Call</a>
+                                        <a href="mailto:{{other_user.email}}" target="_blank" class="col-md-3 btn email"><i class="fa fa-envelope fa-xs"></i>  Email</a>
+                        			</div>
+
+                                    <form action="/delete-match" method="post" role="form">
+                                        <input type="hidden" name="match[id]" class="text" value="{{id}}">
+                                        <button type="submit" class="btn deletebtn" id="delete-{{id}}">
+                                            <i class="fa fa-ban fa-xs"></i> 
+                                            Reject/Clear Match
+                                        </button>
+                                    </form>
+                			</div>
+            			</div>
+                		</div>
+            		</div>
+       			 </div>
+            </div>
+            {{/each}}
+    	</div>
+
+    {{else}}
+        <h4 class="results-header">No recent matches.</h4>
+    {{/if}}
+</div>
+
+<script src="https://code.jquery.com/jquery.js"></script>
+
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="/js/matches.js"></script>
+    <script src="/js/studybuddy.js"></script>
+    <script src="/js/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+    <script>
+    $('.accordion-toggle').click(function(e) {
+        if ($(this).find('i.match-item').hasClass('fa-chevron-down')) {
+            $(this).find('i.match-item').removeClass('fa-chevron-down');
+            $(this).find('i.match-item').addClass('fa-chevron-up');
+        }
+        else {
+            $(this).find('i.match-item').removeClass('fa-chevron-up');
+            $(this).find('i.match-item').addClass('fa-chevron-down');
+        }
+    });
+    </script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-48453653-2', 'studdybuddy.herokuapp.com');
+      //ga('create', 'UA-48453653-2', {'cookieDomain': 'none'});
+      ga('send', 'pageview');
+
+    </script>
+
+
+</body>
+
+
+

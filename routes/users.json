@@ -1,0 +1,38 @@
+{
+	"users": [
+		{
+			"id": 1,
+			"email" : "plang92@stanford.edu",
+			"first_name" : "Preston", 
+			"last_name" : "Langholz",
+			"description": "I love lamp.",
+			"phone_number" : "(123)456-7890"
+			
+		},
+		{
+			"id": 2,
+			"email" : "moritz.sudhof@gmail.com",
+			"first_name" : "Moritz", 
+			"last_name" : "Sudhof",
+			"description": "I have a sweet vest jacket.",
+			"phone_number" : "987654321"
+		},
+		{
+			"id": 3,
+			"email" : "jrabbott@stanford.edu",
+			"first_name" : "Joe", 
+			"last_name" : "Abbott",
+			"description": "I can see Mexico from my house.",
+			"phone_number" : "(555)555-5583"
+		},	
+		{
+			"id": 4,
+			"email" : "ktam@stanford.edu",
+			"first_name" : "Kingston", 
+			"last_name" : "Tam", 
+			"description": "I am not from Jamaica.",
+			"phone_number" : "(555)555-5578"
+		}
+
+	]
+}

@@ -1,0 +1,363 @@
+@font-face
+{
+font-family: ProximaNova-Light;
+src: url('/fonts/ProximaNova-Light.otf');
+}
+
+@font-face {
+ font-family: Raleway;
+ src: url('/fonts/Raleway-Light.otf');   
+}
+
+html, body {
+    font-family: Raleway;
+}
+
+#main-content {
+    background-color:  whitesmoke;
+    padding: 15px 10px 15px 10px;
+    min-height: 340px;
+    font-family: ProximaNova-Light, "Helvetica-Neue";
+    font-weight: 400;
+    font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: ProximaNova-Light;
+}
+
+.glyphicon-remove {
+    float:right;
+}
+
+.status-message {
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    background-color: #70C670;
+}
+.error-message {
+    background-color: #FF8566;
+}
+
+
+a.thumbnail {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow;
+    border: none;
+    background-color: whitesmoke;
+    color: #DD3133;
+}
+
+.action-thumbnail {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.profile-box {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: white;
+    padding: 5px;
+    float: center;
+    margin-top: 5%;
+    margin-bottom: 1%;
+}
+
+div#prof-photo {
+    margin-top: -7px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a.nav-link {
+    color: white;
+}
+
+div#search-bar {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+button#search-button {
+    margin-top: 10px;
+    height: 50px;
+    width: 100%;
+    color: white;
+    background-color: #DD3133;
+    font-weight: 400;
+    border:none;
+}
+
+div#results {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+div#results-assignment {
+    text-align: center;
+}
+
+div.result {
+    border-bottom: 1px solid white;
+    background-color: whitesmoke;
+    font-size: 10px;
+    /*height: 40px;*/
+}
+
+div.result-problems {
+    border-bottom: 2px solid whitesmoke;
+    background-color: #DD3133;
+    color: white;
+    cursor: pointer;
+}
+
+div.unselected {
+    background-color: #C0C0C0;
+/*    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;*/
+}
+
+div.selected {
+    background-color: #DD3133;
+/*    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;*/
+}
+
+div.result h4 {
+    font-size: 14px;
+    line-height: 20px;
+    color: #DD3133;
+}
+
+h2 {
+    text-align: center;
+    font-weight: lighter;
+}
+
+h2.problem-name {
+    font-size: 20px;
+    display: inline;
+    line-height: 45px;
+    margin-left: -15px;
+    text-align: center;
+}
+
+button#submit-problems-button {
+    width: 100%;
+    border: none;
+    background-color: #2a6496;
+    color: white;
+    font-weight: 300;
+    margin-bottom: 10px;
+    height: 50px;
+    font-size: 16px;
+}
+
+table#home-prof-info td {
+    font-weight: 300;
+    padding: 3px;
+    font-size: 12px;
+}
+
+button#update-prof {
+    width: 100%;
+    color: white;
+    background-color: #DD3133;
+    font-weight: 400;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+div.description {
+    margin-top: 10px;
+}
+
+div.details-left {
+    font-size: 14px;
+}
+
+h4.assignment-name {
+    font-size: 18px;
+}
+
+h4.assignment_header {
+    font-size: 14px;
+
+}
+
+h2.problems-header {
+    font-size: 20px;
+    font-weight: 300;
+    padding: 0;
+}
+
+.problems-label {
+    display: inline-block;
+    float: left;
+}
+
+ul.problem-list {
+    list-style-type: none;
+    margin: 5px 0px 0px 0px;
+    float: left;
+    width: 100%;
+}
+
+div#effect {
+    background-color: whitesmoke;
+}
+
+ul.problem-list li {
+    /*float: left;*/
+    padding: 10px;
+    margin: 5px;
+    margin-left: -20px;
+    background-color: whitesmoke;
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.matches-icon {
+    float: left;
+    line-height: 22px;
+}
+
+div ul.problem-list li.unknown {
+    background-color: #2a6496;
+    color: white;
+}
+
+div ul.problem-list li.known {
+    background-color: white;
+    color: #2a6496;
+}
+
+#logged-in-as {
+    display: inline;
+    float: left;
+    padding: 0px 0px;
+    font-size: 11px;
+    margin-right: 5px;
+    line-height: 23px;
+}
+
+div.problem-option {
+    height: 40px;
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none; 
+}
+
+.problem-status-complete, .problem-status-incomplete {
+    float: left;
+    display: inline;
+    line-height: 40px;
+    margin-top: 3px;
+}
+
+.ui-menu {
+    width: 50%;
+}
+
+.ui-menu .ui-menu-item a {
+    font-family: ProximaNova-Light;
+    font-size: 13px;
+}
+
+h4.results-header {
+    font-size: 13px;
+    text-align: center;
+}
+
+input.form-control {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow;
+    -webkit-appearance: none;
+}
+
+label {
+    font-size: 16px;
+}
+
+h4.class-name {
+    text-align: center;
+}
+
+i.arrow {
+    line-height: 18px;
+}
+
+.editbtn {
+    width: 100%;
+    background-color: green;
+    color: white;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    height: 40px;
+}
+
+.deletebtn {
+    width: 100%;
+    background-color: #8C1515;
+    color: white;
+    margin-bottom: 5px;
+    height: 40px;
+}
+
+.match_inf {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.deletebtn {
+    width: 100%;
+    background-color: 
+    margin-bottom: 20px;
+}
+.call-to-action {
+    background-color: #70DB70;
+}
+
+.contact-info {
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 0;
+}
+
+.contact-info a {
+    width: 31%;
+    color: white;
+    height: 35px;
+}
+
+.contact-info .text {
+    background-color: #2a6496;
+}
+
+.contact-info .call {
+    background-color: green;
+}
+
+.contact-info .email {
+    background-color: #8C1515;
+}

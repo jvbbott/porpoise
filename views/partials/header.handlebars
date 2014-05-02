@@ -1,0 +1,25 @@
+
+<div class="container" id="header">
+
+    <div class="row">
+        <div class="col-xs-4">
+            {{#if username}}
+
+                    <div class="icon">
+                        <a id="home-nav-icon" class="nav-link" href="/"><i class="fa fa-home fa-lg nav-icon" alt="Home"></i></a>
+                    </div>
+                
+            {{/if}}
+        </div>
+        <div class="col-xs-4 title">
+            <a class="nav-link" href="/"><div id="header-name">cliq</div></a>
+        </div>
+        <div class="col-xs-4">
+            {{#if username}}
+                <div class="logout"> <div id="logged-in-as">{{username}}</div>
+                    <a id="logout-nav-icon" class="nav-link" href="/logout"><i class="fa fa-sign-out fa-lg nav-icon" alt="Logout"></i></a>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

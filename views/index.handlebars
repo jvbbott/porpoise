@@ -1,0 +1,161 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>StuddyBuddy</title>	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/cliq.css" rel="stylesheet">
+    <link href="/css/header.css" rel="stylesheet">
+    <link href="/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet" >
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+
+
+<body>
+
+
+    {{> header}}
+
+	<div class="container" id="main-content">
+
+        {{> status_messages }}
+
+        {{#if new_user }}
+            <div class="row">
+                <div class="col-xs-12 call-to-action img-rounded">
+                    <h2>Hey, welcome!<br /> Let's studybuddy!</h2>
+                    <a id="new-user-match-link" href="/search"><button type="button" class="btn btn-lg"><i class="fa fa-search fa-med" alt="Search"></i>&nbsp;Find a Match Now</button></a>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        {{/if}}
+
+        <div class="row">
+            <div class="col-xs-6 action-thumbnail">
+                <a id="search-icon-link" href="/search" class="thumbnail">  
+                    <i class="fa fa-search fa-7x main-nav-icon" alt="Search"></i>
+                    <br/>
+                    <div class="description">Search</div>
+                </a>
+            </div>     
+            <div class="col-xs-6 action-thumbnail">
+                <a id="matches-icon-link" href="/matches" class="thumbnail"> 
+                    <i class="fa fa-users fa-7x main-nav-icon" alt="My Matches"></i>
+                    <br/><div class="description">
+                    My Matches</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="profile-box">
+                    <div class="container">
+                        <div class="profile-box">
+                        <div class="row">
+                            <div id="prof-photo" class="col-xs-4">
+                                <span class="fa-stack fa-3x home-profile-photo">
+                                  <i class="fa fa-square fa-stack-2x"></i>
+                                  <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </div>
+                            
+                            <div class="col-xs-6 home-info">
+                                <table id="home-prof-info">
+                                <tr><td><i class="fa fa-user fa-med nav-icon" alt="Name"></i></td><td>{{curr_user.first_name}} {{curr_user.last_name}}</td></tr>
+                                <tr><td><i class="fa fa-envelope fa-med nav-icon" alt="Email"></i></td><td><a href="mailto:pocket@stanford.edu">{{curr_user.email}}</a></td></tr>
+                                <tr><td><i class="fa fa-phone fa-med nav-icon" alt="Phone"></i></td><td><a href="sms:+12345678910">{{curr_user.phone_number}}</a></td></tr>
+                                <!--tr><td><i class="fa fa-info fa-med nav-icon" alt="Headline"></i></td><td>{{curr_user.description}}</td></tr-->
+                                </table>
+                                <br/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                            <a href="/update-profile" id="update-profile-link">
+                                    <button id="update-prof" type="button" class="btn btn-sm"><i class="fa fa-pencil fa-med nav-icon" alt="Update Profile"></i>&nbsp;Edit</button>
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+    <script src="/js/studybuddy.js"></script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-48453653-2', 'studdybuddy.herokuapp.com');
+        //ga('create', 'UA-48453653-2', {'cookieDomain': 'none'});
+        ga('send', 'pageview');
+
+
+        $(document).ready(function() {
+            initializeTracking();
+        });
+
+        function initializeTracking() {
+
+            console.log("init tracking");
+            var startTime = new Date().getTime();
+
+            // Catch users before they go to the next page
+            // This is not registering on the GA dashboard for some reason...
+            /*
+            $("a").click(function(e) {
+                e.preventDefault();
+                var endTime = new Date().getTime();
+                var timeSpent = endTime - startTime;
+                var timeSpent = parseInt(timeSpent);
+                console.log("to GA: time spent - " + timeSpent);
+                console.log("New user flag: " + '{{new_user_call_to_action}}');
+                ga('send', 'timing', 'homepage', 'overallHompage', timeSpent, 'var{{new_user_call_to_action}}')
+            });
+            */
+
+            // log link clicks
+            var link_ids = ['update-profile-link', 'new-user-match-link', 'matches-icon-link', 'search-icon-link', 'logout-nav-icon', 'home-nav-icon'];
+            for (var i=0; i<link_ids.length; i++) {
+                $('#' + link_ids[i]).on('click', function() {
+                    ga('send', 'event', 'homepage-button-click', 'click', link_ids[i]);
+                });
+            }
+
+            // keep track of people going to "search"
+            $('#new-user-match-link').on('click', function() {
+                ga('send', 'event', 'homepage2search', 'click');
+            });
+            $('#search-icon-link').on('click', function() {
+                ga('send', 'event', 'homepage2search', 'click');
+            });
+
+        }
+
+    </script>
+
+
+</body>
+</html>

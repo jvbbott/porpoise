@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Search</title>  
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+        
+        <link href="/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet" >
+        <link href="/css/header.css" rel="stylesheet">
+        <link href="/css/studybuddy.css" rel="stylesheet">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
+    </head>
+
+    <body>
+    {{> header}}
+
+    <div class="container">
+        <h2> Search For Courses</h2>
+        <p style="text-align: center;">(Search for the course you need help with.)</p>
+        <div class="row">
+        <div class="col-xs-12">
+        <form autocomplete="off" class="navbar-form navbar" role="search" method="get" action="/search">
+          <div id="search-bar" class="form-group">
+            <input autocomplete="off" id="search-input" name="query" type="text" class="form-control" placeholder="Course">
+          </div>
+          <button id="search-button" type="submit" class="btn"><i class="fa fa-search fa-lg"></i>&nbsp;Search</button>
+        </form>
+        </div>
+    </div>
+
+    {{#if query.length}}    
+    <div id="results">
+        <h4 class="results-header">Results for "<b>{{query}}</b>":</h4>
+        {{#each matches}}
+        <div class="result row">
+            <div class="col-xs-12">
+            <div class="accordion" id="accordion{{id}}">
+            <div class="accordion-group">
+             <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion{{game.id}}" href="#collapse{{id}}"> 
+                    <h4 class="class-name">
+                        {{full_name}}
+                        <i style="float: right;" class="fa fa-chevron-down fa-xs arrow"></i>
+                    </h4>
+                </a>
+                <div id="collapse{{id}}" class="accordion-body collapse">
+                        <div class="details-left col-md-12">
+                            {{#each assignments}}
+                            <a href="/assignment/?id={{assignment_id}}"><p><b>{{title}}</b></p></a>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        {{/each}}
+    </div>
+        
+        {{else}}
+        <div id="results">
+        <h4>Popular Courses</h4>
+        {{#each matches}}
+        <div class="result row">
+            <div class="col-xs-12">
+            <div class="accordion" id="accordion{{id}}">
+            <div class="accordion-group">
+             <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion{{game.id}}" href="#collapse{{id}}"> 
+                    <h4 class="class-name">
+                        {{full_name}}
+                        <i style="float: right;" class="fa fa-chevron-down fa-xs arrow"></i>
+                    </h4>
+                </a>
+                <div id="collapse{{id}}" class="accordion-body collapse">
+                        <div name="collapse{{id}}" class="details-left col-md-12">
+                            {{#each assignments}}
+                            <a href="/assignment/?id={{assignment_id}}"><p><b>{{title}}</b></p></a>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+        {{/each}}
+    </div>
+    
+</div>
+    {{/if}}
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="/js/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/studybuddy.js"></script>
+
+    <script>
+    $('.accordion-toggle').click(function() {
+        $("#click").click(function (){
+            $('html, body').animate({
+                scrollTop: $('.target').offset().top
+            }, 2000);
+    });
+        // scrollTop: $('.target').offset().top
+        // var startIndex = this.href.match("collapse").index + 8;
+        // console.log(startIndex);
+        // var collapseId = this.href.substring(startIndex);
+        // console.log($('#collapse'+collapseId));
+        // $(document).scrollTop($('#collapse'+collapseId));
+    });
+
+    $('.accordion').click(function(e) {
+        if ($(this).find('i').hasClass('fa-chevron-down')) {
+            $(this).find('i').removeClass('fa-chevron-down');
+            $(this).find('i').addClass('fa-chevron-up');
+        }
+        else {
+            $(this).find('i').removeClass('fa-chevron-up');
+            $(this).find('i').addClass('fa-chevron-down');
+        }
+        
+
+    });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-48453653-2', 'studdybuddy.herokuapp.com');
+      //ga('create', 'UA-48453653-2', {'cookieDomain': 'none'});
+      ga('send', 'pageview');
+
+    </script>
+</body>
+</html>
+
+

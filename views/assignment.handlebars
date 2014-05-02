@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Assignment</title>  
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+        
+        <link href="/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet" >
+        <link href="/css/header.css" rel="stylesheet">
+        <link href="/css/studybuddy.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+    {{> header}}
+
+    <div class="container">
+        <h2 class="problems-header">Add Problems You Need Help On</h2>
+        <!--p style="text-align: center;">(Select the problems you'd like help with.)</p-->
+    <br/>
+    <div id="results-assignment">
+    {{#if assignment.length}}
+
+        {{#each assignment}}
+        <h4 class="assignment_header class{{course_id}}" id="assign{{id}}">{{course_name}}</h4><h4 class="assignment-name">{{name}}</h4>
+        <form class="form-inline" data-ajax="false" role="form" method="POST" action="/post-create-match-request">
+            <input type="hidden" name="assignment_id" value="{{id}}">
+            {{#each problems}}
+            <div id="{{this}}" class="result-problems row unselected">
+                <div class="col-xs-12">
+                    <div class="problem-option">
+                        <i id="problem-{{this}}" class="fa fa-plus fa-lg nav-icon problem-status-complete" alt="Problem Completed"></i>
+                        <h2 class="problem-name">Problem {{this}}</h2>
+                        <input style="opacity: 0; position: absolute;" 
+                        checked="checked" type="checkbox" value="unchecked" name="checkbox-{{this}}"></input>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        {{/each}}
+        
+
+        </div>
+        <br/>
+        <button id="submit-problems-button" type="submit" class="btn">Submit</button>
+    </form>
+    </div>
+        
+        {{else}}
+        <p>No assignment found.</p>
+        
+
+    </div>
+    {{/if}}        
+    </div>
+
+    
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!--<script src="/js/jquery.mobile-1.4.1.js"></script>-->
+
+    <script>
+        $(document).ready(function() {       
+            $('.result-problems').click(function(e) {
+                var inputProblem = $("input[name='checkbox-"+this.id+"']"); 
+                console.log("ALREADY CHECKED? "+inputProblem.prop('checked'));
+                if ($(this).hasClass('unselected')) {
+                    console.log("PROBLEM "+this.id+" IS BEING ADDED!");
+                    $(this).removeClass('unselected');
+                    $("i#problem-"+this.id).removeClass('problem-status-complete');
+                    $("i#problem-"+this.id).addClass('problem-status-incomplete');
+                    $(this).addClass('selected');
+                    inputProblem.attr("value","checked");
+                    $("i#problem-"+this.id).removeClass('fa-plus');
+                    $("i#problem-"+this.id).addClass('fa-check-circle-o');
+
+
+
+                }
+                else {
+                    console.log("PROBLEM "+this.id+" IS BEING SUBTRACTED!");
+                    $(this).removeClass('selected');
+                    $("i#problem-"+this.id).removeClass('problem-status-incomplete');
+                    $("i#problem-"+this.id).addClass('problem-status-complete');
+                    $(this).addClass('unselected');
+                    inputProblem.attr("value", "unchecked");
+                    $("i#problem-"+this.id).removeClass('fa-check-circle-o');
+                    $("i#problem-"+this.id).addClass('fa-plus');
+                }
+            }
+                );
+        });
+
+
+    </script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-48453653-2', 'studdybuddy.herokuapp.com');
+      //ga('create', 'UA-48453653-2', {'cookieDomain': 'none'});
+      ga('send', 'pageview');
+
+    </script>
+
+
+
+</body>
+</html>
+
+

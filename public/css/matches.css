@@ -1,0 +1,55 @@
+.container {
+	background-color: #888888;
+	color: rgba(0,0,0,.64);
+	padding-bottom: 20px;
+}
+
+p {
+	cursor: pointer;
+}
+
+.match_info {
+	display:none;
+}
+
+.matches .match, .matches .match .match_info {
+	width: 90%;
+	margin:auto;
+
+}
+
+.matches .match {
+	border: 1px solid black;
+	background-color: rgba(0,0,0,.2);
+	
+}
+
+.match p {
+	padding: 5px;
+	margin: 5px;
+}
+
+.match p:hover {
+
+}
+
+.matches .recent_match {
+	margin-bottom:20px;
+}
+
+.recent_match p span {
+	font-weight: bold;
+	font-size: 125%;
+}
+
+.clickable {
+	border: 1px solid black;
+	display: inline-block;
+	margin: 5px
+}
+
+.matches {
+	background-color: rgba(0,0,0,.2);
+	padding: 10px;
+	margin: 10px 0;
+}

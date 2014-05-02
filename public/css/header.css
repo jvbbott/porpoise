@@ -1,0 +1,83 @@
+@font-face
+{
+font-family: Avenir-Light;
+src: url('/fonts/ProximaNova-Light.otf');
+}
+
+
+#header .home_button {
+    float: left;
+}
+
+@font-face {
+ font-family: Raleway;
+ src: url('/fonts/raleway_thin.otf');   
+}
+
+@font-face {
+ font-family: Gotham;
+ src: url('/fonts/GothamMedium.otf');   
+}
+
+
+#header .logout {
+    display: inline;
+    line-height: 22px;
+    float: right;
+    margin-right: -5px;
+}
+
+#header {
+    background-color: #DD3133;
+    padding: 10px 10px;
+    font-family: Raleway;
+    font-weight: 100;
+    font-size: 16px;
+    color: whitesmoke;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: 400; 
+}
+
+#header .icon {
+    float: left;
+}
+
+div.title {
+    padding-left: 9px;
+    float: left;
+}
+
+
+.action-thumbnail {
+    text-align: center;
+}
+
+.nav-icon {
+    padding-right: 0px;
+}
+
+
+.profile-box ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px 0px 0px 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a.nav-link {
+    color: white;
+}
+
+div.logout {
+    float: left;
+    font-weight: 400; 
+}
