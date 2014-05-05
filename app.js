@@ -11,7 +11,7 @@ var handlebars = require('express3-handlebars')
 var partials = require('express-partials')
 var index = require('./routes/index');
 var login = require('./routes/login');
-var matches = require('./routes/matches');
+var games = require('./routes/games');
 var user = require('./routes/user');
 var search = require('./routes/search');
 var assignment = require('./routes/assignment');
@@ -42,11 +42,11 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
-app.get('/', index.view);
+app.get('/', games.view);
 //app.get('/nw-home', index.viewNewUserAlternate);
 app.get('/login', login.view);
 app.get('/logout', login.logout);
-app.get('/matches', matches.view);
+// app.get('/matches', matches.view);
 app.get('/search', search.view);
 app.get('/assignment', assignment.view);
 app.get('/confirmation', confirmation.view);
@@ -57,11 +57,11 @@ app.get('/update-profile', user.render_update_profile);
 app.post('/post-login', user.login_or_signup);
 app.post('/post-create-profile', user.handle_create_profile);
 app.post('/post-update-profile', user.handle_update_profile);
-app.post('/post-update-match-request', matches.update_request);
-app.post('/post-create-match-request', matches.create_match_request);
-app.post('/delete-match-request', matches.delete_match_request);
-app.post('/delete-match', matches.delete_match);
-app.post('/edit-match-request', matches.edit_match_request);
+// app.post('/post-update-match-request', matches.update_request);
+// app.post('/post-create-match-request', matches.create_match_request);
+// app.post('/delete-match-request', matches.delete_match_request);
+// app.post('/delete-match', matches.delete_match);
+// app.post('/edit-match-request', matches.edit_match_request);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

@@ -17,6 +17,7 @@ exports.login_or_signup = function(req, res) {
         req.session.curr_user_id = curr_user.id;
         res.redirect("/new-profile");
     } else {
+        console.log("THIS USER EXISTS");
         // This user exists. Send to homepage
         req.session.curr_user_id = curr_user.id;
         req.session.username = curr_user.first_name;

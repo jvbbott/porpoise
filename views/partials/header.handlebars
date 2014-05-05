@@ -1,23 +1,36 @@
 
-<div class="container" id="header">
+<div class="container wrap push" id="header">
 
     <div class="row">
         <div class="col-xs-4">
             {{#if username}}
+            
+            <div id="menu" class="panel" role="navigation">
+                <ul>
+                    <li><a><i class="fa fa-gamepad fa-med nav-icon" alt="Games"></i>&nbsp;&nbsp;Games</a></li>
+                    <li><a><i class="fa fa-gear fa-med nav-icon" alt="Settings"></i>&nbsp;&nbsp;Settings</a></li>
+                    <li><a><i class="fa fa-question fa-med nav-icon" alt="Help"></i>&nbsp;&nbsp;Help</a></li>
+                    <li><a href="/logout"><i class="fa fa-sign-out fa-med nav-icon" alt="Logout"></i>&nbsp;&nbsp;Logout</a></li>
+                </ul>
+            </div>
 
-                    <div class="icon">
+            <a href="#menu" class="menu-link"><i class="fa fa-bars fa-lg nav-icon" alt="Menu"></i></a>
+            
+                    <!-- <div class="icon">
                         <a id="home-nav-icon" class="nav-link" href="/"><i class="fa fa-home fa-lg nav-icon" alt="Home"></i></a>
-                    </div>
+                    </div> -->
+                    
                 
             {{/if}}
         </div>
-        <div class="col-xs-4 title">
+
+        <div class="col-xs-4 title wrap">
             <a class="nav-link" href="/"><div id="header-name">cliq</div></a>
         </div>
         <div class="col-xs-4">
             {{#if username}}
-                <div class="logout"> <div id="logged-in-as">{{username}}</div>
-                    <a id="logout-nav-icon" class="nav-link" href="/logout"><i class="fa fa-sign-out fa-lg nav-icon" alt="Logout"></i></a>
+                <div class="new-game">
+                    <a id="new-game-icon" class="nav-link" href="/new"><i class="fa fa-plus fa-lg nav-icon" alt="Logout"></i></a>
                 </div>
             {{/if}}
         </div>

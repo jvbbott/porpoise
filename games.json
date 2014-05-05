@@ -1,0 +1,74 @@
+{
+	"games": [
+		{
+			"id" : 1,
+			"game_over" : false,
+			"first_user_id": 1,
+			"second_user_id" : 2,
+			"first_user_score" : 3,
+			"second_user_score" : 0,
+			"round" : 3,
+			"current_prompt" : "Take a photo of yourself shirtless at the gym.",
+			"first_user_completion" : 6,
+			"second_user_completion" : -1,
+			"score_diff": 4,
+			"curr_winning": 1 
+		},
+		{
+			"id" : 2,
+			"game_over" : false,
+			"first_user_id": 1,
+			"second_user_id" : 2,
+			"first_user_score" : 3,
+			"second_user_score" : 0,
+			"round" : 7,
+			"current_prompt" : "Take a photo of yourself shirtless at the gym.",
+			"first_user_completion" : 6,
+			"second_user_completion" : -1,
+			"score_diff": 4,
+			"curr_winning": 1 
+		},
+		{
+			"id" : 3,
+			"game_over" : false,
+			"first_user_id": 1,
+			"second_user_id" : 2,
+			"first_user_score" : 3,
+			"second_user_score" : 0,
+			"round" : 5,
+			"current_prompt" : "Take a photo of yourself shirtless at the gym.",
+			"first_user_completion" : 6,
+			"second_user_completion" : -1,
+			"score_diff": 4,
+			"curr_winning": 1 
+		},
+		{
+			"id" : 4,
+			"game_over" : false,
+			"first_user_id": 1,
+			"second_user_id" : 2,
+			"first_user_score" : 3,
+			"second_user_score" : 0,
+			"round" : 5,
+			"current_prompt" : "Take a photo of yourself shirtless at the gym.",
+			"first_user_completion" : 6,
+			"second_user_completion" : -1,
+			"score_diff": 4,
+			"curr_winning": 1 
+		},
+		{
+			"id" : 5,
+			"game_over" : false,
+			"first_user_id": 3,
+			"second_user_id" : 4,
+			"first_user_score" : 0,
+			"second_user_score" : 12,
+			"round" : 12,
+			"current_prompt" : "Take a video of yourself eating a raw egg.",
+			"first_user_completion" : 4,
+			"second_user_completion" : -1,
+			"score_diff": 4,
+			"curr_winning": 1
+		}
+	]
+}

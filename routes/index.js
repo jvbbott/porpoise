@@ -5,7 +5,7 @@
 
 
 /* Includes user data wrapper functions */
-var user_data = require('../user_data');
+var user_data = require('../user_data.js');
 var match_data = require('../match_data.js');
 
 exports.view = function(req, res, curr_user){
@@ -13,13 +13,12 @@ exports.view = function(req, res, curr_user){
   	res.redirect("/login");
   	return;
   }
-
   var new_user = false;
   if (req.session.new_user != undefined && req.session.new_user) {
     req.session.new_user = false;
     new_user = true;
   }
-
+  console.log("HEY");
   var curr_user = user_data.get_user_by_id(req.session.curr_user_id)
   // have to add this because of disabled login restriction
   //if (curr_user == undefined) {
@@ -52,10 +51,9 @@ exports.view = function(req, res, curr_user){
         "glyphicon": "glyphicon-ok"
     };
   }
-
   res.render('index', 
   	{
-  		'title': 'StuddyBuddy',
+  		'title': 'hello',
   		'curr_user': curr_user,
       'status_messages': status_messages,
       'username': req.session.username,
@@ -63,7 +61,3 @@ exports.view = function(req, res, curr_user){
   	});
 
 };
-
-
-
-

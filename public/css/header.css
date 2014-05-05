@@ -20,24 +20,25 @@ src: url('/fonts/ProximaNova-Light.otf');
 }
 
 
-#header .logout {
+#header .new-game {
     display: inline;
-    line-height: 22px;
+    line-height: 30px;
     float: right;
-    margin-right: -5px;
+    margin-right: 10px;
 }
 
 #header {
     background-color: #C53922;
     padding: 10px 10px;
-    font-family: Raleway;
+    font-family: Raleway-Light;
     font-weight: 100;
-    font-size: 16px;
+    font-size: 20px;
     color: whitesmoke;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     font-weight: 400; 
+    height: 50px;
 }
 
 #header .icon {
@@ -45,7 +46,7 @@ src: url('/fonts/ProximaNova-Light.otf');
 }
 
 div.title {
-    padding-left: 9px;
+    padding-left: 10px;
     float: left;
 }
 
@@ -54,16 +55,16 @@ div.title {
     text-align: center;
 }
 
+.menu-link, .menu-link:hover {
+    float: left;
+    margin-left: 10px;
+    color: white;
+}
+
 .nav-icon {
     padding-right: 0px;
 }
 
-
-.profile-box ul {
-    list-style-type: none;
-    margin: 0px;
-    padding: 0px 0px 0px 30px;
-}
 
 a {
     text-decoration: none;
@@ -80,4 +81,40 @@ a.nav-link {
 div.logout {
     float: left;
     font-weight: 400; 
+}
+
+#menu {
+    background-color: #C53922;
+}
+
+#menu ul {
+    list-style-type: none;
+}
+
+.panel {
+    position: fixed;
+    left: -12.625em; /*left or right and the width of your navigation panel*/
+    width: 12.625em; /*should match the above value*/
+    border-radius: 0;
+}
+
+.panel li, .panel ul {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.panel a: hover {
+    cursor: pointer;
+    color: blue;
+}
+.panel a {
+    color: white;
+    display: block;
+    border-bottom: 1px solid white;
+    padding: 1em;
+}
+
+.wrap { 
+    position: relative; 
 }

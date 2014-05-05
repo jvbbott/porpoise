@@ -1,5 +1,5 @@
 	
-var data = require('./matches.json');
+var data = require('./games.json');
 var match_request_interface = require('./match_request_data.js');
 var user_data = require('./user_data.js');
 var course_data = require('./course_data.js');
@@ -186,72 +186,78 @@ exports.annotate_with_other_user_data = function(matches, curr_user_id) {
  }
 
 
- exports.get_match_by_id = function(id) {
- 	for (var i = 0; i < data.matches.length; i++) {
- 		if (data.matches[i].id == id)
- 			return data.matches[i]
- 	}
- 	return undefined;
- }
+ // exports.get_match_by_id = function(id) {
+ // 	for (var i = 0; i < data.matches.length; i++) {
+ // 		if (data.matches[i].id == id)
+ // 			return data.matches[i]
+ // 	}
+ // 	return undefined;
+ // }
 
 
-exports.set_match_as_seen = function(match_id, user_id) {
-	var match_object = exports.get_match_by_id(match_id);
-	if (match_object.first_user_id == user_id) {
-		match_object.seen_by_first_user = true;
-	} else {
-		match_object.seen_by_second_user = true;
-	}
-}
+// exports.set_match_as_seen = function(match_id, user_id) {
+// 	var match_object = exports.get_match_by_id(match_id);
+// 	if (match_object.first_user_id == user_id) {
+// 		match_object.seen_by_first_user = true;
+// 	} else {
+// 		match_object.seen_by_second_user = true;
+// 	}
+// }
 
-exports.update_match_object = function(match_id, attribute, new_value) {
-	var match_object = get_match_by_id(match_id);
-	if (match_object) {
-		// tests to see that the attribute is a valid attribute
-		if (match_object[attribute] != undefined) {
-			match_object[attribute] = new_value;
-		}
+// exports.update_match_object = function(match_id, attribute, new_value) {
+// 	var match_object = get_match_by_id(match_id);
+// 	if (match_object) {
+// 		// tests to see that the attribute is a valid attribute
+// 		if (match_object[attribute] != undefined) {
+// 			match_object[attribute] = new_value;
+// 		}
 
-	}
+// 	}
 
 
-}
+// }
 
 exports.get_matches_by_user = function(user_id) {
-	var all_matches = data['matches'];
-	var relevant_matches = new Array();
+	var all_games = data['games']; //returning all games for now
+	console.log(all_games);
+	// var relevant_matches = new Array();
 	//cycle through all mathces, if either user
 	// associated with this match is the user we want
 	// add that match to our array
-	for (var i = 0; i < all_matches.length; i ++ ) {
-		if (all_matches[i].first_user_id == user_id ||
-			all_matches[i].second_user_id == user_id ) {
-			relevant_matches.push(all_matches[i]);
-		}
-	}
-	return relevant_matches;
+	// for (var i = 0; i < all_matches.length; i ++ ) {
+	// 	if (all_matches[i].first_user_id == user_id ||
+	// 		all_matches[i].second_user_id == user_id ) {
+	// 		relevant_matches.push(all_matches[i]);
+	// 	}
+	// }
+	// return relevant_matches;
+	return all_games;
 }
 
-exports.get_next_match_id = function() {
- 	var all_matches = data['matches'];
- 	var last_index = all_matches.length - 1;
- 	if (last_index < 0)
- 		return 0;
- 	return all_matches[last_index].id + 1;
+exports.get_all_games = function() {
+	return data['games'];
 }
 
+// exports.get_next_match_id = function() {
+//  	var all_matches = data['matches'];
+//  	var last_index = all_matches.length - 1;
+//  	if (last_index < 0)
+//  		return 0;
+//  	return all_matches[last_index].id + 1;
+// }
 
-exports.create_match_obj = function(first_request, second_request) {
-	var new_match = [];
-	new_match['id'] = exports.get_next_match_id();
-	new_match['first_user_id'] = first_request.user_id;
-	new_match['second_user_id'] = second_request.user_id;
-	new_match['first_user_request_id'] = first_request.id;
-	new_match['second_user_request_id'] = second_request.id;
-	new_match['seen_by_first_user'] = false;
-	new_match['seen_by_second_user'] = false;
-	data['matches'].push(new_match);
-}
+
+// exports.create_match_obj = function(first_request, second_request) {
+// 	var new_match = [];
+// 	new_match['id'] = exports.get_next_match_id();
+// 	new_match['first_user_id'] = first_request.user_id;
+// 	new_match['second_user_id'] = second_request.user_id;
+// 	new_match['first_user_request_id'] = first_request.id;
+// 	new_match['second_user_request_id'] = second_request.id;
+// 	new_match['seen_by_first_user'] = false;
+// 	new_match['seen_by_second_user'] = false;
+// 	data['matches'].push(new_match);
+// }
 
 
 

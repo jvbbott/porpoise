@@ -18,14 +18,59 @@ html, body {
     font-family: Raleway;
 }
 
+.wrap {
+    position: relative;
+}
+
+
+
 #main-content {
     background-color: whitesmoke;
-    padding: 15px 10px 15px 10px;
-    min-height: 340px;
+    /*padding: 15px 10px 15px 10px;*/
+    /*min-height: 340px;*/
     font-family: Raleway, "Helvetica-Neue";
     font-weight: 400;
     font-size: 14px;
 }
+
+.ui-accordion-header {
+    background-color: #C53922;
+    padding: 10px;
+    margin: 3px;
+    color: white;
+    border-radius: 5px 5px 5px 5px
+}
+
+#accordion div {
+    padding: 10px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.profile-photo {
+    width: 50px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+span.game-status {
+    float: right;
+    color: white;
+    padding-top: 10px;
+    margin-right: 10px;
+}
+
+span.label-you {
+    margin-top: -60px;
+    float: right;
+    color: white;
+}
+/*.ui-state-active {
+    background-color: white;
+}
+
+.ui-state-default {
+    background-color: #C53922;
+}*/
 
 h1, h2, h3, h4, h5, h6 {
     font-family: Raleway-Light;
@@ -101,7 +146,7 @@ button#search-button {
     height: 50px;
     width: 100%;
     color: white;
-    background-color: #CF332A;
+    background-color: #C53922;
     font-weight: 400;
     border:none;
 }
@@ -180,7 +225,7 @@ table#home-prof-info td {
 button#update-prof {
     width: 100%;
     color: white;
-    background-color: #DD3133;
+    background-color: #C53922;
     font-weight: 400;
     height: 40px;
     margin-bottom: 20px;
@@ -365,4 +410,13 @@ i.arrow {
 
 .contact-info .email {
     background-color: #8C1515;
+}
+
+.create-profile {
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    background-color: #C53922;
+    text-align: center;
+    width: 100%;
 }
