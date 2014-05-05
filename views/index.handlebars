@@ -48,10 +48,11 @@
             </div>
         {{/if}} -->
         <h2>Current Games</h2>
-        <div id="accordion">
+        <div id="games-list">
         {{#each games}}
         <h3><img class="profile-photo" src="/images/profile-icon.png">&nbsp;&nbsp;Joe L.</img><span class="game-status"><!-- You: + --> {{round}}</span></h3>
           <div>
+            <!-- Prompt: {{current_prompt}} -->
           </div>
         <!-- <p>{{id}}</p>
         <p>Game Competitors: {{first_user_id}} vs. {{second_user_id}}</p>
