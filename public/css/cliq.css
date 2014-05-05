@@ -420,3 +420,11 @@ i.arrow {
     text-align: center;
     width: 100%;
 }
+
+.fb-login-button {
+    text-align: center;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+

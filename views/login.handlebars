@@ -20,6 +20,35 @@
 </head>
 
 <body>
+    <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : 746219685422368,
+              xfbml      : true,
+              version    : 'v2.0'
+            });
+
+            // FB.getLoginStatus(function(response) {
+            //   if (response.status === 'connected') {
+            //     console.log('Logged in.');
+            //   }
+            //   else {
+            //     FB.login(function(response) {
+            //            // handle the response
+            //          }, {scope: 'public_profile,email'});
+            //   }
+            // });
+
+          };
+
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "//connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+        </script>
 
     <div class="container">
 
@@ -51,6 +80,14 @@
             <div class="col-xs-2"></div>
         </div>
 
+        <div class="row">
+            <div class="col-xs-2"></div>
+            <!-- <div class="col-xs-8"> -->
+              <div style="text-align: center;" class="fb-login-button col-xs-8" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false" scope="public_profile, user_friends, email" onlogin="redirect_home();"></div>
+            <!-- </div> -->
+            <div class="col-xs-2"></div>
+      </div>
+
 
             <!--  -->
             <div class="row"><div class="col-xs-2"></div>
@@ -81,6 +118,11 @@
     //   ga('create', 'UA-48453653-2', 'studdybuddy.herokuapp.com');
     //   //ga('create', 'UA-48453653-2', {'cookieDomain': 'none'});
     //   ga('send', 'pageview');
+
+    function redirect_home() {
+        console.log("SEND ME TO MY GAMES!");
+        window.location = "/games";
+    }
 
     // </script>
 

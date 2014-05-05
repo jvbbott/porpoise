@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Matches</title>  
+        <title>Sign Up</title>  
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
@@ -22,6 +22,40 @@
 
     <body>
 
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : 746219685422368,
+              xfbml      : true,
+              version    : 'v2.0'
+            });
+
+            // FB.getLoginStatus(function(response) {
+            //   if (response.status === 'connected') {
+            //     console.log('Logged in.');
+            //   }
+            //   else {
+            //     FB.login();
+            //   }
+            // });
+
+          };
+
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "//connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+
+
+
+        
+
+
     <!-- WE DON'T WANT THIS PAGE TO BE ABLE TO NAVIGATE TO HOME -->
       <div class="container" id="header">
 
@@ -35,9 +69,18 @@
               </div>
           </div>
       </div>
-
     <div class="container">
-      <br></br>
+
+
+      <!-- <div class="row">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-8">
+              <div style="text-align: center;" class="fb-login-button col-xs-8" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
+            <div class="col-xs-2"></div>
+      </div> -->
+      <!-- <fb:registration redirect_uri="http://localhost:3000/" fields="name,email" /> -->
+      
+        <br></br>
         <form class="form-horizontal" role="form" method="post" action="/post-create-profile">
           <input type="hidden" name="user[id]" class="text" value="{{user.id}}">
           <div class="form-group">
@@ -78,7 +121,9 @@
               <input type="description" class="form-control" name="user[description]" id="description" value="{{user.description}}" placeholder="Anything you want to say!">
             </div>
           </div-->
-          <div class="row"><div class="col-xs-2"></div>
+          <div class="row">
+
+            <div class="col-xs-2"></div>
           <div class="form-group">
             <div class="col-xs-8">
               <button type="submit" class="btn create-profile">Create Profile</button>
@@ -88,6 +133,7 @@
         </form>
     </div>
 
+    
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 

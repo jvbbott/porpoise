@@ -56,9 +56,10 @@ div.title {
 }
 
 .menu-link, .menu-link:hover {
-    float: left;
-    margin-left: 10px;
-    color: white;
+float: left;
+padding-left: 10px;
+padding-right: 10px;
+color: white;
 }
 
 .nav-icon {
