@@ -50,7 +50,7 @@
         <h2>Current Games</h2>
         <div id="games-list">
         {{#each games}}
-        <a href="/prompt"><h3><img class="profile-photo" src="/images/profile-icon.png">&nbsp;&nbsp;Joe L.</img><span class="game-status"><!-- You: + --> {{round}}</span></h3></a>
+        <a href="/prompt"><h3><img class="profile-photo" src="/images/profile-icon.png">&nbsp;&nbsp;&nbsp;&nbsp;Game #{{this.id}}</img><span class="game-status"><!-- You: + --> {{round}}</span></h3></a>
           <div>
             <!-- Prompt: {{current_prompt}} -->
           </div>

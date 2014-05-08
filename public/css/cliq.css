@@ -427,4 +427,12 @@ i.arrow {
     margin-top: 10px;
 }
 
+.user_photo {
+    width:100%;
+    height:20%;
+}
+
+.bigger {
+    font-size: 50;
+}
 
