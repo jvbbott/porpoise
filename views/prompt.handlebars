@@ -31,21 +31,6 @@
 		
 		<h1 class="text-center"> <span class="bigger">Hi {{user.first_name}}!</span> Welcome back to Game 1!</h1>
 
-
-<!-- 
-        <div class="row">
-            <div class="col-xs-2"></div>
-            <div class="col-xs-8">
-                <form action="/post-login" method="POST" role="form">
-                  <div class="form-group">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn login">Login</button>
-                </form>
-            </div>
-            <div>
-            -->
         </br>
 
 		<div class="row">
@@ -98,15 +83,45 @@
 
 	</br></br>
 
+<<<<<<< HEAD
 		<form class="photo" action="/round_complete" method="post" enctype="multipart/form-data">
 			<input type="file" name="file" accept="image/*|video/*6" capture="">
 			<span><input type="submit" name="upload" value="Upload"></span>
 		</form>
+=======
+		<h5> Take Photo! </h5>
+		<form class="photo" action="/post-prompt" method="post" enctype="multipart/form-data">
+			<div class="row">
+			<div class="col-xs-10" ><input id="photo_input" type="file"  name="file" accept="image/*" capture="">
+		</div>
+
+			<div class="col-xs-2"><input type="submit" name="upload" value="Upload"></div>
+		</div>
+
+		<script>
+		$("#take_photo").click(function() {
+			$("#photo_input").click();
+		});
+		</script>
+>>>>>>> 168c6189b84bcc5a1a131d17689c3459eedf74fe
 
 
+		</form>
 
 	</div>
 
+<script>
+     $(document).ready(function() {
+            $('.menu-link').bigSlide();
+        });
+
+     $(function() {
+        $( "#accordion" ).accordion({
+          heightStyle: "content"
+        });
+      });
+
+    </script>
 
 </body>
 
