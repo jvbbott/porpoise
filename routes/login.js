@@ -17,7 +17,6 @@ exports.view = function(req, res){
 };
 
 
-
 /* logs out the user by clearing the session */
 exports.logout = function(req, res) {
     req.session.curr_user_id = undefined;

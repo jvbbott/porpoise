@@ -16,6 +16,7 @@ var user = require('./routes/user');
 var search = require('./routes/search');
 var assignment = require('./routes/assignment');
 var confirmation = require('./routes/confirmation');
+var prompt = require('./routes/prompt');
 
 var app = express();
 
@@ -54,6 +55,10 @@ app.get('/get_classes_query', search.get_classes_from_query);
 
 app.get('/new-profile', user.create_new_profile);
 app.get('/update-profile', user.render_update_profile);
+
+// for prompt page
+app.get('/prompt', prompt.view);
+
 app.post('/post-login', user.login_or_signup);
 app.post('/post-create-profile', user.handle_create_profile);
 app.post('/post-update-profile', user.handle_update_profile);
