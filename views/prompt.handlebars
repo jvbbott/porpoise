@@ -83,11 +83,22 @@
 
 	</br></br>
 
+		<h5> Take Photo! </h5>
 		<form class="photo" action="/post-prompt" method="post" enctype="multipart/form-data">
 			<div class="row">
-			<div class="col-xs-10" style="width:50%"><input type="file" name="file" accept="image/*" capture=""></div>
+			<div class="col-xs-10" ><input id="photo_input" type="file"  name="file" accept="image/*" capture="">
+		</div>
+
 			<div class="col-xs-2"><input type="submit" name="upload" value="Upload"></div>
 		</div>
+
+		<script>
+		$("#take_photo").click(function() {
+			$("#photo_input").click();
+		});
+		</script>
+
+
 		</form>
 
 	</div>
