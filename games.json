@@ -12,7 +12,8 @@
 			"first_user_completion" : 6,
 			"second_user_completion" : -1,
 			"score_diff": 4,
-			"curr_winning": 1 
+			"curr_winning": 1,
+			"new_prompt":1
 		},
 		{
 			"id" : 2,
@@ -26,7 +27,8 @@
 			"first_user_completion" : 6,
 			"second_user_completion" : -1,
 			"score_diff": 4,
-			"curr_winning": 1 
+			"curr_winning": 1,
+			"new_prompt":0
 		},
 		{
 			"id" : 3,
@@ -40,7 +42,8 @@
 			"first_user_completion" : 6,
 			"second_user_completion" : -1,
 			"score_diff": 4,
-			"curr_winning": 1 
+			"curr_winning": 1,
+			"new_prompt":0
 		},
 		{
 			"id" : 4,
@@ -54,7 +57,8 @@
 			"first_user_completion" : 6,
 			"second_user_completion" : -1,
 			"score_diff": 4,
-			"curr_winning": 1 
+			"curr_winning": 1,
+			"new_prompt":0 
 		},
 		{
 			"id" : 5,
@@ -68,7 +72,8 @@
 			"first_user_completion" : 4,
 			"second_user_completion" : -1,
 			"score_diff": 4,
-			"curr_winning": 1
+			"curr_winning": 1,
+			"new_prompt":0
 		}
 	]
 }

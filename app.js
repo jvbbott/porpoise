@@ -17,6 +17,7 @@ var search = require('./routes/search');
 var assignment = require('./routes/assignment');
 var confirmation = require('./routes/confirmation');
 var prompt = require('./routes/prompt');
+var round_complete = require('./routes/round_complete');
 
 var app = express();
 
@@ -58,6 +59,9 @@ app.get('/update-profile', user.render_update_profile);
 
 // for prompt page
 app.get('/prompt', prompt.view);
+
+// for end of round page
+app.get('/round_complete', round_complete.view);
 
 app.post('/post-login', user.login_or_signup);
 app.post('/post-create-profile', user.handle_create_profile);

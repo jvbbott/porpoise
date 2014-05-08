@@ -52,6 +52,13 @@ html, body {
     border-radius: 5px;
 }
 
+.complete-photo{
+    width: 100px;
+    background-color: white;
+    border-radius: 5px;
+    
+}
+
 span.game-status {
     float: right;
     color: white;
