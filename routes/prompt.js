@@ -16,3 +16,9 @@ exports.view = function(req, res){
   });
 
 };
+
+
+exports.picture_taken = function(req, res) {
+	console.log(req.file);
+	res.redirect("/round_complete");
+}

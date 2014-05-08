@@ -66,6 +66,9 @@ app.get('/round_complete', round_complete.view);
 app.post('/post-login', user.login_or_signup);
 app.post('/post-create-profile', user.handle_create_profile);
 app.post('/post-update-profile', user.handle_update_profile);
+
+app.post('/post-prompt', prompt.picture_taken);
+
 // app.post('/post-update-match-request', matches.update_request);
 // app.post('/post-create-match-request', matches.create_match_request);
 // app.post('/delete-match-request', matches.delete_match_request);
