@@ -78,3 +78,8 @@ app.post('/post-prompt', prompt.picture_taken);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+
+
+
+
