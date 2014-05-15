@@ -49,6 +49,7 @@ exports.get_user_by_id = function(user_id) {
  * user to dataset
  */ 
 exports.update_user = function(user) {
+  console.log(user);
     var index = user.id;
     data.users[index] = user;
 };
