@@ -130,13 +130,13 @@ exports.handle_create_profile = function(req, res) {
     // Add a status message about what happened
     
     
-    // client.messages.create({ 
-    //     to: curr_user.phone, 
-    //     from: "+19562051565", 
-    //     body: "Thank you "+curr_user.first_name+" for signing up for cliq! Please enter this four-digit code to verify your number: "+auth_code,   
-    // }, function(err, message) { 
-    //     console.log(message.sid); 
-    // });
+    client.messages.create({ 
+        to: curr_user.phone, 
+        from: "+19562051565", 
+        body: "Thank you "+curr_user.first_name+" for signing up for cliq! Please enter this four-digit code to verify your number: "+auth_code,   
+    }, function(err, message) { 
+        console.log(message.sid); 
+    });
 
     curr_user.auth_code = auth_code;
     user_data.update_user(curr_user);
