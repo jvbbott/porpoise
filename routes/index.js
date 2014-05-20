@@ -1,4 +1,3 @@
-
 /*
  * GET home page.
  */
@@ -7,6 +6,7 @@
 /* Includes user data wrapper functions */
 var user_data = require('../user_data.js');
 var match_data = require('../match_data.js');
+var games_data = require('../games_data.js');
 
 exports.view = function(req, res, curr_user){
   if (req.session.curr_user_id == undefined) {
@@ -18,7 +18,7 @@ exports.view = function(req, res, curr_user){
     req.session.new_user = false;
     new_user = true;
   }
-  console.log("HEY");
+  console.log("HEY INDEX");
   var curr_user = user_data.get_user_by_id(req.session.curr_user_id)
   // have to add this because of disabled login restriction
   //if (curr_user == undefined) {
@@ -26,31 +26,33 @@ exports.view = function(req, res, curr_user){
   //}
   req.session.username = curr_user.username;
   
+  console.log("STATUS MESSAGES: "+req.session.status_messages);
   // grab status message if there is one and flush
   var status_messages = [];
   if (req.session.status_messages != undefined) {
-    var status_messages = req.session.status_messages;
+    status_messages = req.session.status_messages;
   } 
-  req.session.status_messages = [];
+  // req.session.status_messages = [];
 
   // look for unseen matches & add to status message
-  var user_id = req.session.curr_user_id;
-  var unseen_matches = match_data.get_unseen_matches_by_user(user_id);
-  if (unseen_matches.length > 0) {
-    var message = "You have " + unseen_matches.length + " new match. <a href='/matches'>See my matches</a>";
-    if (unseen_matches.length > 1) {
-        message += "es"
-    }
-    /* set as seen */
-    for (var i=0; i<unseen_matches.length; i++) {
-        match_data.set_match_as_seen(unseen_matches[i].id, user_id);
-    }
-    status_messages[status_messages.length] = {
-        "text": message, 
-        "class": "success-message", 
-        "glyphicon": "glyphicon-ok-sign"
-    };
-  }
+  // var user_id = req.session.curr_user_id;
+  // var unseen_matches = match_data.get_unseen_matches_by_user(user_id);
+  // if (unseen_matches.length > 0) {
+  //   var message = "You have " + unseen_matches.length + " new match. <a href='/matches'>See my matches</a>";
+  //   if (unseen_matches.length > 1) {
+  //       message += "es"
+  //   }
+  //   /* set as seen */
+  //   for (var i=0; i<unseen_matches.length; i++) {
+  //       match_data.set_match_as_seen(unseen_matches[i].id, user_id);
+  //   }
+  //   status_messages[status_messages.length] = {
+  //       "text": message, 
+  //       "class": "success-message", 
+  //       "glyphicon": "glyphicon-ok-sign"
+  //   };
+  // }
+  var games = games_data.get_all_games();
   res.render('index', 
   	{
   		'title': 'Welcome Back',
@@ -58,6 +60,7 @@ exports.view = function(req, res, curr_user){
       'status_messages': status_messages,
       'username': req.session.username,
       'new_user': new_user, 
+      'games' : games
   	});
 
 };

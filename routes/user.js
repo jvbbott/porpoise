@@ -8,6 +8,16 @@ var authToken = 'a71d5c5997988f8f277437722898ac89';
 var client = require('twilio')(accountSid, authToken); 
 
 
+
+exports.render_verification_page = function(req, res) {
+    console.log("INCORRECT CODE, REDIRECTING");
+    res.render('verification', {
+            'title' : 'Enter Verification Code',
+            'user': curr_user
+    });
+    return; 
+}
+
 exports.login_or_signup = function(req, res) {
     var username = req.body.username;
     var curr_user = user_data.get_user_by_username(username);
@@ -64,21 +74,25 @@ exports.create_new_profile = function(req, res) {
 
 /* POST - Handles phone number validation */
 exports.handle_validation = function (req, res) {
-    console.log("HANDLING VALIDATION");
-    console.log(req.session);
     var curr_user = user_data.get_user_by_id(req.session.curr_user_id);
     console.log(curr_user);
     var code_entered = req.body.code;
     if (code_entered == curr_user.auth_code) {
-        var status_messages = [{"text": "New profile created!", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];
+        if (curr_user.first_name == undefined) {
+            var status_messages = [{"text": "Welcome, "+curr_user.username+"!", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];
+        }
+        else {
+          var status_messages = [{"text": "Welcome, "+curr_user.first_name+"!", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];  
+        }
         req.session.status_messages = status_messages;
         res.redirect("/");
-        return;
     }
     else {
         var status_messages = [{"text": "Validation code incorrect. Try again.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
         req.session.status_messages = status_messages;
-        res.render();
+        res.render("verification", {
+            'title': "Enter Verification Code",
+            'status_messages': status_messages});
         return;
     }
 }
@@ -111,18 +125,18 @@ exports.handle_create_profile = function(req, res) {
     req.session.curr_user_id = curr_user.id;
     req.session.username = curr_user.username;
 
-    var auth_code = Math.floor((Math.random() * 10000) + 1);
+    var auth_code = Math.floor((Math.random() * 9000) + 1000);
 
     // Add a status message about what happened
     
     
-    client.messages.create({ 
-        to: curr_user.phone, 
-        from: "+19562051565", 
-        body: "Thank you "+curr_user.first_name+" for signing up for cliq! Please enter this four-digit code to verify your number: "+auth_code,   
-    }, function(err, message) { 
-        console.log(message.sid); 
-    });
+    // client.messages.create({ 
+    //     to: curr_user.phone, 
+    //     from: "+19562051565", 
+    //     body: "Thank you "+curr_user.first_name+" for signing up for cliq! Please enter this four-digit code to verify your number: "+auth_code,   
+    // }, function(err, message) { 
+    //     console.log(message.sid); 
+    // });
 
     curr_user.auth_code = auth_code;
     user_data.update_user(curr_user);
@@ -132,7 +146,7 @@ exports.handle_create_profile = function(req, res) {
     // let the homepage know this user is new
     req.session.new_user = true;
 
-    // redirect to home page
+    // send to verification page
     res.render('verification', {
             'title' : 'Enter Verification Code',
             'user': curr_user

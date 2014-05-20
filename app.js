@@ -18,6 +18,7 @@ var assignment = require('./routes/assignment');
 var confirmation = require('./routes/confirmation');
 var prompt = require('./routes/prompt');
 var round_complete = require('./routes/round_complete');
+var verification = require('./routes/verification');
 
 var app = express();
 
@@ -44,7 +45,7 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
-app.get('/', games.view);
+app.get('/', index.view);
 //app.get('/nw-home', index.viewNewUserAlternate);
 app.get('/login', login.view);
 app.get('/logout', login.logout);
@@ -67,7 +68,7 @@ app.post('/post-login', user.login_or_signup);
 app.post('/post-create-profile', user.handle_create_profile);
 app.post('/verify-phone', user.handle_validation);
 app.post('/post-update-profile', user.handle_update_profile);
-
+app.post('/verification', verification.view);
 app.post('/post-prompt', prompt.picture_taken);
 
 // app.post('/post-update-match-request', matches.update_request);
