@@ -65,6 +65,7 @@ app.get('/round_complete', round_complete.view);
 
 app.post('/post-login', user.login_or_signup);
 app.post('/post-create-profile', user.handle_create_profile);
+app.post('/verify-phone', user.handle_validation);
 app.post('/post-update-profile', user.handle_update_profile);
 
 app.post('/post-prompt', prompt.picture_taken);

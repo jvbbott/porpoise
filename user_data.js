@@ -15,10 +15,10 @@ exports.get_new_id = function() {
     return new_id;
 };
 
-exports.get_user_by_email = function(email) {
+exports.get_user_by_username = function(username) {
   var curr_user = undefined;
   for (var i = 0; i < data.users.length; i++) {
-    if (data.users[i].email == email) {
+    if (data.users[i].username == username) {
       curr_user = data.users[i];
       break;
     }
@@ -29,7 +29,7 @@ exports.get_user_by_email = function(email) {
 /* Return new empty user obj */
 exports.get_new_user = function() {
     var new_id = exports.get_new_id();
-    return {"fist_name": "", "last_name": "", "phone_number": "", "email": "", "description": "", "id": new_id};
+    return {"id": new_id, "username": "", "first_name": "", "last_name": "", "email": "", "phone" : "", "password" : ""};
 };
 
 /* Given id, return user obj */
@@ -53,5 +53,19 @@ exports.update_user = function(user) {
     var index = user.id;
     data.users[index] = user;
 };
+
+
+exports.user_exists= function(username) {
+    console.log("CHECKING IF "+username+" EXISTS");
+    for (var i = 0; i < data.users.length; i++) {
+      if (data.users[i].username == username) {
+        return true;
+      }
+    }
+    return false;
+};
+
+
+
 
 /****************************************************/

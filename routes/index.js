@@ -24,7 +24,7 @@ exports.view = function(req, res, curr_user){
   //if (curr_user == undefined) {
   //  curr_user = user_data.get_new_user()
   //}
-  req.session.username = curr_user.first_name;
+  req.session.username = curr_user.username;
   
   // grab status message if there is one and flush
   var status_messages = [];
@@ -48,12 +48,12 @@ exports.view = function(req, res, curr_user){
     status_messages[status_messages.length] = {
         "text": message, 
         "class": "success-message", 
-        "glyphicon": "glyphicon-ok"
+        "glyphicon": "glyphicon-ok-sign"
     };
   }
   res.render('index', 
   	{
-  		'title': 'hello',
+  		'title': 'Welcome Back',
   		'curr_user': curr_user,
       'status_messages': status_messages,
       'username': req.session.username,
