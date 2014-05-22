@@ -6,9 +6,10 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
+var handlebars = require('express3-handlebars');
+var mongoose = require('mongoose');
 //added for partials
-var partials = require('express-partials')
+var partials = require('express-partials');
 var index = require('./routes/index');
 var login = require('./routes/login');
 var games = require('./routes/games');
@@ -20,7 +21,13 @@ var prompt = require('./routes/prompt');
 var round_complete = require('./routes/round_complete');
 var verification = require('./routes/verification');
 
+
 var app = express();
+
+var local_database_name = 'cliq_db';
+var local_database_uri  = 'mongodb://localhost/' + local_database_name;
+var database_uri = process.env.MONGOLAB_URI || local_database_uri;
+mongoose.connect(database_uri);
 
 // all environments
 app.set('port', process.env.PORT || 3000);
