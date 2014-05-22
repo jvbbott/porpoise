@@ -6,9 +6,16 @@ var match_request = require("../match_request.json");
 var courses = require("./courses.json");
 var assignments = require("./assignments.json");
 var matches = require("../matches.json");
-var games = require("../games.json");
+var games = require("../db/games.json");
 var user_data = require('../user_data.js');
-var game_requests = require("../game_requests.json");
+var game_requests = require("../db/game_requests.json");
+
+
+var twilio = require("../node_modules/twilio/lib");
+
+var accountSid = 'AC5d3a15045fe20ac3a87aa9072b114ab5'; 
+var authToken = 'a71d5c5997988f8f277437722898ac89'; 
+var client = require('twilio')(accountSid, authToken); 
 
 
 function getUserFromId(id) {
@@ -125,7 +132,21 @@ exports.handle_create_game = function (req, res) {
   var opponent_id = req.body.user;
   var user_id = req.session.curr_user_id;
   console.log(user_id);
-  games_data.create_game_request(user_id, opponent_id);
+  var user = user_data.get_user_by_id(user_id);
+  games_data.create_game_request(user_id, opponent_id, user);
+  var opponent = user_data.get_user_by_id(opponent_id);
+  
+
+  console.log("OPPONENT'S PHONE: "+opponent.phone_number);
+  client.messages.create({ 
+        to: opponent.phone_number, 
+        from: "+19562051565", 
+        body: user.first_name+" has challenged you to a game on cliq!",   
+    }, function(err, message) { 
+        console.log(message.sid); 
+    });
+
+
   var status_messages = [{"text": "Challenge submitted! Your opponent has been notified.", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];
   req.session.status_messages = status_messages;
   res.redirect("/");

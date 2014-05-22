@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Sign Up</title>  
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+        
+        <link href="/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet" >
+        <link href="/css/header.css" rel="stylesheet">
+        <link href="/css/cliq.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : 746219685422368,
+              xfbml      : true,
+              version    : 'v2.0'
+            });
+
+            // FB.getLoginStatus(function(response) {
+            //   if (response.status === 'connected') {
+            //     console.log('Logged in.');
+            //   }
+            //   else {
+            //     FB.login();
+            //   }
+            // });
+
+          };
+
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "//connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+
+
+
+        
+
+
+    {{> header }}
+
+      {{> status_messages }}
+      
+      <h2>You have {{num_game_requests}} pending challenges!</h2>
+        <div id="games-list">
+        {{#each challenges}}
+        <h3>{{this.user_from_first_name}} {{this.user_from_last_name}}</h3>
+        <form class="form-inline" data-ajax="false" role="form" method="POST" action="/resolve_request">
+            <input type="hidden" name="request_num" value="{{this.id}}">
+            <input type="hidden" name="decision" value="accept">
+             <div id="{{this.id}}" class="">
+              
+                <button class="col-xs-6 " value="{{this.id}}">                   
+               <!--  <i style="float: right;" class="fa fa-plus-check fa-xs div-icon"></i> -->
+                &nbsp;&nbsp;Accept
+                </button>            
+            </form>
+
+            <form class="form-inline" data-ajax="false" role="form" method="POST" action="/resolve_request">
+            <input type="hidden" name="request_num" value="{{this.id}}">
+            <input type="hidden" name="decision" value="decline">
+             <div id="{{this.id}}" class="">
+                <button class="col-xs-6 " value="{{this.id}}">                   
+               <!--  <i style="float: right;" class="fa fa-plus-check fa-xs div-icon"></i> -->
+                &nbsp;&nbsp;Decline
+                </button>            
+            </form>
+
+          <div>
+            <!-- Prompt: {{current_prompt}} -->
+          </div>
+        <!-- <p>{{id}}</p>
+        <p>Game Competitors: {{first_user_id}} vs. {{second_user_id}}</p>
+        <p>Round: {{round}}</p>
+        <p>Prompt: "{{current_prompt}}"</p>
+        <p>Score: {{first_user_score}} - {{second_user_score}}</p> -->
+        {{/each}}
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-48453653-2', 'studdybuddy.herokuapp.com');
+      //ga('create', 'UA-48453653-2', {'cookieDomain': 'none'});
+      ga('send', 'pageview');
+
+    </script>
+
+</body>
+</html>
+
+

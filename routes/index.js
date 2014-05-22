@@ -32,11 +32,18 @@ exports.view = function(req, res, curr_user){
   if (req.session.status_messages != undefined) {
     status_messages = req.session.status_messages;
   } 
-  // req.session.status_messages = [];
 
-  // look for unseen matches & add to status message
-  // var user_id = req.session.curr_user_id;
-  // var unseen_matches = match_data.get_unseen_matches_by_user(user_id);
+  req.session.status_messages = [];
+
+  // look for unseen challenges & add to status message
+  var user_id = req.session.curr_user_id;
+  var pending_challenges = games_data.get_game_requests_for_user(user_id);
+  console.log(pending_challenges);
+  var has_game_requests = false;
+  if (pending_challenges.length != 0) {
+    status_messages = [{"text": "You have unseen game requests!", "class": "success-message", "glyphicon": "glyphicon-exclamation-sign"}];
+    has_game_requests = true;
+  }
   // if (unseen_matches.length > 0) {
   //   var message = "You have " + unseen_matches.length + " new match. <a href='/matches'>See my matches</a>";
   //   if (unseen_matches.length > 1) {
@@ -53,6 +60,7 @@ exports.view = function(req, res, curr_user){
   //   };
   // }
   //var games = games_data.get_all_games();
+
   var curr_games = games_data.get_current_games_for_user(req.session.curr_user_id);
   console.log("USERNAME: "+req.session.username);
   console.log(curr_games);
@@ -63,7 +71,9 @@ exports.view = function(req, res, curr_user){
       'status_messages': status_messages,
       'username': req.session.username,
       'new_user': new_user, 
-      'games' : curr_games
+      'games' : curr_games,
+      'has_game_requests' : has_game_requests,
+      'challenges' : pending_challenges
   	});
 
 };

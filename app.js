@@ -13,6 +13,7 @@ var partials = require('express-partials');
 var index = require('./routes/index');
 var login = require('./routes/login');
 var games = require('./routes/games');
+var game_requests = require('./routes/game_requests');
 var user = require('./routes/user');
 var search = require('./routes/search');
 var assignment = require('./routes/assignment');
@@ -67,6 +68,8 @@ app.get('/get_classes_query', search.get_classes_from_query);
 
 app.get('/new_game', games.view);
 
+app.get('/pending', game_requests.view);
+
 app.get('/new-profile', user.create_new_profile);
 app.get('/update-profile', user.render_update_profile);
 
@@ -83,6 +86,8 @@ app.post('/verify-phone', user.handle_validation);
 app.post('/post-update-profile', user.handle_update_profile);
 app.post('/verification', verification.view);
 app.post('/post-prompt', prompt.picture_taken);
+
+app.post('/resolve_request', game_requests.resolve_request);
 
 // app.post('/post-update-match-request', matches.update_request);
 // app.post('/post-create-match-request', matches.create_match_request);

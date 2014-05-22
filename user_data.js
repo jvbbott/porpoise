@@ -1,5 +1,5 @@
 
-var data = require("./users.json");
+var data = require("./db/users.json");
 
 /****************************************************
  * User-data wrapper functions

@@ -1,5 +1,5 @@
 	
-var data = require('./games.json');
+var data = require('./db/games.json');
 var match_request_interface = require('./match_request_data.js');
 var user_data = require('./user_data.js');
 var course_data = require('./course_data.js');

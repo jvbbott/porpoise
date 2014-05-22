@@ -10,7 +10,7 @@
 			"bio": "I really like hummus and pretzel chips.",
 			"phone_number" : "+1 (956)222-3383",
 			"auth_code" : "2234",
-			"phone_validated": true,
+			"phone_validated": true
 		},
 		{
 			"id": 2,
@@ -21,7 +21,7 @@
 			"last_name" : "Lee",
 			"bio": "I really like pho.",
 			"phone_number" : "+1 (253)886-6020",
-			"phone_validated": true,
+			"phone_validated": true
 		},
 		{
 			"id": 3,
@@ -32,7 +32,18 @@
 			"last_name" : "Hu",
 			"bio": "I really like fapping.",
 			"phone_number" : "+1 (940)594-9070",
-			"phone_validated": true,
+			"phone_validated": true
+		},
+		{
+			"id": 4,
+			"username": "joeabbott",
+			"email" : "joeabbott@stanford.edu",
+			"password" : "1234",
+			"first_name" : "Joseph", 
+			"last_name" : "Abbott",
+			"bio": "Hi.",
+			"phone_number" : "+1 (956)222-3383",
+			"phone_validated": true
 		}
 	]
 }
