@@ -29,11 +29,11 @@
 
 	<div class="container wrap push" id="main-content">
 		
-		<h1 class="text-center"> <span class="bigger">Hi {{user.first_name}}!</span> Welcome back to Game 1!</h1>
+		<h1 class="text-center"> <span class="bigger">Hi {{user.first_name}}!</span></h1>
 
         </br>
 
-		<div class="row">
+<!-- 		<div class="row">
 			<div class="col-xs-2"></div>
         	<div class="col-xs-2">
         		<h2>You</h2>
@@ -77,18 +77,19 @@
 			<div class="col-xs-2"></div>
 		</div>			
 
-		</br>
+		</br> -->
 
 		<h2 class="text-center">Prompt: Take a selfie with the most handsome gentlemen near you!</h2>
 
 	</br></br>
 
-
-		<h5> Take Photo! </h5>
-		<form action="/post-prompt" method="post" enctype="multipart/form-data">
-		    <input type="file" name="photo">
-		    <input type="submit">
-		</form>
+		<div class="text-center">
+			<h5> Take Photo! </h5>
+			<form action="/post-prompt" method="post" enctype="multipart/form-data">
+			    <input type="file" name="photo">
+			    <input type="submit">
+			</form>
+		</div>
 
 	</div>
 

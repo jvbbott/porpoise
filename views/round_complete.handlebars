@@ -31,61 +31,18 @@
 		
 		{{> status_messages }}
 
-		{{#if isJoe}}
-		<div class = "row" >
-			<div class = "col-xs-2"> </div>
-			<div class = "col-xs-2"><h2> You </h2> </div>
-			<div class = "col-xs-4">  </div>
-			
-			<div class = "col-xs-2"> <h2> Peter </h2></div>
-			
-			<div class = "col-xs-2"> </div>
+		<h2 class="text-center">Your photo taken</h2>
+
+		<div class="text-center">
+			<img width="200px" height="200px" src={{path_to_photo}}></img>
 		</div>
 
-		<div class = "row" >
-			<div class = "col-xs-2"> </div>
-			<div class = "col-xs-2"> <img class="user_photo" src="/images/profile-icon.png"></img> </div>
-			<div class = "col-xs-4"> </div>
-			<div class = "col-xs-2"> <img class="user_photo" src="/images/profile-icon.png"></img></div>
-			<div class = "col-xs-2"> </div>
-		</div>
-
-		<div class = "row" >
-			<div class = "col-xs-2"> </div>
-			<div class = "col-xs-2"> <h2> 4</h2> </div>
-			<div class = "col-xs-4"> </div>
-			<div class = "col-xs-2"> <h2> 8</h2> </div>
-			<div class = "col-xs-2"> </div>
-		</div>
-		{{else}}
-		<div class = "row"><div class = "col-md-12"></div></div>
-		<div class = "row" >
-			<div class = "col-xs-2"> </div>
-			<div class = "col-xs-2"> </div>
-			<div class = "col-xs-4"> <img class="winner_photo" src="/images/profile-icon.png"> </div>
-			<div class = "col-xs-2"> </div>
-			<div class = "col-xs-2"> </div>
-			<div class = "col-xs-2"> </div>
-		</div>
-
-		<div class = "row" >
-			<div class = "col-xs-2"> </div>
-			<div class = "col-xs-2"> </div>
-			<div class = "col-xs-4"><h2> +1!</h2>  </div>
-			<div class = "col-xs-2"> </div>
-			<div class = "col-xs-2"> </div>
-		</div>
+		{{#if lost}}
+			<h2 class="text-center">Sorry you came in second :(</h2>
 
 		{{/if}}
-	<div>
-		{{#if isJoe}}
-		<h2 class="text-center">You lost this round! Total Score: 4 pts</h2>
-		{{else}}
-		<h2 class="text-center">You win this round and now have 8 pts!</h2>
-		{{/if}}
-	</div>
-		
-		<a href = '/'> <h3 class = "text-center"> Return Home </h3></a>
+
+	<a href = '/'> <h3 class = "text-center"> Return Home </h3></a>
 		
 
 	</div>

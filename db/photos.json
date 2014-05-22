@@ -4,15 +4,3 @@
 
 		]
 }
-
-/*
-
-Schema
-
-id 				unique id
-taken_by		who took photo
-taken_at		when was it taken
-path_to_photo	path to the photo. should be in public/images/
-promptID		which prompt does it belong to
-
-*/

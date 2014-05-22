@@ -4,15 +4,3 @@
 		]
 }
 
-
-
-/*
-
-Schema
-
-id			unique id
-given_at	when was prompt given
-text		what prompt is
-gameID		which game is it?
-
-*/

@@ -16,6 +16,7 @@ exports.view = function(req, res, curr_user){
 		has_game_requests = true;
 	}
 	console.log(game_requests);
+
 	res.render('pending', 
 	  	{
 	  		'title': 'Welcome Back',
@@ -33,11 +34,33 @@ exports.resolve_request = function(req, res) {
 	console.log(challenge);
 	if (req.body.decision == "accept") {
 		game_data.accept_request(challenge);
+
+		var newgame = {
+      "id" : 0,
+      "game_over" : false,
+      "first_user_id": 1,
+      "second_user_id" : 2,
+      "first_user_score" : 0,
+      "second_user_score" : 0,
+      "round" : 1,
+      "current_prompt" : "Take a selfie with the most handsome gentlemen near you!",
+      "first_user_completion" : -1,
+      "second_user_completion" : -1,
+      "score_diff": 0,
+      "curr_winning": -1,
+      "new_prompt":1
+    };
+
+    games.games.push(newgame);
+    game_requests.game_requests = [];
+
+
 	}
 	else {
 		// games_data.reject_request();
 		console.log("REQUEST REJECTED");
 	}
+
 	res.redirect("/");
 }
 
