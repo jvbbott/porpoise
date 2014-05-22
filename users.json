@@ -1,7 +1,7 @@
 {
-	"users": [
+	"users": 
+	[
 		{
-			"id": 0,
 			"username": "jrabbott",
 			"email" : "jrabbott@stanford.edu",
 			"password" : "1234",
@@ -12,7 +12,6 @@
 			
 		},
 		{
-			"id": 1,
 			"username": "joelee",
 			"email" : "joelee@stanford.edu",
 			"password" : "1234",
@@ -22,13 +21,21 @@
 			"phone_number" : "9876543210"
 		},
 		{
-			"id": 2,
 			"username": "peterhu",
 			"email" : "peterhu@stanford.edu",
 			"password" : "1234",
 			"first_name" : "Peter", 
 			"last_name" : "Hu",
 			"bio": "I really like fapping.",
+			"phone_number" : "555555555"
+		},
+		{
+			"username": "homie",
+			"email" : "homie@stanford.edu",
+			"password" : "1234",
+			"first_name" : "Homie", 
+			"last_name" : "G",
+			"bio": "what",
 			"phone_number" : "555555555"
 		}
 	]
