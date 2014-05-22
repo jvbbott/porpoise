@@ -52,7 +52,10 @@ exports.view = function(req, res, curr_user){
   //       "glyphicon": "glyphicon-ok-sign"
   //   };
   // }
-  var games = games_data.get_all_games();
+  //var games = games_data.get_all_games();
+  var curr_games = games_data.get_current_games_for_user(req.session.curr_user_id);
+  console.log("USERNAME: "+req.session.username);
+  console.log(curr_games);
   res.render('index', 
   	{
   		'title': 'Welcome Back',
@@ -60,7 +63,7 @@ exports.view = function(req, res, curr_user){
       'status_messages': status_messages,
       'username': req.session.username,
       'new_user': new_user, 
-      'games' : games
+      'games' : curr_games
   	});
 
 };

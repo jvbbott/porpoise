@@ -55,6 +55,9 @@ app.get('/assignment', assignment.view);
 app.get('/confirmation', confirmation.view);
 app.get('/get_classes_query', search.get_classes_from_query);
 
+
+app.get('/new_game', games.view);
+
 app.get('/new-profile', user.create_new_profile);
 app.get('/update-profile', user.render_update_profile);
 
@@ -66,6 +69,7 @@ app.get('/round_complete', round_complete.view);
 
 app.post('/post-login', user.login_or_signup);
 app.post('/post-create-profile', user.handle_create_profile);
+app.post('/create_game', games.handle_create_game);
 app.post('/verify-phone', user.handle_validation);
 app.post('/post-update-profile', user.handle_update_profile);
 app.post('/verification', verification.view);

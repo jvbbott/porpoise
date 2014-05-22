@@ -1,0 +1,10 @@
+{
+	"game_requests": [
+		{
+			"user_id" : 0,
+			"opponent_id": 1, 
+			"pending" : true,
+			"accepted": false
+		}
+	]
+}

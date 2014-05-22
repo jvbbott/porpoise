@@ -78,6 +78,8 @@ exports.handle_validation = function (req, res) {
     console.log(curr_user);
     var code_entered = req.body.code;
     if (code_entered == curr_user.auth_code) {
+        curr_user.phone_validated = true;
+        user_data.update_user(curr_user);
         if (curr_user.first_name == undefined) {
             var status_messages = [{"text": "Welcome, "+curr_user.username+"!", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];
         }

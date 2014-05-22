@@ -7,6 +7,8 @@ var courses = require("./courses.json");
 var assignments = require("./assignments.json");
 var matches = require("../matches.json");
 var games = require("../games.json");
+var user_data = require('../user_data.js');
+var game_requests = require("../game_requests.json");
 
 
 function getUserFromId(id) {
@@ -21,7 +23,6 @@ function getClassFromId(id) {
 		if (class_list[i].id == id)
 			return class_list[i];
 	}
-
 };
 
 
@@ -55,7 +56,7 @@ function hasBeenMatched(request_id) {
 var match_request_data = require("../match_request_data.js");
 var games_data = require("../games_data.js");
 var match_data = require("../match_data.js");
-var user_data = require("../user_data.js");
+// var user_data = require("../user_data.js");
 var course_data = require('../course_data.js');
 
 /* Main page for matches */
@@ -67,7 +68,7 @@ exports.view = function(req, res){
   // var user_id = req.session.curr_user_id;
   // var curr_user = user_data.get_user_by_id(user_id);
   // var games = match_request_data.get_match_requests_by_user_id(1);
-  var games = games_data.get_all_games();
+  //var games = games_data.get_all_games();
   // if (!games) console.log("NO GAMES FOUND");
   /* add info about class name, assignment name */
   //games = games_data.get_other_user_info(games);
@@ -106,15 +107,28 @@ exports.view = function(req, res){
   //       "glyphicon": "glyphicon-ok"
   //   };
   // }
-  console.log(games);
-  res.render('index', 
+  // console.log(games);
+  var curr_user_id = req.session.curr_user_id;
+  var users = user_data.get_all_other_users(curr_user_id);
+  res.render('new_game', 
   {
-  	'title' : 'Games',
-  	'games' : games,
+  	'title' : 'Create Game',
     'username': req.session.username,
     'status_messages': null,
+    'users' : users
   });
   
+};
+
+exports.handle_create_game = function (req, res) {
+  console.log(req.body.user);
+  var opponent_id = req.body.user;
+  var user_id = req.session.curr_user_id;
+  console.log(user_id);
+  games_data.create_game_request(user_id, opponent_id);
+  var status_messages = [{"text": "Challenge submitted! Your opponent has been notified.", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];
+  req.session.status_messages = status_messages;
+  res.redirect("/");
 };
 
 // function get_new_match_request_id() {

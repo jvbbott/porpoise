@@ -3,7 +3,7 @@
 		{
 			"id" : 1,
 			"game_over" : false,
-			"first_user_id": 1,
+			"first_user_id": 0,
 			"second_user_id" : 2,
 			"first_user_score" : 3,
 			"second_user_score" : 0,
@@ -63,8 +63,8 @@
 		{
 			"id" : 5,
 			"game_over" : false,
-			"first_user_id": 3,
-			"second_user_id" : 4,
+			"first_user_id": 0,
+			"second_user_id" : 3,
 			"first_user_score" : 0,
 			"second_user_score" : 12,
 			"round" : 12,

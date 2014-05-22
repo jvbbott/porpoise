@@ -9,6 +9,17 @@ var data = require("./users.json");
  * user's id being their index in the user list
  */
 
+
+ exports.get_all_other_users = function(curr_id) {
+    var other_users = new Array();
+    for (var i = 0; i < data.users.length; i++) {
+      if (data.users[i].id != curr_id) {
+        other_users.push(data.users[i]);
+      }
+    }
+    return other_users;
+ };
+
 /* New id for new user */
 exports.get_new_id = function() {
     var new_id = data.users.length;
