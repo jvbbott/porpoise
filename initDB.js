@@ -51,7 +51,7 @@ function onceClear(err) {
   // Note that we don't care what order these saves are happening in...
   var to_save_count = users_arr.length;
   for(var i=0; i<users_arr.length; i++) {
-    var json = users_json[i];
+    var json = users_arr[i];
     var user = new models.User(json);
     user.save(function(err, user) {
       if(err) console.log(err);
