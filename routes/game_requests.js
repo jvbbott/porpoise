@@ -30,16 +30,21 @@ exports.view = function(req, res, curr_user){
 
 exports.resolve_request = function(req, res) {
 	console.log(req.body);
-	var challenge = exports.get_request_by_id(req.body.request_num);
+	var challenge = exports.get_request_by_id(req.body.request_num); 
 	console.log(challenge);
 	if (req.body.decision == "accept") {
 		game_data.accept_request(challenge);
 
+		var first_id = challenge.user_from_id;
+		var second_id = challenge.user_to_id;
+		console.log(challenge.user_from_id);
+		console.log(challenge.user_to_id);
+
 		var newgame = {
       "id" : 0,
       "game_over" : false,
-      "first_user_id": 1,
-      "second_user_id" : 2,
+      "first_user_id": first_id,
+      "second_user_id" : second_id,
       "first_user_score" : 0,
       "second_user_score" : 0,
       "round" : 1,

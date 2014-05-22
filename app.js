@@ -25,10 +25,10 @@ var verification = require('./routes/verification');
 
 var app = express();
 
-var local_database_name = 'cliq_db';
-var local_database_uri  = 'mongodb://localhost/' + local_database_name;
-var database_uri = process.env.MONGOLAB_URI || local_database_uri;
-mongoose.connect(database_uri);
+// var local_database_name = 'cliq_db';
+// var local_database_uri  = 'mongodb://localhost/' + local_database_name;
+// var database_uri = process.env.MONGOLAB_URI || local_database_uri;
+// mongoose.connect(database_uri);
 
 // all environments
 app.set('port', process.env.PORT || 3000);
