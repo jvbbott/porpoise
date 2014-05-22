@@ -8,7 +8,7 @@
 			"first_name" : "Joe", 
 			"last_name" : "Abbott",
 			"bio": "I really like hummus and pretzel chips.",
-			"phone_number" : "+1 (956)222-3383",
+			"phone_number" : "+19562222383",
 			"auth_code" : "2234",
 			"phone_validated": true
 		},
@@ -20,7 +20,7 @@
 			"first_name" : "Joe", 
 			"last_name" : "Lee",
 			"bio": "I really like pho.",
-			"phone_number" : "+1 (253)886-6020",
+			"phone_number" : "+12538866020",
 			"auth_code" : "2234",
 			"phone_validated": true
 		},
@@ -32,7 +32,7 @@
 			"first_name" : "Peter", 
 			"last_name" : "Hu",
 			"bio": "I really like fapping.",
-			"phone_number" : "+1 (940)594-9070",
+			"phone_number" : "+19405949070",
 			"auth_code" : "2234",
 			"phone_validated": true
 		},
@@ -44,7 +44,7 @@
 			"first_name" : "Joseph", 
 			"last_name" : "Abbott",
 			"bio": "Hi.",
-			"phone_number" : "+1 (956)222-3383",
+			"phone_number" : "+19562223383",
 			"auth_code" : "2234",
 			"phone_validated": true
 		}

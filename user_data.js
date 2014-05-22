@@ -40,7 +40,18 @@ exports.get_user_by_username = function(username) {
 /* Return new empty user obj */
 exports.get_new_user = function() {
     var new_id = exports.get_new_id();
-    return {"id": new_id, "username": "", "first_name": "", "last_name": "", "email": "", "phone" : "", "password" : ""};
+    return {
+      "id": new_id,
+      "username": "",
+      "email" : "",
+      "password" : "",
+      "first_name" : "", 
+      "last_name" : "",
+      "bio": "I am a new user.",
+      "phone_number" : "",
+      "auth_code" : "2234",
+      "phone_validated": true
+    }
 };
 
 /* Given id, return user obj */

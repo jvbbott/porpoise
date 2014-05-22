@@ -61,10 +61,14 @@ exports.accept_request = function(request) {
 
 	var user_1_info = user_data_controller.get_user_by_id(user_1_id);
 	var user_2_info = user_data_controller.get_user_by_id(user_2_id);
+	console.log("USER 1 NAME: "+user_1_info.first_name);
+	console.log("USER 2 NAME: "+user_1_info.last_name);
+	console.log("USER 1 PHONE: "+user_1_info.phone_number);
+	console.log("USER 2 PHONE: "+user_2_info.phone_number);
 	client.messages.create({ 
         to: user_1_info.phone_number, 
         from: "+19562051565", 
-        body: "New game created between you and "+user_2_info.first_name+"! Hurry and visit http://cliq.herokuapp.com to see your first prompt!",   
+        body: "New game created between you and "+user_2_info.first_name+"! Hurry and visit http://cliqme.herokuapp.com to see your first prompt!",   
     }, function(err, message) { 
         console.log(message.sid); 
     });
