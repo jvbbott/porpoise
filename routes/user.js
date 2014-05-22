@@ -1,4 +1,3 @@
-
 /* Includes user data wrapper functions */
 var user_data = require('../user_data');
 var twilio = require("../node_modules/twilio/lib");
@@ -170,6 +169,3 @@ exports.handle_update_profile = function(req, res) {
     res.redirect("/");
     return; 
 };
-
-
-

@@ -150,7 +150,7 @@ exports.handle_create_game = function (req, res) {
   var status_messages = [{"text": "Challenge submitted! Your opponent has been notified.", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];
   req.session.status_messages = status_messages;
 
-    console.log("games.games" + games.games);
+  console.log("games.games" + games.games);
   res.redirect("/");
 };
 
