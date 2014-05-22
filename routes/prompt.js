@@ -19,6 +19,15 @@ exports.view = function(req, res){
 
 
 exports.picture_taken = function(req, res) {
-	console.log(req.file);
-	res.redirect("/round_complete");
+  var tmp_path = req.files.thumbnail.path;
+  var target_path = '/images/z';
+
+  console.log("session: " + req.session);
+
+  fs.readFile(tmp_path, function(err, data) {
+    fs.writeFile(__dirname + "/../public/images/TEST", data, function(err) {
+      console.log(err);
+    })
+
+  });	res.redirect("/round_complete");
 }

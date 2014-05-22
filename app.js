@@ -43,6 +43,8 @@ app.use(express.cookieParser('Intro HCI secret key'));
 app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.multipart());
+
 //added for partials
 app.use(partials());
 
