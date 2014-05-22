@@ -47,6 +47,14 @@
                 </div>
             </div>
         {{/if}} -->
+        {{#if has_game_requests}}
+        <h2>Challenges</h2>
+        <a style="text-align: center;" href="/pending">See Pending Challenges</a>
+        {{/if}}
+
+
+
+
         <h2>Current Games</h2>
         <div id="games-list">
         {{#each games}}

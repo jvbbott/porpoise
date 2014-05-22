@@ -1,7 +1,7 @@
 {
 	"users": [
 		{
-			"id": 1,
+			"id": 0,
 			"username": "jrabbott",
 			"email" : "jrabbott@stanford.edu",
 			"password" : "1234",
@@ -13,7 +13,7 @@
 			"phone_validated": true
 		},
 		{
-			"id": 2,
+			"id": 1,
 			"username": "joelee",
 			"email" : "joelee@stanford.edu",
 			"password" : "1234",
@@ -21,10 +21,11 @@
 			"last_name" : "Lee",
 			"bio": "I really like pho.",
 			"phone_number" : "+1 (253)886-6020",
+			"auth_code" : "2234",
 			"phone_validated": true
 		},
 		{
-			"id": 3,
+			"id": 2,
 			"username": "peterhu",
 			"email" : "peterhu@stanford.edu",
 			"password" : "1234",
@@ -32,10 +33,11 @@
 			"last_name" : "Hu",
 			"bio": "I really like fapping.",
 			"phone_number" : "+1 (940)594-9070",
+			"auth_code" : "2234",
 			"phone_validated": true
 		},
 		{
-			"id": 4,
+			"id": 3,
 			"username": "joeabbott",
 			"email" : "joeabbott@stanford.edu",
 			"password" : "1234",
@@ -43,6 +45,7 @@
 			"last_name" : "Abbott",
 			"bio": "Hi.",
 			"phone_number" : "+1 (956)222-3383",
+			"auth_code" : "2234",
 			"phone_validated": true
 		}
 	]

@@ -1,0 +1,13 @@
+{
+	"game_requests": [
+		{
+			"id" : 0,
+			"user_from_id" : 4,
+			"user_to_id": 1, 
+			"user_from_first_name": "Joseph",
+			"user_from_last_name": "Abbott",
+			"pending" : true,
+			"seen": false
+		}
+	]
+}
