@@ -11,40 +11,22 @@ var database_uri = process.env.MONGOLAB_URI || local_database_uri
 
 mongoose.connect(database_uri);
 
-// var joe = new models.User({
-//       "username": "jrabbott",
-//       "email" : "jrabbott@stanford.edu",
-//       "password" : "1234",
-//       "first_name" : "Joe", 
-//       "last_name" : "Abbott",
-//       "bio": "I really like hummus and pretzel chips.",
-//       "phone_number" : "5555555555"    
-//     });
-
-// joe.save(function(err, joe) {
-//   if (err) {
-//     console.log("there was an error");
-//     console.log(err);
-//     return console.error(err);
-//   }
-//   // console.dir(thor);
-// });
-
-
 // Do the initialization here
 
+// USERS.JSON
+
 // Step 1: load the JSON data
-var users_json = require('./users.json');
+var users_json = require('./db/users.json');
 var users_arr = users_json["users"];
 
 // // Step 2: Remove all existing documents
 models.User
   .find()
   .remove()
-  .exec(onceClear); // callback to continue at
+  .exec(onceClearUser); // callback to continue at
 
 // // Step 3: load the data from the JSON file
-function onceClear(err) {
+function onceClearUser(err) {
   if(err) console.log(err);
 
   // loop over the projects, construct and save an object from each one
@@ -58,13 +40,80 @@ function onceClear(err) {
       to_save_count--;
       console.log(to_save_count + ' left to save');
       if(to_save_count <= 0) {
-        console.log('DONE');
+        console.log('DONE with users table');
         // The script won't terminate until the 
         // connection to the database is closed
-        mongoose.connection.close()
+        // mongoose.connection.close()
       }
     });
   }
 }
+
+// GAMES.JSON
+
+// Step 1: load the JSON data
+var games_json = require('./db/games.json');
+var games_arr = users_json["games"];
+
+// // Step 2: Remove all existing documents
+models.Game
+  .find()
+  .remove()
+  .exec(onceClearGame); // callback to continue at
+
+// // Step 3: load the data from the JSON file
+function onceClearGame(err) {
+  if(err) console.log(err);
+
+  // loop over the projects, construct and save an object from each one
+  // Note that we don't care what order these saves are happening in...
+  var to_save_count = games_arr.length;
+  for(var i=0; i<games_arr.length; i++) {
+    var json = games_arr[i];
+    var game = new models.Game(json);
+    game.save(function(err, game) {
+      if(err) console.log(err);
+      to_save_count--;
+      console.log(to_save_count + ' left to save');
+      if(to_save_count <= 0) {
+        console.log('DONE with games table');
+        // The script won't terminate until the 
+        // connection to the database is closed
+        // mongoose.connection.close()
+      }
+    });
+  }
+}
+
+// ERASE PHOTO TABLE
+models.Photo
+  .find()
+  .remove()
+  .exec(onceClearPhoto); // callback to continue at
+
+function onceClearPhoto(err) {
+  if(err) console.log(err);
+}
+
+// ERASE ROUND TABLE
+models.Round
+  .find()
+  .remove()
+  .exec(onceClearRound); // callback to continue at
+
+function onceClearRound(err) {
+  if(err) console.log(err);
+}
+
+// ERASE GAMEREQUESTS TABLE
+models.GameRequest
+  .find()
+  .remove()
+  .exec(onceClearGameRequest);
+
+function onceClearGameRequest(err) {
+  if(err) console.log(err);
+}
+
 
 
