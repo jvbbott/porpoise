@@ -26,10 +26,10 @@ exports.get_new_id = function() {
     return new_id;
 };
 
-exports.get_user_by_username = function(username) {
+exports.get_user_by_phone = function(phone_number) {
   var curr_user = undefined;
   for (var i = 0; i < data.users.length; i++) {
-    if (data.users[i].username == username) {
+    if (data.users[i].phone_number == phone_number) {
       curr_user = data.users[i];
       break;
     }
@@ -42,15 +42,12 @@ exports.get_new_user = function() {
     var new_id = exports.get_new_id();
     return {
       "id": new_id,
-      "username": "",
-      "email" : "",
-      "password" : "",
+      "phone_number" : "",
       "first_name" : "", 
       "last_name" : "",
-      "bio": "I am a new user.",
-      "phone_number" : "",
-      "auth_code" : "2234",
-      "phone_validated": true
+      "password" : "",
+      "auth_code" : "",
+      "phone_validated": false
     }
 };
 

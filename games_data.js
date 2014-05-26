@@ -66,7 +66,7 @@ exports.accept_request = function(request) {
 	console.log("USER 1 PHONE: "+user_1_info.phone_number);
 	console.log("USER 2 PHONE: "+user_2_info.phone_number);
 	client.messages.create({ 
-        to: user_1_info.phone_number, 
+        to: "+1"+user_1_info.phone_number, 
         from: "+19562051565", 
         body: "New game created between you and "+user_2_info.first_name+"! Hurry and visit http://cliqme.herokuapp.com to see your first prompt!",   
     }, function(err, message) { 
@@ -74,7 +74,7 @@ exports.accept_request = function(request) {
     });
 
 client.messages.create({ 
-        to: user_2_info.phone_number, 
+        to: "+1"+user_2_info.phone_number, 
         from: "+19562051565", 
         body: "New game created between you and "+user_1_info.first_name+"! Hurry and visit http://cliq.herokuapp.com to see your first prompt!",   
     }, function(err, message) { 

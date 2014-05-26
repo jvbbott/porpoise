@@ -18,25 +18,38 @@ exports.render_verification_page = function(req, res) {
 }
 
 exports.login_or_signup = function(req, res) {
-    var username = req.body.username;
-    var curr_user = user_data.get_user_by_username(username);
-
+    var phone = req.body.phone;
+    var password = req.body.password;
+    var curr_user = user_data.get_user_by_phone(phone);
     if (curr_user == undefined) {
         // This is a new sign-up
         // create blank user & redirect to set up profile page
-        console.log("NEW SIGN UP -> NEW PROF PAGE");
-        curr_user = user_data.get_new_user();
-        curr_user.email = email;
-        user_data.update_user(curr_user);
-        req.session.curr_user_id = curr_user.id;
-        // res.redirect("/new-profile");
-    } else {
+        if (phone.length == 10) {
+            console.log("FOUND PHONE, REDIRECTING FOR FULL SIGNUP");
+            curr_user = user_data.get_new_user();
+            curr_user.phone_number = phone;
+            user_data.update_user(curr_user);
+            req.session.curr_user_id = curr_user.id;
+            req.session.curr_user_phone = curr_user.phone;
+            res.redirect('new-profile');
+        }
+        else {
+            var status_messages = [{"text": "Invalid phone number.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
+            req.session.status_messages = status_messages;
+            res.redirect("/login");  
+        }
+    } else if (password == curr_user.password) {
         console.log("THIS USER EXISTS");
         // This user exists. Send to homepage
         req.session.curr_user_id = curr_user.id;
         req.session.username = curr_user.first_name;
         res.redirect("/");        
     } 
+    else {
+        var status_messages = [{"text": "Incorrect password.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
+        req.session.status_messages = status_messages;
+        res.redirect("/login");
+    }
 }
 
 
@@ -67,7 +80,8 @@ exports.create_new_profile = function(req, res) {
             'title' : 'Create Profile',
             'no_home_button' : true,
             'status_messages' : req.session.status_messages,
-            'user': new_user
+            'user': new_user,
+            'phone' : new_user.phone_number
     });
 }
 
@@ -111,20 +125,15 @@ exports.handle_create_profile = function(req, res) {
     }
     var curr_user = user_data.get_new_user();
     curr_user.id = user_data.get_new_id();
-    curr_user.username = req.body.username;
+    curr_user.phone_number = req.body.phone;
     curr_user.first_name = req.body.first_name;
     curr_user.last_name = req.body.last_name;
-    curr_user.email = req.body.email;
-    curr_user.phone_number = "+1"+req.body.phone;
-    curr_user.password = req.body.password;
-   
     console.log("NEW USER CREATED ------");
     console.log(curr_user);
 
     // this is a real user now - add to session
     console.log(curr_user.id);
     req.session.curr_user_id = curr_user.id;
-    req.session.username = curr_user.username;
 
     var auth_code = Math.floor((Math.random() * 9000) + 1000);
 
@@ -132,7 +141,7 @@ exports.handle_create_profile = function(req, res) {
     
     
     client.messages.create({ 
-        to: curr_user.phone_number, 
+        to: "+1"+curr_user.phone_number, 
         from: "+19562051565", 
         body: "Thank you "+curr_user.first_name+" for signing up for cliq! Please enter this four-digit code to verify your number: "+auth_code,   
     }, function(err, message) { 

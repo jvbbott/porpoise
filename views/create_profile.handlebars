@@ -80,12 +80,13 @@
       </div> -->
       <!-- <fb:registration redirect_uri="http://localhost:3000/" fields="name,email" /> -->
       
+        <h3 style="text-align: center;">We need a bit of information from you first.</h3>
         <br></br>
         <form class="form-horizontal" role="form" method="post" action="/post-create-profile">
           <div class="form-group">
-            <label for="username" class="col-sm-2 control-label">Username</label>
+            <label for="phone" class="col-sm-2 control-label">Phone</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Phone" value="{{phone}}">
             </div>
           </div>
 
@@ -102,38 +103,15 @@
               <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name">
             </div>
           </div>
-          <div class="form-group">
-            <label for="email" class="col-sm-2 control-label">Email</label>
-            <div class="col-sm-10">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Email">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="phone" class="col-sm-2 control-label">Phone</label>
-            <div class="col-sm-10">
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Phone">
-            </div>
-          </div>
+          
           <div class="form-group">
             <label for="password" class="col-sm-2 control-label">Password</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control" name="password" id="password"  placeholder="">
+              <input type="password" class="form-control" name="password" id="password"  placeholder="Password">
             </div>
           </div>
-          <div class="form-group">
-            <label for="password2" class="col-sm-2 control-label">Confirm Password</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" name="password2" id="password2" placeholder="">
-            </div>
-          </div>
-          <!--div class="form-group">
-            <label for="description" class="col-sm-2 control-label">Description</label>
-            <div class="col-sm-10">
-              <input type="description" class="form-control" name="user[description]" id="description" value="{{user.description}}" placeholder="Anything you want to say!">
-            </div>
-          </div-->
-          <div class="row">
 
+          <div class="row">
             <div class="col-xs-2"></div>
           <div class="form-group">
             <div class="col-xs-8">

@@ -139,7 +139,7 @@ exports.handle_create_game = function (req, res) {
 
   console.log("OPPONENT'S PHONE: "+opponent.phone_number);
   client.messages.create({ 
-        to: opponent.phone_number, 
+        to: "+1"+opponent.phone_number, 
         from: "+19562051565", 
         body: user.first_name+" has challenged you to a game on cliq!",   
     }, function(err, message) { 
