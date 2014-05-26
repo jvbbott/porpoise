@@ -39,11 +39,7 @@ var PhotoSchema = new Mongoose.Schema({
 	"id" : Number
 	"round_id" : Number		// which round does it belong to?
 	"user_id" : Number		// which user took it?
-	"img" : 
-	{
-		"data": Buffer,
-		"contentType" : String
-	},
+	"path_to_photo" : String
 	"date_taken" : Date
 });
 
