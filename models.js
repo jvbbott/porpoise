@@ -3,13 +3,10 @@ var Mongoose = require('mongoose');
 
 var UserSchema = new Mongoose.Schema({
 	"id" : Number,
-	"username": String,
-	"email": String,
+	"phone_number": String,
 	"password": String,
 	"first_name": String,
 	"last_name": String,
-	"bio": String,
-	"phone_number": String,
 	"auth_code" : String,
 	"phone_validated" : Boolean
 	"games" : [Number] // of Game IDs that the user is playing
@@ -18,13 +15,15 @@ var UserSchema = new Mongoose.Schema({
 var GameSchema = new Mongoose.Schema({
 	"id" : Number,
 	"game_over" : Boolean,
-	"players" : 
+	"players" : [
 	{
 		"id" = String,
 		"score" = Number
-	},
+	}
+	],
 	"current_round" : Number,
 	"current_prompt" : String,
+	"date_started" : Date,
 	"rounds" : [Number]	// of Round IDs
 });
 
