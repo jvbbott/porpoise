@@ -33,52 +33,6 @@
 
         </br>
 
-<!-- 		<div class="row">
-			<div class="col-xs-2"></div>
-        	<div class="col-xs-2">
-        		<h2>You</h2>
-			</div>
-			<div class="col-xs-4"></div>
-
-			{{#if isJoe}}
-			<div class="col-xs-2">
-				<h2>Peter</h2>
-			</div>
-			{{else}}
-			<div class="col-xs-2">
-				<h2>Joe</h2>
-			</div>
-			{{/if}}
-
-			<div class="col-xs-2"></div>
-		</div>	
-
-        <div class="row">
-			<div class="col-xs-2"></div>
-        	<div class="col-xs-2">
-				<img class="user_photo" src="/images/profile-icon.png">
-			</div>
-			<div class="col-xs-4"></div>
-			<div class="col-xs-2">
-				<img class="user_photo" src="/images/profile-icon.png">
-			</div>
-			<div class="col-xs-2"></div>
-		</div>
-		
-		<div class="row">
-			<div class="col-xs-2"></div>
-        	<div class="col-xs-2">
-        		<h2>7 points</h2>
-			</div>
-			<div class="col-xs-4"></div>
-			<div class="col-xs-2">
-				<h2>4 points</h2>
-			</div>
-			<div class="col-xs-2"></div>
-		</div>			
-
-		</br> -->
-
 		<h2 class="text-center">Prompt: Take a selfie with the most handsome gentlemen near you!</h2>
 
 	</br></br>
@@ -86,8 +40,9 @@
 		<div class="text-center">
 			<h3> Take Photo! </h3>
 			<form action="/post-prompt" method="post" enctype="multipart/form-data">
-			    <input type="file" name="photo">
-			    <input type="submit">
+			    <input type="file" name="photo"/>
+			    <input type="hidden" name="gameid" value={{gameid}}/>
+			    <input type="submit"/>
 			</form>
 		</div>
 

@@ -15,6 +15,16 @@ exports.get_all_games = function() {
 	return game_data['games'];
 }
 
+exports.get_game = function(game_id) {
+	var all_games = game_data['games'];
+	for (var i = 0; i < all_games.length; i++) {
+		if (all_games[i].id == game_id) {
+			return all_games[i];
+		}
+	}
+	return null;
+}
+
 exports.get_current_games_for_user = function(curr_user_id) {
 	var all_games = game_data['games'];
 	var curr_games_for_user = new Array();

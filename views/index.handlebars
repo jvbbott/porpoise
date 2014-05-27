@@ -58,9 +58,9 @@
         <h2>Current Games</h2>
         <div id="games-list">
         {{#each games}}
-        <a href="/prompt">
+        <a href="/prompt?game={{this.id}}">
             <h3>
-                <img class="profile-photo" src="/images/profile-icon.png">&nbsp;&nbsp;Click to play!</img>
+                <img class="profile-photo" src="/images/profile-icon.png">&nbsp;&nbsp;Click to play! {{this.id}}</img>
                  <span class="game-status"> 
                     {{#if games.new_prompt}}
                     <h3>NEW PROMPT </h3>
