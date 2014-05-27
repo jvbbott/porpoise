@@ -15,6 +15,7 @@ var UserSchema = new Mongoose.Schema({
 var GameSchema = new Mongoose.Schema({
 	"id" : Number,
 	"game_over" : Boolean,
+	"num_rounds" : Number,
 	"players" : [
 	{
 		"id" = String,

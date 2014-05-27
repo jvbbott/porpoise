@@ -60,13 +60,18 @@ exports.resolve_request = function(req, res) {
     game_requests.game_requests = [];
 
 
+    // setTimeout(function(i) { /* TEXTING CODE GOES HERE*/ }, /* WAIT TIME */);
+
+
 	}
 	else {
 		// games_data.reject_request();
 		console.log("REQUEST REJECTED");
 	}
 
+
 	res.redirect("/");
+
 }
 
 exports.get_request_by_id = function(request_id) {
