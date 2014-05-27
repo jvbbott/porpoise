@@ -46,7 +46,7 @@ exports.view = function(req, res, curr_user){
 
   var curr_games = games_data.get_current_games_for_user(req.session.curr_user_id);
   console.log("USERNAME: "+req.session.username);
-  console.log(curr_games);
+  // console.log(curr_games);
   res.render('index', 
   	{
   		'title': 'Welcome Back',

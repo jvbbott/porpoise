@@ -12,11 +12,16 @@ exports.view = function(req, res){
 
   var currUser = user_data.get_user_by_id(req.session.curr_user_id);
 
+  var game_id = req.query.game;
+  var game = game_funcs.get_game(game_id);
+  var prompt = game.current_prompt;
+
   res.render('prompt', 
   {
   	'user' : currUser,
     'photo_arr' : photosdata.photos,
-    'gameid' : req.query.game
+    'gameid' : req.query.game,
+    'prompt' : prompt
   });
 
 };

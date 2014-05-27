@@ -3,15 +3,6 @@ var photo_funcs = require("../photos_data.js");
 var round_funcs = require("../rounds_data.js");
 var game_funcs = require("../games_data.js");
 
-// TODO
-// if round is over,
-//    update game log
-//    update game.current prompt?
-//    send out new prompts to users?
-
-// if game is over,
-//    close the game
-
 exports.view = function(req, res){
 
   var photo_id = req.query.photo_id;
@@ -21,13 +12,14 @@ exports.view = function(req, res){
   var round_id = photo.round_id;
   var round = round_funcs.get_round(round_id);
   var game_id = round.game_id;
+  var game = game_funcs.get_game(game_id);
 
   var lost = false;
 
   var numPriorPhotoSubmissions = round.photos.length;
 
   // if the user WON
-  if (numPriorPhotoSubmissions == 0) {
+  if (numPriorPhotoSubmissions == 1) {
     game_funcs.incrementScoreForUser(game_id, user_id, 1);
   
   // if the user LOST
@@ -43,7 +35,7 @@ exports.view = function(req, res){
   });
 
   if (lost == true) { // Since there's just 2 users, if someone lost, the round is over.
-    roundOver();
+    roundOver(game);
   }
 
 
