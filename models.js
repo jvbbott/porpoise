@@ -1,5 +1,8 @@
 var Mongoose = require('mongoose');
 
+var PromptSchema = new Mongoose.Schema({
+	"prompt": [String]
+})
 
 var UserSchema = new Mongoose.Schema({
 	"id" : Number,
