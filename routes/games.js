@@ -72,49 +72,7 @@ exports.view = function(req, res){
   	res.redirect("/login");
   	return;
   }
-  // var user_id = req.session.curr_user_id;
-  // var curr_user = user_data.get_user_by_id(user_id);
-  // var games = match_request_data.get_match_requests_by_user_id(1);
-  //var games = games_data.get_all_games();
-  // if (!games) console.log("NO GAMES FOUND");
-  /* add info about class name, assignment name */
-  //games = games_data.get_other_user_info(games);
-
-
-
-  /* THIS IS WHERE I NEED TO LOOK*/
-  // ------> requests = match_request_data.annotate_with_course_info();
-  // var matches = match_data.get_matches_by_user(user_id);
-  // console.log(matches);
-  // matches = match_data.annotate_with_other_user_data(matches, user_id);
-  // matches = match_data.annotate_with_course_info(matches);
-  /********************************/
-
-  // grab status message if there is one and flush
-  // var status_messages = [];
-  // if (req.session.status_messages != undefined) {
-  //   var status_messages = req.session.status_messages;
-  // } 
-  // req.session.status_messages = [];
-
-  // look for unseen matches & add to status message
-  // var unseen_matches = match_data.get_unseen_matches_by_user(user_id);
-  // if (unseen_matches.length > 0) {
-  //   var message = "You have " + unseen_matches.length + " new match"
-  //   if (unseen_matches.length > 1) {
-  //       message += "es"
-  //   }
-  //   /* set as seen */
-  //   for (var i=0; i<unseen_matches.length; i++) {
-  //       match_data.set_match_as_seen(unseen_matches[i].id, user_id);
-  //   }
-  //   status_messages[status_messages.length] = {
-  //       "text": message, 
-  //       "class": "success-message", 
-  //       "glyphicon": "glyphicon-ok"
-  //   };
-  // }
-  // console.log(games);
+  
   var curr_user_id = req.session.curr_user_id;
   var users = user_data.get_all_other_users(curr_user_id);
   res.render('new_game', 
@@ -122,12 +80,16 @@ exports.view = function(req, res){
   	'title' : 'Create Game',
     'username': req.session.username,
     'status_messages': null,
-    'users' : users
+    'users' : users,
+    
   });
   
 };
 
 exports.handle_create_game = function (req, res) {
+  console.log("IN GAMES.js round = " + req.session.numRound);
+  var numRounds = req.session.numRound;
+
   console.log(req.body.user);
   var opponent_id = req.body.user;
   var user_id = req.session.curr_user_id;

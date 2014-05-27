@@ -9,6 +9,7 @@ var match_data = require('../match_data.js');
 var games_data = require('../games_data.js');
 
 exports.view = function(req, res, curr_user){
+  
   if (req.session.curr_user_id == undefined) {
   	res.redirect("/login");
   	return;

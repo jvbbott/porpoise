@@ -48,23 +48,22 @@
             </div>
         {{/if}} -->
         <h2>Create Game</h2>
-        <p style="text-align: center;">Select a user to start a new game with!</p>
-       
-            
-           <!--  <form class = "form-inline" style = "text-align:center;" role = "form" method = "POST" action="">
+        <p style="text-align: center;">Select the number of rounds for this game!</p>
+        <form class = "form-inline" style = "text-align:center;" role = "form" method = "POST" action="/select_opponent">
                 <input type="radio" name="round"  value="1" checked = "checked"> 1 </input> <br/>
                 <input type="radio" name="round"  value="2" > 2 </input> <br/>
                 <input type="radio" name="round"  value="3" > 3 </input> <br/>
                 <input type="radio" name="round"  value="4" > 4 </input> <br/>
                 <input type="radio" name="round"  value="5" > 5 </input> <br/><br/>
 
-                <input type="submit" value="Next"> 
+                
                <button type="submit" class="btn btn-success">Next</button>
-            </form> -->
-             {{#each users}}
-            <div id = "users-list">
-            <form class="form-inline" style = "text-align:center;" data-ajax="false" role="form" method="POST" action="/create_game">
-           
+            </form>
+        <!-- <div id="users-list">
+            
+            
+            {{#each users}}
+            <form class="form-inline" data-ajax="false" role="form" method="POST" action="/create_game">
             <input type="hidden" name="user" value="{{this.id}}">
              <div id="{{this.id}}" class="">
                 <button class="col-xs-12 " style="height: 175px;">
@@ -75,11 +74,9 @@
                 </button>
             </div>
             </form>
-             {{/each}}
             <br></br>
-        </div>
-      
-        
+        {{/each}}
+        </div> -->
     
 
         </div>

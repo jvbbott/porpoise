@@ -31,6 +31,9 @@ exports.login_or_signup = function(req, res) {
             user_data.update_user(curr_user);
             req.session.curr_user_id = curr_user.id;
             req.session.curr_user_phone = curr_user.phone;
+            req.session.numRound = 0;
+            console.log("CURR ROUND IS "+ req.session.numRound);
+            
             res.redirect('new-profile');
         }
         else {
@@ -43,6 +46,8 @@ exports.login_or_signup = function(req, res) {
         // This user exists. Send to homepage
         req.session.curr_user_id = curr_user.id;
         req.session.username = curr_user.first_name;
+        req.session.numRound = 0;
+        console.log("CURR ROUND IS "+ req.session.numRound);
         res.redirect("/");        
     } 
     else {

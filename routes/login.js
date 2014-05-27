@@ -23,6 +23,7 @@ exports.logout = function(req, res) {
     req.session.username = undefined;
     var status_messages = [{"text": "Logged out", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];
     req.session.status_messages = status_messages;
+    req.session.numRound = 0;
     res.redirect("/login");
 }
 
