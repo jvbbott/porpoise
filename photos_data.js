@@ -43,3 +43,13 @@ exports.get_new_photo_instance = function() {
 		"date_taken" : ""
 	}
 }
+
+exports.user_completed_round = function(round_id, user_id) {
+	for (var i=0; i<photo_arr.length; i++) {
+		var photo = photo_arr[i];
+		if (photo.user_id == user_id && photo.round_id == round_id) {
+			return true;
+		}
+	}
+	return false;
+}

@@ -37,14 +37,20 @@
 
 	</br></br>
 
-		<div class="text-center">
-			<h3> Take Photo! </h3>
-			<form action="/post-prompt" method="post" enctype="multipart/form-data">
-			    <input type="file" name="photo"/>
-			    <input type="hidden" name="gameid" value={{gameid}}/>
-			    <input type="submit"/>
-			</form>
-		</div>
+		{{#if has_not_taken_photo}}
+			<div class="text-center">
+				<h3> Take Photo! </h3>
+				<form action="/post-prompt" method="post" enctype="multipart/form-data">
+				    <input type="file" name="photo"/>
+				    <input type="hidden" name="gameid" value={{gameid}}/>
+				    <input type="submit"/>
+				</form>
+			</div>
+		{{else}}
+			<div class="text-center">
+				<h3> You have already completed this round! </h3>
+			</div>
+		{{/if}}
 
 	</br></br>
 

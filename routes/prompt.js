@@ -31,22 +31,23 @@ exports.view = function(req, res){
 
     var photo1_id = round.photos[0];
     var photo2_id = round.photos[1];
-
     var photo1 = photo_funcs.get_photo(photo1_id);
     var photo2 = photo_funcs.get_photo(photo2_id); 
 
     var photosForRound = [photo1, photo2];
-
     gamelogPhotos.push(photosForRound);
-
   }
+
+  var round_id = game.rounds[current_round - 1];
+  var has_taken_photo = photo_funcs.user_completed_round(round_id, req.session.curr_user_id);
 
   res.render('prompt', 
   {
   	'user' : currUser,
     'gamelog_photos' : gamelogPhotos,
     'gameid' : req.query.game,
-    'prompt' : prompt
+    'prompt' : prompt,
+    'has_not_taken_photo' : !has_taken_photo
   });
 
 };
