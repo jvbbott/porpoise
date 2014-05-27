@@ -15,11 +15,34 @@ exports.get_all_games = function() {
 	return game_data['games'];
 }
 
+exports.get_game = function(game_id) {
+	var all_games = game_data['games'];
+	for (var i = 0; i < all_games.length; i++) {
+		if (all_games[i].id == game_id) {
+			return all_games[i];
+		}
+	}
+	return null;
+}
+
+// increments the score for a user.
+// just give it the game_id, user_id, and how much you want the user's score incremented
+exports.incrementScoreForUser = function(game_id, user_id, plus) {
+	var game = exports.get_game(game_id);
+	var players = game.players;
+	for (var i=0; i<players.length; i++) {
+		if (players[i].id == user_id) {
+			players[i].score = players[i].score + plus;
+		}
+	}
+}
+
 exports.get_current_games_for_user = function(curr_user_id) {
 	var all_games = game_data['games'];
 	var curr_games_for_user = new Array();
 	for (var i = 0; i < all_games.length; i++) {
-		if (all_games[i].first_user_id == curr_user_id || all_games[i].second_user_id == curr_user_id) {
+		var players = all_games[i].players;
+		if (players[0].id == curr_user_id || players[1].id == curr_user_id) {
 			curr_games_for_user.push(all_games[i]);
 		}
 	}
@@ -114,7 +137,7 @@ exports.get_new_game_request_instance = function() {
 
 exports.update_game = function(game) {
 	var index = game.id;
-  game_data.games[index] = game;
+  // game_data.games[index] = game;
 }
 
 // exports.get_other_user_info = function(games) {

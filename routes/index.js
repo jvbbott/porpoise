@@ -46,8 +46,27 @@ exports.view = function(req, res, curr_user){
   }
 
   var curr_games = games_data.get_current_games_for_user(req.session.curr_user_id);
+
+  var games_and_versus = [];
+  for (var i=0; i<curr_games.length; i++) {   
+    var players = curr_games[i].players;
+    var other_player_id = "";
+    if (players[0].id == req.session.curr_user_id) {
+      other_player_id = players[1].id;
+    } else {
+      other_player_id = players[0].id;
+    }
+    var other_user = user_data.get_user_by_id(other_player_id);
+    var other_user_name = other_user.first_name;
+
+    var vs = "Play vs. " + other_user_name + "!";
+
+    var game_and_vs = {"game_id" : curr_games[i].id, "vs_string" : vs};
+
+    games_and_versus.push(game_and_vs);
+  }
+
   console.log("USERNAME: "+req.session.username);
-  console.log(curr_games);
   res.render('index', 
   	{
   		'title': 'Welcome Back',
@@ -56,12 +75,11 @@ exports.view = function(req, res, curr_user){
       'username': req.session.username,
       'new_user': new_user, 
       'games' : curr_games,
+      'games_and_versus' : games_and_versus,
       'has_game_requests' : has_game_requests,
       'challenges' : pending_challenges
   	});
 
      
-
-
 
 };
