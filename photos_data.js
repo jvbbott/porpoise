@@ -4,6 +4,8 @@ var photo_arr = photo_data.photos;
 var round_funcs = require('./rounds_data.js');
 
 exports.get_photo = function(photo_id) {
+	console.log(photo_data);
+
 	for (var i=0; i<photo_arr.length; i++) {
 		if (photo_arr[i].id == photo_id) {
 			return photo_arr[i];
@@ -27,6 +29,8 @@ exports.create_new_photo = function(game_id, round_id, user_id, path_to_photo) {
 	// 3. insert photoID into round's photo id array
 	var round = round_funcs.get_round(round_id);
 	round.photos.push(newPhoto.id);
+
+	return newPhoto.id;
 }
 
 exports.get_new_photo_instance = function() {
