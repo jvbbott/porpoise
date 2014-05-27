@@ -41,13 +41,32 @@ exports.view = function(req, res){
   var round_id = game.rounds[current_round - 1];
   var has_taken_photo = photo_funcs.user_completed_round(round_id, req.session.curr_user_id);
 
+  var user_score = "";
+  var opponent_score = "";
+  var opponent_id = "";
+  players = game.players;
+  if (players[0].id == currUser.id) {
+    user_score = players[0].score;
+    opponent_score = players[1].score;
+    opponent_id = players[1].id;
+  } else {
+    user_score = players[1].score;
+    opponent_score = players[0].score;
+    opponent_id = players[0].id;
+  }
+
+  var opponent = user_data.get_user_by_id(opponent_id);
+
   res.render('prompt', 
   {
   	'user' : currUser,
     'gamelog_photos' : gamelogPhotos,
     'gameid' : req.query.game,
     'prompt' : prompt,
-    'has_not_taken_photo' : !has_taken_photo
+    'has_not_taken_photo' : !has_taken_photo,
+    'user_score' : user_score,
+    'opponent_score' : opponent_score,
+    'opponent' : opponent
   });
 
 };
