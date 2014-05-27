@@ -95,8 +95,11 @@ exports.handle_create_game = function (req, res) {
   var user_id = req.session.curr_user_id;
   console.log(user_id);
   var user = user_data.get_user_by_id(user_id);
-  games_data.create_game_request(user_id, opponent_id, user);
+  games_data.create_game_request(user_id, opponent_id, user, numRounds);
   var opponent = user_data.get_user_by_id(opponent_id);
+  req.session.numRound = 0; //reset numRounds in session
+
+
   
 
   console.log("OPPONENT'S PHONE: "+opponent.phone_number);

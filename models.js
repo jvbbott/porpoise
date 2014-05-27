@@ -51,6 +51,7 @@ var GameRequestSchema = new Mongoose.Schema({
 	"id" : Number,
 	"user_from_id" : Number,
 	"user_to_id" : Number,
+	'game_rounds' : Number,
 	"pending" : Boolean,
 	"seen" : Boolean
 })

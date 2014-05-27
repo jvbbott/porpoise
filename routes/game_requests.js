@@ -33,35 +33,37 @@ exports.resolve_request = function(req, res) {
 	var challenge = exports.get_request_by_id(req.body.request_num); 
 	console.log(challenge);
 	if (req.body.decision == "accept") {
+		console.log("USER HAS CLICKED ACCEPT");
 		game_data.accept_request(challenge);
 
-		var first_id = challenge.user_from_id;
-		var second_id = challenge.user_to_id;
-		console.log(challenge.user_from_id);
-		console.log(challenge.user_to_id);
+		// var first_id = challenge.user_from_id;
+		// var second_id = challenge.user_to_id;
+		// console.log(challenge.user_from_id);
+		// console.log(challenge.user_to_id);
 
-		var newgame = {
-      "id" : 0,
-      "game_over" : false,
-      "first_user_id": first_id,
-      "second_user_id" : second_id,
-      "first_user_score" : 0,
-      "second_user_score" : 0,
-      "round" : 1,
-      "current_prompt" : "Take a selfie with the most handsome gentlemen near you!",
-      "first_user_completion" : -1,
-      "second_user_completion" : -1,
-      "score_diff": 0,
-      "curr_winning": -1,
-      "new_prompt":1
-    };
+		// var newgame = {
+	 //      "id" : 0,
+	 //      "game_over" : false,
+	 //      "first_user_id": first_id,
+	 //      "second_user_id" : second_id,
+	 //      "first_user_score" : 0,
+	 //      "second_user_score" : 0,
+	 //      "round" : 1,
+	 //      "current_prompt" : "Take a selfie with the most handsome gentlemen near you!",
+	 //      "first_user_completion" : -1,
+	 //      "second_user_completion" : -1,
+	 //      "score_diff": 0,
+	 //      "curr_winning": -1,
+	 //      "new_prompt":1
+	 //    };
 
-    games.games.push(newgame);
-    game_requests.game_requests = [];
+	    // games.games.push(newgame);
+	   game_requests.game_requests = [];
 
+
+    //clear requests!!
 
     // setTimeout(function(i) { /* TEXTING CODE GOES HERE*/ }, /* WAIT TIME */);
-
 
 	}
 	else {
@@ -71,6 +73,8 @@ exports.resolve_request = function(req, res) {
 
 
 	res.redirect("/");
+
+	// setTimeout(function(){startTime()}, 6000);
 
 }
 
@@ -87,8 +91,9 @@ exports.get_request_by_id = function(request_id) {
 	}
 }
 
+//adds new game _request
 exports.update_game_request = function(game_request) {
 	var index = game_request.id;
 	console.log("ADDING GAME REQUEST WITH ID "+index);
-  game_requests.game_requests[index] = game_request;
+    game_requests.game_requests[index] = game_request;
 }

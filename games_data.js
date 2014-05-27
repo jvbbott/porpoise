@@ -3,6 +3,7 @@ var user_data = require('./db/users.json');
 var game_requests = require('./db/game_requests.json');
 var user_data_controller = require('./user_data.js');
 var game_requests_controller = require('./routes/game_requests.js');
+var rounds_data_controller = require('./rounds_data.js');
 
 
 var twilio = require("./node_modules/twilio/lib");
@@ -17,11 +18,15 @@ exports.get_all_games = function() {
 
 exports.get_game = function(game_id) {
 	var all_games = game_data['games'];
-	for (var i = 0; i < all_games.length; i++) {
+	console.log("ALL GAMES: "+ all_games);
+	for (var i = 0; i <= all_games.length; i++) {
+		console.log("i = "+i+" all_games[i] = " + all_games[i] + " GAME_ID is: "+ game_id + " LENGTH = " + all_games.length);
 		if (all_games[i].id == game_id) {
+			console.log("GAME ID MATCH FOUND!");
 			return all_games[i];
 		}
 	}
+
 	return null;
 }
 
@@ -61,33 +66,52 @@ exports.get_game_requests_for_user = function(curr_user_id) {
 
 }
 
-exports.create_game_request = function(user_1, user_2, user_1_info) {
+exports.create_game_request = function(user_1, user_2, user_1_info, numRounds) {
 	var new_request = exports.get_new_game_request_instance();
-	new_request.id = game_requests.game_requests.length;
+	new_request.id = game_requests.game_requests.length; //length of array
 	new_request.user_from_id = user_1;
 	new_request.user_to_id = user_2;
 	new_request.user_from_first_name = user_1_info.first_name;
 	new_request.user_from_last_name = user_1_info.last_name;
+	new_request.game_rounds = numRounds;
 	game_requests_controller.update_game_request(new_request);
 	console.log(new_request);
 	return;
 }
 
 exports.accept_request = function(request) {
+	var num_rounds = request.game_rounds;
 	var user_1_id = request.user_from_id;
 	var user_2_id = request.user_to_id;
+
 	var new_game = exports.get_new_game_instance();
-	new_game.first_user_id = user_1_id;
-	new_game.second_user_id = user_2_id;
-	exports.update_game(new_game);
+
+	// new_game.first_user_id = user_1_id;
+	// new_game.second_user_id = user_2_id;
+	// exports.update_game(new_game);
+	// new_game.num_rounds = num_rounds;
+	new_game.players.first_user_id = user_1_id;
+	new_game.players.second_user_id = user_2_id;
+	new_game.num_rounds = num_rounds;
+	new_game.current_prompt = "TEST HAHAHA 123";
+	console.log("NEW GAME ID in games_Data is: "+ new_game.id);
+
+	//create rounds and insert into new game
+	console.log("GAME_DATA.length is: "+game_data.games.length);
+
+	rounds_data_controller.create_new_round(new_game, new_game.id, new_game.current_prompt);
+
+	game_data.games.push(new_game);
+	console.log("NEW_GAME PUSHED TO DB");
+	console.log("Rounds of NEW_GAME: " + num_rounds);
+	console.log("GAMES ARRAY: "+ game_data.games);
+	
 
 
+	//send texts
 	var user_1_info = user_data_controller.get_user_by_id(user_1_id);
 	var user_2_info = user_data_controller.get_user_by_id(user_2_id);
-	console.log("USER 1 NAME: "+user_1_info.first_name);
-	console.log("USER 2 NAME: "+user_1_info.last_name);
-	console.log("USER 1 PHONE: "+user_1_info.phone_number);
-	console.log("USER 2 PHONE: "+user_2_info.phone_number);
+	
 	client.messages.create({ 
         to: "+1"+user_1_info.phone_number, 
         from: "+19562051565", 
@@ -96,30 +120,35 @@ exports.accept_request = function(request) {
         console.log(message.sid); 
     });
 
-client.messages.create({ 
+	client.messages.create({ 
         to: "+1"+user_2_info.phone_number, 
         from: "+19562051565", 
         body: "New game created between you and "+user_1_info.first_name+"! Hurry and visit http://cliq.herokuapp.com to see your first prompt!",   
     }, function(err, message) { 
         console.log(message.sid); 
     });
+    return new_game;
 }
 
 exports.get_new_game_instance = function() {
 	return {
-			"id" : game_data.length+1,
+			"id" : game_data.games.length, //already one in db by default
 			"game_over" : false,
-			"first_user_id": "",
-			"second_user_id" : "",
-			"first_user_score" : 0,
-			"second_user_score" : 0,
-			"round" : 1,
-			"current_prompt" : "Take a selfie with the most handsome gentlemen near you!",
-			"first_user_completion" : 0,
-			"second_user_completion" : 0,
-			"score_diff": 0,
-			"curr_winning": 0,
-			"new_prompt": 0
+			"num_rounds" : 1,
+			"players": [
+				{
+					"first_user_id": 1,
+					"first_score": 0
+				},
+				{
+					"second_user_id": 2,
+					"second_score": 0
+				}
+			],
+			"current_round" : 1,
+			"current_prompt" : "Test current prompt",
+			"date_started" : "",
+			"rounds" : []
 		};
 }
 
@@ -130,6 +159,7 @@ exports.get_new_game_request_instance = function() {
 			"user_to_id": "", 
 			"user_from_first_name": "",
 			"user_from_last_name": "",
+			"game_rounds":0,
 			"pending" : true,
 			"seen": false
 		};
