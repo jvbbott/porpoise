@@ -17,10 +17,34 @@ exports.view = function(req, res){
   var game = game_funcs.get_game(game_id);
   var prompt = game.current_prompt;
 
+  var current_round = game.current_round;
+  var gamelogPhotos = [[]];
+  var gamelogRoundIds = [];
+
+  for (var i=0; i<current_round-1; i++) {
+    gamelogRoundIds.push(game.rounds[i]);
+  }
+
+  for (var i=0; i<gamelogRoundIds.length; i++) {
+    var roundId = gamelogRoundIds[i];
+    var round = round_funcs.get_round(roundId);
+
+    var photo1_id = round.photos[0];
+    var photo2_id = round.photos[1];
+
+    var photo1 = photo_funcs.get_photo(photo1_id);
+    var photo2 = photo_funcs.get_photo(photo2_id); 
+
+    var photosForRound = [photo1, photo2];
+
+    gamelogPhotos.push(photosForRound);
+
+  }
+
   res.render('prompt', 
   {
   	'user' : currUser,
-    'photo_arr' : photosdata.photos,
+    'gamelog_photos' : gamelogPhotos,
     'gameid' : req.query.game,
     'prompt' : prompt
   });
