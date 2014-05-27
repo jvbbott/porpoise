@@ -1,5 +1,12 @@
 {
 	"rounds":
 		[
+		{
+			"id" : 0,
+			"game_id" : 0,
+			"prompt" : "Test prompt",
+			"date_started" : "",
+			"photos" : []
+		}
 		]
 }

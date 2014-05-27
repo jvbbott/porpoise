@@ -25,6 +25,18 @@ exports.get_game = function(game_id) {
 	return null;
 }
 
+// increments the score for a user.
+// just give it the game_id, user_id, and how much you want the user's score incremented
+exports.incrementScoreForUser = function(game_id, user_id, plus) {
+	var game = exports.get_game(game_id);
+	var players = game.players;
+	for (var i=0; i<players.length; i++) {
+		if (players[i].id == user_id) {
+			players[i].score = players[i].score + plus;
+		}
+	}
+}
+
 exports.get_current_games_for_user = function(curr_user_id) {
 	var all_games = game_data['games'];
 	var curr_games_for_user = new Array();
