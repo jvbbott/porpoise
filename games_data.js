@@ -44,13 +44,14 @@ exports.incrementScoreForUser = function(game_id, user_id, plus) {
 }
 
 exports.get_current_games_for_user = function(curr_user_id) {
+	console.log("CURR USER ID IN GET GAMES: "+curr_user_id);
 	var all_games = game_data['games'];
 	console.log("ALL GAMES LOLOL: "+ all_games);
 	var curr_games_for_user = [];
 	for (var i = 0; i < all_games.length; i++) {
 		var players = all_games[i].players;
 		if (players[0].id == curr_user_id || players[1].id == curr_user_id) {
-			console.log("GAME ID THAT'S INSERTED : " + all_games[i].id);
+			console.log("ADDING GAME ID: "+all_games[i].id);
 			curr_games_for_user.push(all_games[i]);
 		}
 	}

@@ -74,10 +74,10 @@ exports.update_user = function(user) {
 };
 
 
-exports.user_exists= function(username) {
-    console.log("CHECKING IF "+username+" EXISTS");
+exports.user_exists= function(phone_number) {
+    console.log("CHECKING IF "+phone_number+" EXISTS");
     for (var i = 0; i < data.users.length; i++) {
-      if (data.users[i].username == username) {
+      if (data.users[i].phone_number == phone_number) {
         return true;
       }
     }

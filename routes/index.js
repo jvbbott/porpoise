@@ -19,7 +19,6 @@ exports.view = function(req, res, curr_user){
     req.session.new_user = false;
     new_user = true;
   }
-  console.log("HEY INDEX");
   var curr_user = user_data.get_user_by_id(req.session.curr_user_id)
   // have to add this because of disabled login restriction
   //if (curr_user == undefined) {
@@ -46,9 +45,8 @@ exports.view = function(req, res, curr_user){
   }
 
   var curr_games = games_data.get_current_games_for_user(req.session.curr_user_id);
+
   console.log("CURRENT GAMES FOR USER " + req.session.curr_user_id + " Games Array: "+ curr_games);
-
-
 
   var games_and_versus = [];
   for (var i=0; i<curr_games.length; i++) {   
@@ -69,9 +67,10 @@ exports.view = function(req, res, curr_user){
     games_and_versus.push(game_and_vs);
   }
 
+  req.session.phone_number = curr_user.phone_number;
+  console.log("PHONE: "+req.session.phone_number);
   console.log("length of games_and_versus: " + games_and_versus.length);
 
-  console.log("USERNAME: "+req.session.username);
   res.render('index', 
   	{
   		'title': 'Welcome Back',

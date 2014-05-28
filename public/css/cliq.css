@@ -452,3 +452,65 @@ i.arrow {
     font-size: 50;
 }
 
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;
+    padding: 10px;
+    margin-top: 100px;
+}
+.fileUpload input.upload {
+    margin-left: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.btn-submit {
+    background-color: green;
+    color: white;
+    float: center;
+}
+
+.btn-camera {
+    background-color: #C53922;
+    color: white;
+    float: center;
+}
+
+.prompt {
+    text-align: center;
+    margin-top: 50px;
+
+}
+
+.prompt-page-score {
+    font-size: 60px;
+    text-align: center;
+}
+
+.prompt-page-name {
+    font-size: 24px;
+    text-align: center;
+}
+
+#photo-success {
+    margin-top: 20px;
+    color: green;
+}
+
+.round-complete-message {
+    margin-top: 20px;
+    text-align: center;
+    color: green;
+}
+
+.photo-taken {
+    margin-bottom: 20px;
+}

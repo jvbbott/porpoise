@@ -94,7 +94,7 @@ exports.picture_taken = function(req, res) {
   console.log("curr_user_id: " + curr_user_id);
   var curr_round_number = curr_game.current_round;
   var photo_name = curr_user_id + "_" + game_id + "_" + curr_round_number;
-  var path_to_photo = __dirname + "/../public/images/" + photo_name;
+  var path_to_photo = __dirname + "/../public/images/" + photo_name+".jpg";
 
   var photo_json = null;
 

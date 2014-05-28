@@ -18,6 +18,25 @@
 			"current_prompt" : "Test current prompt",
 			"date_started" : "",
 			"rounds" : [0]
+		},
+		{
+			"id" : 1,
+			"game_over" : false,
+			"num_rounds" : 3,
+			"players" : [
+				{
+					"id": 0,
+					"score": 0
+				},
+				{
+					"id": 1,
+					"score": 0
+				}
+			],
+			"current_round" : 1,
+			"current_prompt" : "Test current prompt 2. This is a longer prompt, so I want to see how this renders in the prompt page.",
+			"date_started" : "",
+			"rounds" : [0]
 		}
 		
 	]
