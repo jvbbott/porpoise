@@ -76,7 +76,7 @@ exports.view = function(req, res){
 
 };
 
-
+//check if round is over here
 exports.picture_taken = function(req, res) {
   console.log("PICTURE TAKEN DOE");
   var tmp_path = req.files.photo.path;
