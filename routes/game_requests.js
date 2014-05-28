@@ -32,9 +32,13 @@ exports.resolve_request = function(req, res) {
 	console.log(req.body);
 	var challenge = exports.get_request_by_id(req.body.request_num); 
 	console.log(challenge);
+
+	res.redirect("/");
+	
+
 	if (req.body.decision == "accept") {
 		console.log("USER HAS CLICKED ACCEPT");
-		game_data.accept_request(challenge);
+		setTimeout(function(){game_data.accept_request(challenge);}, 10000); //pause 20 seconds
 
 		// var first_id = challenge.user_from_id;
 		// var second_id = challenge.user_to_id;
@@ -72,9 +76,7 @@ exports.resolve_request = function(req, res) {
 	}
 
 
-	res.redirect("/");
-
-	// setTimeout(function(){startTime()}, 6000);
+	
 
 }
 

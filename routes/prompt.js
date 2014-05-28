@@ -71,7 +71,7 @@ exports.view = function(req, res){
 
 };
 
-
+//check if round is over here
 exports.picture_taken = function(req, res) {
 
   var tmp_path = req.files.photo.path;

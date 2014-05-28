@@ -46,6 +46,9 @@ exports.view = function(req, res, curr_user){
   }
 
   var curr_games = games_data.get_current_games_for_user(req.session.curr_user_id);
+  console.log("CURRENT GAMES FOR USER " + req.session.curr_user_id + " Games Array: "+ curr_games);
+
+
 
   var games_and_versus = [];
   for (var i=0; i<curr_games.length; i++) {   
@@ -65,6 +68,8 @@ exports.view = function(req, res, curr_user){
 
     games_and_versus.push(game_and_vs);
   }
+
+  console.log("length of games_and_versus: " + games_and_versus.length);
 
   console.log("USERNAME: "+req.session.username);
   res.render('index', 

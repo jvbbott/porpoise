@@ -44,13 +44,18 @@ exports.incrementScoreForUser = function(game_id, user_id, plus) {
 
 exports.get_current_games_for_user = function(curr_user_id) {
 	var all_games = game_data['games'];
-	var curr_games_for_user = new Array();
+	console.log("ALL GAMES LOLOL: "+ all_games);
+	var curr_games_for_user = [];
 	for (var i = 0; i < all_games.length; i++) {
 		var players = all_games[i].players;
 		if (players[0].id == curr_user_id || players[1].id == curr_user_id) {
+			console.log("GAME ID THAT'S INSERTED : " + all_games[i].id);
 			curr_games_for_user.push(all_games[i]);
 		}
 	}
+
+	console.log("CURR_GAMES_FOR_USER (in the games_data) : " + curr_games_for_user);
+
 	return curr_games_for_user;
 }
 
@@ -84,16 +89,21 @@ exports.accept_request = function(request) {
 	var user_1_id = request.user_from_id;
 	var user_2_id = request.user_to_id;
 
+	console.log("user 1 id = "+ user_1_id);
+	console.log("user 2 id = "+ user_2_id);
+	console.log("num rounds in accept request = "+ num_rounds);
+	console.log(request);
+
 	var new_game = exports.get_new_game_instance();
 
 	// new_game.first_user_id = user_1_id;
 	// new_game.second_user_id = user_2_id;
 	// exports.update_game(new_game);
 	// new_game.num_rounds = num_rounds;
-	new_game.players.first_user_id = user_1_id;
-	new_game.players.second_user_id = user_2_id;
+	new_game.players[0].id = user_1_id;
+	new_game.players[1].id = user_2_id;
 	new_game.num_rounds = num_rounds;
-	new_game.current_prompt = "TEST HAHAHA 123";
+	new_game.current_prompt = "TEST HAHAHA 123"; 					/* FIX RANDOM PROMPT HERE*/
 	console.log("NEW GAME ID in games_Data is: "+ new_game.id);
 
 	//create rounds and insert into new game
@@ -134,15 +144,15 @@ exports.get_new_game_instance = function() {
 	return {
 			"id" : game_data.games.length, //already one in db by default
 			"game_over" : false,
-			"num_rounds" : 1,
+			"num_rounds" : "",
 			"players": [
 				{
-					"first_user_id": 1,
-					"first_score": 0
+					"id": "",
+					"score": 0
 				},
 				{
-					"second_user_id": 2,
-					"second_score": 0
+					"id": "",
+					"score": 0
 				}
 			],
 			"current_round" : 1,
