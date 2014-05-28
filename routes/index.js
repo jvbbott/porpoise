@@ -60,13 +60,15 @@ exports.view = function(req, res, curr_user){
     var other_user = user_data.get_user_by_id(other_player_id);
     var other_user_name = other_user.first_name;
 
-    var vs = "Play vs. " + other_user_name + "!";
+    var vs = other_user_name;
+    var round = curr_games[i].current_round;
+    var num_total_rounds = curr_games[i].num_rounds;
 
-    var game_and_vs = {"game_id" : curr_games[i].id, "vs_string" : vs};
+    var game_and_vs = {"game_id" : curr_games[i].id, "opponent_name" : vs, "round" : round, "total_rounds" : num_total_rounds};
 
     games_and_versus.push(game_and_vs);
   }
-
+  console.log("GAMES INFO: "+games_and_versus);
   req.session.phone_number = curr_user.phone_number;
   console.log("PHONE: "+req.session.phone_number);
   console.log("length of games_and_versus: " + games_and_versus.length);

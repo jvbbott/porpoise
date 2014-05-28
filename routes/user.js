@@ -31,11 +31,11 @@ exports.login_or_signup = function(req, res) {
         // create blank user & redirect to set up profile page
         if (phone.length == 10) {
             console.log("FOUND PHONE, REDIRECTING FOR FULL SIGNUP");
-            curr_user = user_data.get_new_user();
-            curr_user.phone_number = phone;
-            user_data.update_user(curr_user);
-            req.session.curr_user_id = curr_user.id;
-            req.session.curr_user_phone = curr_user.phone_number;
+            // curr_user = user_data.get_new_user();
+            // curr_user.phone_number = phone;
+            // user_data.update_user(curr_user);
+            // req.session.curr_user_id = curr_user.id;
+            req.session.curr_user_phone = phone;
             req.session.numRound = 0;
             console.log("CURR ROUND IS "+ req.session.numRound);            
             res.redirect('new-profile');
@@ -125,6 +125,7 @@ exports.handle_validation = function (req, res) {
 exports.handle_create_profile = function(req, res) {
     console.log("ABOUT TO CREATE NEW PROFILE");
     var new_phone = req.body.phone;
+    console.log(req.body.phone);
     if (user_data.user_exists(req.body.phone)) {
         console.log("USER ALREADY EXISTS");
         var status_messages = [{"text": "Username already exists.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];

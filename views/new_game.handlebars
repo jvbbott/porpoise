@@ -67,12 +67,14 @@
            
             <input type="hidden" name="user" value="{{this.id}}">
              <div id="{{this.id}}" class="">
-                <button class="col-xs-12 " style="height: 175px;">
+                <div class="row"><button class="col-xs-12 btn btn-user " style="height: 100px;">
                 <h3>
                     <img class="profile-photo" src="/images/profile-icon.png">&nbsp;&nbsp;{{this.first_name}} {{this.last_name}}</img>
                 <i style="float: right;" class="fa fa-plus-circle fa-xs div-icon"></i>
                 </h3>
                 </button>
+            </div>
+        </div>
             </div>
             </form>
              {{/each}}

@@ -39,7 +39,7 @@ html, body {
 }
 
 #games-list div, #users-list div {
-    padding: 10px;
+    /*padding: 10px;*/
     border-radius: 5px 5px 5px 5px;
 }
 
@@ -192,11 +192,6 @@ div.unselected {
     transition-timing-function: ease-in-out;*/
 }
 
-div.selected {
-    background-color: #DD3133;
-/*    -webkit-transition-timing-function: ease-in-out;
-    transition-timing-function: ease-in-out;*/
-}
 
 div.result h4 {
     font-size: 14px;
@@ -575,6 +570,11 @@ i.arrow {
 .selected {
     background-color: #C53922;
     color: white;
+}
+
+.btn-user {
+    background: none;
+    height: 100px;
 }
 
 

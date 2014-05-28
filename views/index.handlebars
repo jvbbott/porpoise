@@ -60,12 +60,12 @@
         {{#each games_and_versus}}
         <a href="/prompt?game={{this.game_id}}">
             <h3>
-                <img class="profile-photo" src="/images/profile-icon.png">&nbsp;&nbsp;{{this.vs_string}}</img>
+                <img class="profile-photo" src="/images/profile-icon.png">&nbsp;&nbsp;{{this.opponent_name}}</img>
                  <span class="game-status"> 
                     {{#if games.new_prompt}}
                     <h3>NEW PROMPT </h3>
                     {{/if}}
-                    {{round}}
+                    {{round}}/{{this.total_rounds}}
                 </span>
              </h3>
         </a>
