@@ -71,7 +71,12 @@ function roundOver(game) {
   game.current_round = game.current_round + 1;
 
   // TODO: Send out prompts
-  var new_prompt = "NEW PROMPT TESTING LKJ:LSKDJF:LSDKJ";
+  //find new prompt randomly
+  var prompts_arr_size = prompt_data.prompts.length;
+  var prompt_ceiling = prompts_arr_size-1;
+  var prompt_x = Math.floor((Math.random() * prompt_ceiling) );
+  var new_prompt = prompt_data.prompts[prompt_x].prompt;
+
   game.current_prompt = new_prompt;
   round_funcs.create_new_round(game, game.id, new_prompt);
 

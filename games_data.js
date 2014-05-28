@@ -4,6 +4,7 @@ var game_requests = require('./db/game_requests.json');
 var user_data_controller = require('./user_data.js');
 var game_requests_controller = require('./routes/game_requests.js');
 var rounds_data_controller = require('./rounds_data.js');
+var prompt_data = require('./db/prompts.json');
 
 
 var twilio = require("./node_modules/twilio/lib");
@@ -103,7 +104,14 @@ exports.accept_request = function(request) {
 	new_game.players[0].id = user_1_id;
 	new_game.players[1].id = user_2_id;
 	new_game.num_rounds = num_rounds;
-	new_game.current_prompt = "TEST HAHAHA 123"; 					/* FIX RANDOM PROMPT HERE*/
+
+	//find new prompt randomly
+	var prompts_arr_size = prompt_data.prompts.length;
+	var prompt_ceiling = prompts_arr_size-1;
+	var prompt_x = Math.floor((Math.random() * prompt_ceiling) );
+	var new_prompt = prompt_data.prompts[prompt_x].prompt;
+
+	new_game.current_prompt = new_prompt; 					
 	console.log("NEW GAME ID in games_Data is: "+ new_game.id);
 
 	//create rounds and insert into new game
