@@ -22,9 +22,8 @@ src: url('/fonts/ProximaNova-Light.otf');
 
 #header .new-game {
     display: inline;
-    line-height: 30px;
-    float: right;
-    margin-right: 10px;
+    line-height: 10px;
+    float: left;
 }
 
 #header {
@@ -79,8 +78,8 @@ a.nav-link {
     color: white;
 }
 
-div.logout {
-    float: left;
+.logout {
+    float: right;
     font-weight: 400; 
 }
 
@@ -118,4 +117,9 @@ div.logout {
 
 .wrap { 
     position: relative; 
+}
+
+.game-plus {
+    padding-left: 35px;
+    font-size: 10px;
 }

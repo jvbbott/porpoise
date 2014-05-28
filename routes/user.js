@@ -20,6 +20,11 @@ exports.render_verification_page = function(req, res) {
 exports.login_or_signup = function(req, res) {
     var phone = req.body.phone;
     var password = req.body.password;
+    // if (password == "") {
+    //     var status_messages = [{"text": "Invalid password.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
+    //     req.session.status_messages = status_messages;
+    //     res.redirect("/login");  
+    // }
     var curr_user = user_data.get_user_by_phone(phone);
     if (curr_user == undefined) {
         // This is a new sign-up
@@ -30,10 +35,9 @@ exports.login_or_signup = function(req, res) {
             curr_user.phone_number = phone;
             user_data.update_user(curr_user);
             req.session.curr_user_id = curr_user.id;
-            req.session.curr_user_phone = curr_user.phone;
+            req.session.curr_user_phone = curr_user.phone_number;
             req.session.numRound = 0;
-            console.log("CURR ROUND IS "+ req.session.numRound);
-            
+            console.log("CURR ROUND IS "+ req.session.numRound);            
             res.redirect('new-profile');
         }
         else {
@@ -80,13 +84,13 @@ exports.render_update_profile = function(req, res){
 
 /* GET - Renders form for creation of new profile */
 exports.create_new_profile = function(req, res) {
-    var new_user = user_data.get_user_by_id(req.session.curr_user_id);
+    var phone_number = req.session.curr_user_phone;
+    console.log(phone_number);
     res.render('create_profile', {
             'title' : 'Create Profile',
             'no_home_button' : true,
             'status_messages' : req.session.status_messages,
-            'user': new_user,
-            'phone' : new_user.phone_number
+            'phone' : phone_number
     });
 }
 
@@ -120,8 +124,8 @@ exports.handle_validation = function (req, res) {
 /* POST - Handles posting of user data */
 exports.handle_create_profile = function(req, res) {
     console.log("ABOUT TO CREATE NEW PROFILE");
-    var new_username = req.body.username;
-    if (user_data.user_exists(req.body.username)) {
+    var new_phone = req.body.phone;
+    if (user_data.user_exists(req.body.phone)) {
         console.log("USER ALREADY EXISTS");
         var status_messages = [{"text": "Username already exists.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
         req.session.status_messages = status_messages;

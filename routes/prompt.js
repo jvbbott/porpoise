@@ -40,7 +40,10 @@ exports.view = function(req, res){
 
   var round_id = game.rounds[current_round - 1];
   var has_taken_photo = photo_funcs.user_completed_round(round_id, req.session.curr_user_id);
-
+  var game_log_exists = false;
+  if (current_round > 1) {
+    game_log_exists = true;
+  }
   var user_score = "";
   var opponent_score = "";
   var opponent_id = "";
@@ -66,14 +69,16 @@ exports.view = function(req, res){
     'has_not_taken_photo' : !has_taken_photo,
     'user_score' : user_score,
     'opponent_score' : opponent_score,
-    'opponent' : opponent
+    'opponent' : opponent,
+    'game' : game,
+    'game_log_exists' : game_log_exists
   });
 
 };
 
 
 exports.picture_taken = function(req, res) {
-
+  console.log("PICTURE TAKEN DOE");
   var tmp_path = req.files.photo.path;
   var curr_user_id = req.session.curr_user_id;
   var curr_date = new Date();
@@ -86,7 +91,7 @@ exports.picture_taken = function(req, res) {
   console.log("curr_user_id: " + curr_user_id);
   var curr_round_number = curr_game.current_round;
   var photo_name = curr_user_id + "_" + game_id + "_" + curr_round_number;
-  var path_to_photo = __dirname + "/../public/images/" + photo_name;
+  var path_to_photo = __dirname + "/../public/images/" + photo_name+".jpg";
 
   var photo_json = null;
 
