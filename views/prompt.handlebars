@@ -53,22 +53,21 @@
 				<div class="col-xs-12 prompt-page-score">{{opponent_score}}</div>
 				<div class="col-xs-12 prompt-page-name">{{opponent.first_name}}</div>
 			</div>
-
-<<<<<<< HEAD
-		<h2 class="text-center">{{prompt}}</h2>
-=======
-
-
+		</div>
 
 		<div class="col-xs-12 prompt"><b>Prompt:</b> {{prompt}}</div>
->>>>>>> 38786a325b0f7373964e0757b24eda3da44f43de
 
-	</br></br>
 		{{#if game_over}}
 			<div class="text-center">
-<<<<<<< HEAD
 				<h3> Game over! </h3>
-=======
+			</div>
+		{{else}}
+			{{#if finished_round}}
+				<div class="col-xs-12 round-complete-message">
+				<img class="photo-taken" src="../images/{{user.id}}_{{gameid}}_{{round_id}}.jpg"></img>
+				<p>Round complete!</p>
+			</div>
+			{{else}}
 				<form name="photoForm" id="photoForm" action="/post-prompt" method="post" enctype="multipart/form-data">
 						<div class="fileUpload btn btn-camera col-xs-8">
 					    <span><i class="fa fa-camera fa-2x"></i><!-- &nbsp;&nbsp;Take Photo --></span>
@@ -84,34 +83,9 @@
 					 <div class="col-xs-12" id="photo-success"><b></b></div>
 				    
 				</form>
->>>>>>> 38786a325b0f7373964e0757b24eda3da44f43de
-			</div>
-
-		{{else}}
-<<<<<<< HEAD
-			{{#if finished_round}}
-				<div class="text-center">
-					<h3> You have already completed this round! </h3>
-				</div>
-			{{else}}
-				<div class="text-center">
-					<h3> Take Photo! </h3>
-					<form action="/post-prompt" method="post" enctype="multipart/form-data">
-					    <input type="file" name="photo"/>
-					    <input type="hidden" name="gameid" value={{gameid}}/>
-					    <input type="submit"/>
-					</form>
-				</div>
+			
 			{{/if}}
-=======
-			<div class="col-xs-12 round-complete-message">
-				<img class="photo-taken" src="../images/{{user.id}}_{{game.id}}_{{game.current_round}}.jpg"></img>
-				<p>Round complete!</p>
-			</div>
->>>>>>> 38786a325b0f7373964e0757b24eda3da44f43de
 		{{/if}}
-
-	</br></br>
 
 		{{#if game_log_exists}}
 		<div class="text-center">
@@ -133,7 +107,6 @@
 		{{/if}}
 
 
-
 	</div>
 
 
@@ -141,35 +114,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

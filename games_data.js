@@ -168,7 +168,7 @@ exports.get_new_game_instance = function() {
 			],
 			"current_round" : 1,
 			"current_round_started" : false,
-			"current_prompt" : "Test",
+			"current_prompt" : "",
 			"date_started" : "",
 			"rounds" : []
 		};
@@ -189,7 +189,7 @@ exports.get_new_game_request_instance = function() {
 
 exports.update_game = function(game) {
 	var index = game.id;
-  // game_data.games[index] = game;
+  game_data.games[index] = game;
 }
 
 // exports.get_other_user_info = function(games) {

@@ -7,11 +7,13 @@
 			"players" : [
 				{
 					"id": 1,
-					"score": 0
+					"score": 0,
+					"finished_round" : false
 				},
 				{
 					"id": 2,
-					"score": 0
+					"score": 0,
+					"finished_round" : false
 				}
 			],
 			"current_round" : 1,
@@ -26,11 +28,13 @@
 			"players" : [
 				{
 					"id": 0,
-					"score": 0
+					"score": 0,
+					"finished_round" : false
 				},
 				{
 					"id": 1,
-					"score": 0
+					"score": 0,
+					"finished_round" : false
 				}
 			],
 			"current_round" : 1,

@@ -49,10 +49,13 @@ exports.view = function(req, res){
   // set the finished_round to true for the given player
   var players = game.players;
   if (players[0].id == user_id) {
+    console.log("USER ID "+players[0].id+" FINISHED WITH ROUND OF GAME ID "+game_id+"- TRUE");
     players[0].finished_round = true;
   } else {
+    console.log("USER ID "+players[1].id+" FINISHED WITH ROUND OF GAME ID"+game_id+ "- TRUE");
     players[1].finished_round = true;
   }
+
 
   res.render('round_complete', 
   {

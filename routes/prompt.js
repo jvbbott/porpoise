@@ -42,6 +42,10 @@ exports.view = function(req, res){
 
   var finished_round = false;
 
+  var game_log_exists = false;
+  if (current_round > 1) {
+    game_log_exists = true;
+  }
   var user_score = "";
   var opponent_score = "";
   var opponent_id = "";
@@ -51,16 +55,18 @@ exports.view = function(req, res){
     opponent_score = players[1].score;
     opponent_id = players[1].id;
     finished_round = players[0].finished_round;
+    console.log("GRABBING PLAYER "+players[0].id+" FINISHED ROUND - "+finished_round);
   } else {
     user_score = players[1].score;
     opponent_score = players[0].score;
     opponent_id = players[0].id;
     finished_round = players[1].finished_round;
+    console.log("GRABBING PLAYER "+players[1].id+" FINISHED ROUND - "+finished_round);
   }
 
   var opponent = user_data.get_user_by_id(opponent_id);
 
-
+  console.log("FINISHED?: "+finished_round);
 
   res.render('prompt', 
   {
@@ -72,7 +78,9 @@ exports.view = function(req, res){
     'opponent_score' : opponent_score,
     'opponent' : opponent,
     'finished_round' : finished_round,
-    'game_over' : game.game_over
+    'game_over' : game.game_over,
+    'game_log_exists' : game_log_exists,
+    'round_id' : round_id
   });
 
 };
@@ -93,15 +101,16 @@ exports.picture_taken = function(req, res) {
   console.log("game_id is: " + game_id);
   console.log("curr_user_id: " + curr_user_id);
   var curr_round_number = curr_game.current_round;
-  var photo_name = curr_user_id + "_" + game_id + "_" + curr_round_number;
+  var round_id = curr_game.rounds[curr_round_number-1];
+  var photo_name = curr_user_id + "_" + game_id + "_" + round_id;
   var path_to_photo = __dirname + "/../public/images/" + photo_name+".jpg";
 
   var photo_json = null;
 
   fs.readFile(tmp_path, function(err, data) {
       // put info indo photos.json and create a new image and place it in /public/images/
-      var photo_path_for_photo_obj = "../images/"+photo_name;
-      var round_id = curr_game.rounds[curr_round_number-1];
+      var photo_path_for_photo_obj = "../images/"+photo_name+".jpg";
+      
       var photo_id = photo_funcs.create_new_photo(game_id, round_id, curr_user_id, photo_path_for_photo_obj);
 
       fs.writeFile(path_to_photo, data, function(err) {});

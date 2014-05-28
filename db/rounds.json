@@ -3,7 +3,7 @@
 		[
 		{
 			"id" : 0,
-			"game_id" : 0,
+			"game_id" : 1,
 			"prompt" : "Test prompt",
 			"date_started" : "",
 			"photos" : []

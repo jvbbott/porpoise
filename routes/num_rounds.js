@@ -22,8 +22,9 @@ exports.view = function(req, res){
 
 
 exports.select_opponent = function (req, res) {
-  var numRounds = req.body.round;
-  console.log("IN SELECT OPPONENT " + req.body.round);
+  console.log(req.body);
+  var numRounds = req.body.selected;
+  console.log("SELECTING " + numRounds+" ROUNDS");
   req.session.numRound = numRounds;
   
 
