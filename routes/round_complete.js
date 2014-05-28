@@ -9,7 +9,7 @@ var game_requests = require('../db/game_requests.json');
 
 var game_requests_controller = require('./game_requests.js');
 
-
+var prompt_data = require ("../db/prompts.json");
 
 
 
