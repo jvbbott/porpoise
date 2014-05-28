@@ -4,7 +4,7 @@
 		{
 			"id" : 0,
 			"game_id" : 1,
-			"prompt" : "Test prompt",
+			"prompt" : "Take a photo that represents your current emotion.",
 			"date_started" : "",
 			"photos" : []
 		}
