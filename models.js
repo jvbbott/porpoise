@@ -22,7 +22,8 @@ var GameSchema = new Mongoose.Schema({
 	"players" : [
 	{
 		"id" = String,
-		"score" = Number
+		"score" = Number,
+		"finished_round" : Boolean
 	}
 	],
 	"current_round" : Number,

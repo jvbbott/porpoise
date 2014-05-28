@@ -39,7 +39,8 @@ exports.view = function(req, res){
   }
 
   var round_id = game.rounds[current_round - 1];
-  var has_taken_photo = photo_funcs.user_completed_round(round_id, req.session.curr_user_id);
+
+  var finished_round = false;
 
   var user_score = "";
   var opponent_score = "";
@@ -49,13 +50,17 @@ exports.view = function(req, res){
     user_score = players[0].score;
     opponent_score = players[1].score;
     opponent_id = players[1].id;
+    finished_round = players[0].finished_round;
   } else {
     user_score = players[1].score;
     opponent_score = players[0].score;
     opponent_id = players[0].id;
+    finished_round = players[1].finished_round;
   }
 
   var opponent = user_data.get_user_by_id(opponent_id);
+
+
 
   res.render('prompt', 
   {
@@ -63,16 +68,19 @@ exports.view = function(req, res){
     'gamelog_photos' : gamelogPhotos,
     'gameid' : req.query.game,
     'prompt' : prompt,
-    'has_not_taken_photo' : !has_taken_photo,
     'user_score' : user_score,
     'opponent_score' : opponent_score,
-    'opponent' : opponent
+    'opponent' : opponent,
+    'finished_round' : finished_round,
+    'game_over' : game.game_over
   });
 
 };
 
 //check if round is over here
 exports.picture_taken = function(req, res) {
+
+  if (req.files.photo == null) return;
 
   var tmp_path = req.files.photo.path;
   var curr_user_id = req.session.curr_user_id;

@@ -34,25 +34,29 @@
 		<h1>{{opponent.first_name}}: {{opponent_score}}</h1> 
         </br>
 
-
-
 		<h2 class="text-center">{{prompt}}</h2>
 
 	</br></br>
+		{{#if game_over}}
+			<div class="text-center">
+				<h3> Game over! </h3>
+			</div>
 
-		{{#if has_not_taken_photo}}
-			<div class="text-center">
-				<h3> Take Photo! </h3>
-				<form action="/post-prompt" method="post" enctype="multipart/form-data">
-				    <input type="file" name="photo"/>
-				    <input type="hidden" name="gameid" value={{gameid}}/>
-				    <input type="submit"/>
-				</form>
-			</div>
 		{{else}}
-			<div class="text-center">
-				<h3> You have already completed this round! </h3>
-			</div>
+			{{#if finished_round}}
+				<div class="text-center">
+					<h3> You have already completed this round! </h3>
+				</div>
+			{{else}}
+				<div class="text-center">
+					<h3> Take Photo! </h3>
+					<form action="/post-prompt" method="post" enctype="multipart/form-data">
+					    <input type="file" name="photo"/>
+					    <input type="hidden" name="gameid" value={{gameid}}/>
+					    <input type="submit"/>
+					</form>
+				</div>
+			{{/if}}
 		{{/if}}
 
 	</br></br>

@@ -23,6 +23,9 @@ exports.view = function(req, res){
 
   var photo_id = req.query.photo_id;
   var photo = photo_funcs.get_photo(photo_id);
+  
+  console.log(photo);
+
   var user_id = req.session.curr_user_id;
   var user = user_data.get_user_by_id(user_id);
   var round_id = photo.round_id;
@@ -43,6 +46,14 @@ exports.view = function(req, res){
     lost = true;
   }
 
+  // set the finished_round to true for the given player
+  var players = game.players;
+  if (players[0].id == user_id) {
+    players[0].finished_round = true;
+  } else {
+    players[1].finished_round = true;
+  }
+
   res.render('round_complete', 
   {
   	'user' : user,
@@ -51,8 +62,9 @@ exports.view = function(req, res){
   });
 
   if (lost == true) { // Since there's just 2 users, if someone lost, the round is over.
+    // increment the current_round for the game by 1
+    game.current_round = game.current_round + 1;
     setTimeout(function(){roundOver(game);}, 15000); //pause 15 seconds
-    
   }
 
 
@@ -62,16 +74,12 @@ exports.view = function(req, res){
 function roundOver(game) {
 
   // If the game is over...
-  if (game.current_round == game.num_rounds) {
+  if (game.current_round > game.num_rounds) {
     game.game_over = true;
     return;
   }
 
-  // Increment the current round for the game
-  game.current_round = game.current_round + 1;
-
-  // TODO: Send out prompts
-  //find new prompt randomly
+  // send out a random prompt
   var prompts_arr_size = prompt_data.prompts.length;
   var prompt_ceiling = prompts_arr_size-1;
   var prompt_x = Math.floor((Math.random() * prompt_ceiling) );
@@ -99,33 +107,8 @@ function roundOver(game) {
         console.log(message.sid); 
     });
 
+  // set the players' finished_rounds to false
+  game.players[0].finished_round = false;
+  game.players[1].finished_round = false;
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

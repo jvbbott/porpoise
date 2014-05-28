@@ -156,15 +156,18 @@ exports.get_new_game_instance = function() {
 			"players": [
 				{
 					"id": "",
-					"score": 0
+					"score": 0,
+					"finished_round" : false
 				},
 				{
 					"id": "",
-					"score": 0
+					"score": 0,
+					"finished_round" : false
 				}
 			],
 			"current_round" : 1,
-			"current_prompt" : "Test current prompt",
+			"current_round_started" : false,
+			"current_prompt" : "Test",
 			"date_started" : "",
 			"rounds" : []
 		};
