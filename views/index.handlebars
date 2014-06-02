@@ -69,14 +69,6 @@
                 </span>
              </h3>
         </a>
-          <div>
-            <!-- Prompt: {{current_prompt}} -->
-          </div>
-        <!-- <p>{{id}}</p>
-        <p>Game Competitors: {{first_user_id}} vs. {{second_user_id}}</p>
-        <p>Round: {{round}}</p>
-        <p>Prompt: "{{current_prompt}}"</p>
-        <p>Score: {{first_user_score}} - {{second_user_score}}</p> -->
         {{/each}}
         </div>
 
@@ -125,8 +117,15 @@
     {{else}}
         <h4 class="results-header">No recent matches.</h4>
     {{/if}} -->
-</div> 
 
+        
+            <div class='row'>
+            <div id="logout-link" class="col-xs-12">
+                <a href="/logout"><span><i class="fa fa-sign-out fa-lg"></i>&nbsp;Log Out</span></a>
+            </div>
+        </div>
+    </div>
+    
 	</div>
 
 	<script src="/js/bootstrap.min.js"></script>

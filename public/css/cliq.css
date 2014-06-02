@@ -577,4 +577,22 @@ i.arrow {
     height: 100px;
 }
 
+.verification {
+    margin-top: 50px;
+    font-size: 16px;
+}
+
+#logout-link {
+    position: fixed;
+    bottom: 0;
+    background-color: #C53922;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 15px;
+}
+
+a #logout-link :hover, :visited {
+    color: white;
+}
 

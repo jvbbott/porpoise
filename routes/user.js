@@ -138,6 +138,7 @@ exports.handle_create_profile = function(req, res) {
     curr_user.phone_number = req.body.phone;
     curr_user.first_name = req.body.first_name;
     curr_user.last_name = req.body.last_name;
+    curr_user.password = req.body.password;
     console.log("NEW USER CREATED ------");
     console.log(curr_user);
 
@@ -153,7 +154,7 @@ exports.handle_create_profile = function(req, res) {
     client.messages.create({ 
         to: "+1"+curr_user.phone_number, 
         from: "+19562051565", 
-        body: "Thank you "+curr_user.first_name+" for signing up for cliq! Please enter this four-digit code to verify your number: "+auth_code,   
+        body: "Cliq Verification Code: "+auth_code,   
     }, function(err, message) { 
         console.log(message.sid); 
     });

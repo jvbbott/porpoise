@@ -73,14 +73,14 @@
 
       {{> status_messages }}
       
-      <h3>Almost there, {{user.first_name}}! Just enter in the verification code we sent to {{user.phone_number}}!</h3>
+      <div class="text-center verification">Almost there, {{user.first_name}}! Just enter in the verification code we sent to {{user.phone_number}}!</div>
 
         <br></br>
         <form class="form-horizontal" role="form" method="post" action="/verify-phone">
           <div class="form-group">
             <label for="code" class="col-sm-2 control-label">Code</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="code" id="code" placeholder="Validation Code">
+              <input type="tel" class="form-control" name="code" id="code" placeholder="Validation Code">
             </div>
           </div>
           <div class="row">

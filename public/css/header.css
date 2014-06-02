@@ -19,11 +19,18 @@ src: url('/fonts/ProximaNova-Light.otf');
  src: url('/fonts/Raleway-Light.otf');   
 }
 
-
+#header-name {
+    font-weight: 100;
+}
 #header .new-game {
     display: inline;
     line-height: 10px;
-    float: left;
+    float: right;
+}
+
+#home-link {
+    text-align: left;
+    margin-left: 10px;
 }
 
 #header {
@@ -38,6 +45,11 @@ src: url('/fonts/ProximaNova-Light.otf');
     text-align: center;
     font-weight: 400; 
     height: 50px;
+}
+
+.new-game-link {
+    text-align: right;
+    padding-right: 20px;
 }
 
 #header .icon {
@@ -122,4 +134,8 @@ a.nav-link {
 .game-plus {
     padding-left: 35px;
     font-size: 10px;
+}
+
+#home-icon {
+    margin-top: 0px;
 }
