@@ -66,7 +66,7 @@
         <div id="games-list">
         {{#each challenges}}
         <div class="challenger-info row">
-          <div class="col-xs-6 challenger-info"><div class="col-xs-12 challenger-name">{{this.user_from_first_name}} {{this.user_from_last_name}}</div><div class="col-xs-12 num-rounds"> ({{this.game_rounds}} Rounds) </div></div>
+          <div class="col-xs-6 challenger-info"><p class="challenger-name">{{this.user_from_first_name}} {{this.user_from_last_name}}</p><p class="challenger-rounds">({{this.game_rounds}} Rounds) </p></div>
           <div class="col-xs-3">
             <form class="form-inline" data-ajax="false" role="form" method="POST" action="/resolve_request">
             <input type="hidden" name="request_num" value="{{this.id}}">
