@@ -26,15 +26,6 @@
 			"password" : "1234",
 			"auth_code" : "2234",
 			"phone_validated": true
-		},
-		{
-			"id": 3,
-			"phone_number" : "6505034563",
-			"first_name" : "Joseph", 
-			"last_name" : "Abbott",
-			"password" : "1234",
-			"auth_code" : "2234",
-			"phone_validated": true
 		}
 	]
 }
