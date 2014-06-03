@@ -12,8 +12,8 @@
 		{
 			"id": 1,
 			"phone_number" : "2538866020",
-			"first_name" : "Kai", 
-			"last_name" : "Neo",
+			"first_name" : "Joe", 
+			"last_name" : "Lee",
 			"password" : "1234",
 			"auth_code" : "2234",
 			"phone_validated": true
@@ -21,8 +21,8 @@
 		{
 			"id": 2,
 			"phone_number" : "9405949070",
-			"first_name" : "Rahul", 
-			"last_name" : "Iwasaki",
+			"first_name" : "Peter", 
+			"last_name" : "Hu",
 			"password" : "1234",
 			"auth_code" : "2234",
 			"phone_validated": true
