@@ -67,6 +67,13 @@ exports.view = function(req, res){
   if (lost == true) { // Since there's just 2 users, if someone lost, the round is over.
     // increment the current_round for the game by 1
     game.current_round = game.current_round + 1;
+
+    // If the game is over...
+    if (game.current_round > game.num_rounds) {
+      game.game_over = true;
+      return;
+    }
+    
     setTimeout(function(){roundOver(game);}, 15000); //pause 15 seconds
   }
 
@@ -75,12 +82,6 @@ exports.view = function(req, res){
 
 // What executes when the round is over.
 function roundOver(game) {
-
-  // If the game is over...
-  if (game.current_round > game.num_rounds) {
-    game.game_over = true;
-    return;
-  }
 
   // send out a random prompt
   var prompts_arr_size = prompt_data.prompts.length;

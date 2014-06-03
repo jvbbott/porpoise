@@ -57,7 +57,7 @@
 
         <h2>Current Games</h2>
         <div id="games-list">
-        {{#each games_and_versus}}
+        {{#each games_infos}}
         <a href="/prompt?game={{this.game_id}}">
             <h3>
                 <img class="profile-photo" src="/images/profile-icon.png">&nbsp;&nbsp;{{this.opponent_name}}</img>
@@ -65,7 +65,21 @@
                     {{#if games.new_prompt}}
                     <h3>NEW PROMPT </h3>
                     {{/if}}
-                    {{round}}/{{this.total_rounds}}
+                    Round {{round}} of {{this.total_rounds}}
+                </span>
+             </h3>
+        </a>
+        {{/each}}
+        </div>
+
+        <h2>Past Games</h2>
+        <div id="games-list">
+        {{#each past_games_infos}}
+        <a href="/prompt?game={{this.game_id}}">
+            <h3>
+                <img class="profile-photo" src="/images/profile-icon.png">&nbsp;&nbsp;{{this.opponent_name}}</img>
+                 <span class="game-status"> 
+                    Game Over!
                 </span>
              </h3>
         </a>

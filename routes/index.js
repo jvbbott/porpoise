@@ -48,7 +48,8 @@ exports.view = function(req, res, curr_user){
 
   console.log("CURRENT GAMES FOR USER " + req.session.curr_user_id + " Games Array: "+ curr_games);
 
-  var games_and_versus = [];
+  var games_infos = [];
+  var past_games_infos = [];
   for (var i=0; i<curr_games.length; i++) {   
     var players = curr_games[i].players;
     var other_player_id = "";
@@ -64,14 +65,17 @@ exports.view = function(req, res, curr_user){
     var round = curr_games[i].current_round;
     var num_total_rounds = curr_games[i].num_rounds;
 
-    var game_and_vs = {"game_id" : curr_games[i].id, "opponent_name" : vs, "round" : round, "total_rounds" : num_total_rounds};
-
-    games_and_versus.push(game_and_vs);
+    var game_info = {"game_id" : curr_games[i].id, "opponent_name" : vs, "round" : round, "total_rounds" : num_total_rounds, "game_over" : curr_games[i].game_over};
+    if (curr_games[i].game_over) {
+      past_games_infos.push(game_info);
+    } else {
+      games_infos.push(game_info);
+    }
   }
-  console.log("GAMES INFO: "+games_and_versus);
+  console.log("GAMES INFO: "+games_infos);
   req.session.phone_number = curr_user.phone_number;
   console.log("PHONE: "+req.session.phone_number);
-  console.log("length of games_and_versus: " + games_and_versus.length);
+  console.log("length of games_infos: " + games_infos.length);
 
   res.render('index', 
   	{
@@ -81,7 +85,8 @@ exports.view = function(req, res, curr_user){
       'username': req.session.username,
       'new_user': new_user, 
       'games' : curr_games,
-      'games_and_versus' : games_and_versus,
+      'games_infos' : games_infos,
+      'past_games_infos' : past_games_infos,
       'has_game_requests' : has_game_requests,
       'challenges' : pending_challenges
   	});
