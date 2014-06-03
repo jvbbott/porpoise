@@ -103,10 +103,10 @@ exports.handle_validation = function (req, res) {
         curr_user.phone_validated = true;
         user_data.update_user(curr_user);
         if (curr_user.first_name == undefined) {
-            var status_messages = [{"text": "Welcome, "+curr_user.username+"!", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];
+            var status_messages = [{"text": "Welcome, "+curr_user.username+"! <a href=\"/num_rounds\">Create a new game now!</a>", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];
         }
         else {
-          var status_messages = [{"text": "Welcome, "+curr_user.first_name+"!", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];  
+          var status_messages = [{"text": "Welcome, "+curr_user.phone_number+"! <a href=\"/num_rounds\">Create a new game now!</a>", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];  
         }
         req.session.status_messages = status_messages;
         res.redirect("/");
