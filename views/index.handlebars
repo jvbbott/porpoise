@@ -37,7 +37,7 @@
 
         {{> status_messages }}
 
-        <!-- {{#if new_user }}
+        {{#if new_user }}
             <div class="row">
                 <div class="col-xs-12 call-to-action img-rounded">
                     <h2>Hey, welcome!<br /> Let's studybuddy!</h2>
@@ -46,30 +46,39 @@
                     <br />
                 </div>
             </div>
-        {{/if}} -->
-        {{#if has_game_requests}}
-        <h2>Challenges</h2>
-        <a style="text-align: center;" href="/pending">See Pending Challenges</a>
         {{/if}}
 
-
-
-
+        
         <h2>Current Games</h2>
         <div id="games-list">
-        {{#each games_and_versus}}
+        {{#each games_infos}}
         <div class="row"><div class="col-xs-1"></div><a class="col-xs-10 game-option" href="/prompt?game={{this.game_id}}">
             <div class="all-game-info">
                 <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;{{this.opponent_name}}
                  <span class="game-status"> 
                    <p>Round</p>
                     <p class="round-number">{{round}}/{{this.total_rounds}}</p>
-                </span>
-             </div>
-            </a>
-        <div class="col-xs-1"></div></div>
+               </div></a></div>
         {{/each}}
         </div>
+
+        <br></br>
+        {{#if has_past_games}}
+        <h2>Game History</h2>
+        <div id="games-list">
+        {{#each past_games_info}}
+        <div class="row"><div class="col-xs-1"></div><a class="col-xs-10 game-option" href="/prompt?game={{this.game_id}}">
+            <div class="all-game-info">
+                <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;{{this.opponent_name}}
+                 <span class="game-status"> 
+                   <p>Round</p>
+                    <p class="round-number">{{round}}/{{this.total_rounds}}</p>
+               </div></a></div>
+        {{/each}}
+        </div>
+        {{/if}}
+
+       
 
         
             <div class='row'>
