@@ -53,13 +53,23 @@
 			</div>
 		</div>
 
-		<div class="col-xs-12 prompt"><b>Prompt:</b> {{prompt}}</div>
-
 		{{#if game_over}}
 			<div class="text-center">
 				<h3> Game over! </h3>
 			</div>
+			{{#if won}}
+			<div class="text-center">
+				<h3> You are the winner :)</h3>
+			</div>
+			{{else}}
+			<div class="text-center">
+				<h3> You are the loser :(</h3>
+			</div>
+			{{/if}}
 		{{else}}
+
+			<div class="col-xs-12 prompt"><b>Prompt:</b> {{prompt}}</div>
+
 			{{#if finished_round}}
 				<div class="col-xs-12 round-complete-message">
 				<img class="photo-taken" src="../images/{{user.id}}_{{gameid}}_{{round_id}}.jpg"></img>

@@ -68,6 +68,11 @@ exports.view = function(req, res){
 
   console.log("FINISHED?: "+finished_round);
 
+  var won = true;
+  if (opponent_score > user_score) {
+    won = false;
+  }
+
   res.render('prompt', 
   {
   	'user' : currUser,
@@ -79,6 +84,7 @@ exports.view = function(req, res){
     'opponent' : opponent,
     'finished_round' : finished_round,
     'game_over' : game.game_over,
+    'won' : won,
     'game_log_exists' : game_log_exists,
     'round_id' : round_id
   });

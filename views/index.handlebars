@@ -64,23 +64,20 @@
 
         <br></br>
         {{#if has_past_games}}
-        <h2>Game History</h2>
-        <div id="games-list">
-        {{#each past_games_info}}
-        <div class="row"><div class="col-xs-1"></div><a class="col-xs-10 game-option" href="/prompt?game={{this.game_id}}">
-            <div class="all-game-info">
-                <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;{{this.opponent_name}}
-                 <span class="game-status"> 
-                   <p>Round</p>
-                    <p class="round-number">{{round}}/{{this.total_rounds}}</p>
-               </div></a></div>
-        {{/each}}
-        </div>
+            <h2>Game History</h2>
+            <div id="games-list">
+            {{#each past_games_infos}}
+            <div class="row"><div class="col-xs-1"></div><a class="col-xs-10 game-option" href="/prompt?game={{this.game_id}}">
+                <div class="all-game-info">
+                    <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;{{this.opponent_name}}
+                     <span class="game-status"> 
+                       <p class="text-center">Score</p>
+                        <p class="round-number text-right">You: {{this.user_score}}  {{this.opponent_name}}: {{this.opponent_score}}</p>
+                   </div></a></div>
+            {{/each}}
+            </div>
         {{/if}}
 
-       
-
-        
             <div class='row'>
                 <div id="logout-link" class="col-xs-12">
                     <a href="/logout"><span><i class="fa fa-sign-out fa-lg"></i>&nbsp;Log Out</span></a>

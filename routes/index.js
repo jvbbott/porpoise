@@ -53,10 +53,18 @@ exports.view = function(req, res, curr_user){
   for (var i=0; i<curr_games.length; i++) {   
     var players = curr_games[i].players;
     var other_player_id = "";
+    
+    var user_score = 0;
+    var opponent_score = 0;
+
     if (players[0].id == req.session.curr_user_id) {
       other_player_id = players[1].id;
+      user_score = players[0].score;
+      opponent_score = players[1].score;
     } else {
       other_player_id = players[0].id;
+      user_score = players[1].score;
+      opponent_score = players[0].score;
     }
     var other_user = user_data.get_user_by_id(other_player_id);
     var other_user_name = other_user.first_name;
@@ -65,7 +73,7 @@ exports.view = function(req, res, curr_user){
     var round = curr_games[i].current_round;
     var num_total_rounds = curr_games[i].num_rounds;
 
-    var game_info = {"game_id" : curr_games[i].id, "opponent_name" : vs, "round" : round, "total_rounds" : num_total_rounds, "game_over" : curr_games[i].game_over};
+    var game_info = {"game_id" : curr_games[i].id, "opponent_name" : vs, "round" : round, "total_rounds" : num_total_rounds, "game_over" : curr_games[i].game_over, "user_score" : user_score, "opponent_score" : opponent_score};
     if (curr_games[i].game_over) {
       past_games_infos.push(game_info);
     } else {
@@ -73,11 +81,9 @@ exports.view = function(req, res, curr_user){
     }
   }
 
-  console.log("past games arr length " + past_games_infos.length);
-
-  var noPastGames = true;
-  if (past_games_infos.length > 0) {
-    noPastGames = false;
+  var hasPastGames = true;
+  if (past_games_infos.length == 0) {
+    hasPastGames = false;
   }
 
   console.log("GAMES INFO: "+games_infos);
@@ -95,7 +101,7 @@ exports.view = function(req, res, curr_user){
       'games' : curr_games,
       'games_infos' : games_infos,
       'past_games_infos' : past_games_infos,
-      'no_past_games' : noPastGames,
+      'has_past_games' : hasPastGames,
       'has_game_requests' : has_game_requests,
       'challenges' : pending_challenges
   	});
