@@ -71,6 +71,9 @@
         </div>
 
         <h2>Past Games</h2>
+        {{#if no_past_games}}
+            <h3 class="text-center">None</h3>
+        {{/if}}
         <div id="games-list">
         {{#each past_games_infos}}
         <a href="/prompt?game={{this.game_id}}">

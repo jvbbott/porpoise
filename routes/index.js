@@ -72,6 +72,14 @@ exports.view = function(req, res, curr_user){
       games_infos.push(game_info);
     }
   }
+
+  console.log("past games arr length " + past_games_infos.length);
+
+  var noPastGames = true;
+  if (past_games_infos.length > 0) {
+    noPastGames = false;
+  }
+
   console.log("GAMES INFO: "+games_infos);
   req.session.phone_number = curr_user.phone_number;
   console.log("PHONE: "+req.session.phone_number);
@@ -87,6 +95,7 @@ exports.view = function(req, res, curr_user){
       'games' : curr_games,
       'games_infos' : games_infos,
       'past_games_infos' : past_games_infos,
+      'no_past_games' : noPastGames,
       'has_game_requests' : has_game_requests,
       'challenges' : pending_challenges
   	});
