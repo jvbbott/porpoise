@@ -30,7 +30,7 @@ src: url('/fonts/ProximaNova-Light.otf');
 
 #home-link {
     text-align: left;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 #header {
@@ -139,3 +139,4 @@ a.nav-link {
 #home-icon {
     margin-top: 0px;
 }
+

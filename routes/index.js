@@ -40,7 +40,7 @@ exports.view = function(req, res, curr_user){
   console.log(pending_challenges);
   var has_game_requests = false;
   if (pending_challenges.length != 0) {
-    status_messages = [{"text": "You have unseen game requests!", "class": "success-message", "glyphicon": "glyphicon-exclamation-sign"}];
+    status_messages = [{"text": "You have <a href=\"/pending\">unseen game requests</a>!", "class": "success-message", "glyphicon": "glyphicon-exclamation-sign"}];
     has_game_requests = true;
   }
 

@@ -31,7 +31,7 @@ html, body {
 #main-content {
     background-color: whitesmoke;
     /*padding: 15px 10px 15px 10px;*/
-    /*min-height: 340px;*/
+    min-height: 340px;
     font-family: Raleway, "Helvetica-Neue";
     font-weight: 400;
     font-size: 14px;
@@ -67,8 +67,10 @@ html, body {
 span.game-status {
     float: right;
     color: white;
-    padding-top: 10px;
     margin-right: 10px;
+    font-size: 12px;
+    white-space:nowrap;
+    margin-top: -5px;
 }
 
 span.label-you {
@@ -467,6 +469,7 @@ i.arrow {
     cursor: pointer;
     opacity: 0;
     filter: alpha(opacity=0);
+    height: 100%;
 }
 
 .btn-submit {
@@ -531,6 +534,7 @@ i.arrow {
 }
 
 .challenger-info {
+    margin-top: 10px;
     font-size: 20px;
     color: #C53922;
     font-weight: lighter;
@@ -539,6 +543,7 @@ i.arrow {
 }
 
 .game-requests-text {
+    margin-top: 10px;
     text-align: center;
     font-size: 18px;
     font-weight: lighter;
@@ -583,16 +588,58 @@ i.arrow {
 }
 
 #logout-link {
-    position: fixed;
-    bottom: 0;
+    position: absolute;
+    bottom: 0px;
     background-color: #C53922;
     width: 100%;
     text-align: center;
     color: white;
     padding: 15px;
+    text-decoration: none;
 }
 
-a #logout-link :hover, :visited {
+a #logout-link :hover, :visited, :link, :active {
     color: white;
+    text-decoration: none;
 }
+
+.game-option {
+    height: 60px;
+    background-color: #C53922;
+    margin-bottom: 10px;
+    width: 83%;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 20px;
+}
+
+div.all-game-info {
+    padding-top: 15px;
+    height: 50px;
+    width: 100%;
+}
+
+p.round-number {
+    white-space:nowrap;
+    margin-top: -15px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.go-home {
+    width: 100%;
+    color: white;
+    background-color: #C53922;
+    height: 40px;
+    margin-bottom: 50px;
+}
+
+p.challenger-name {
+    margin-bottom: 0px;
+}
+
+p.challenger-rounds {
+    font-size: 12px;
+}
+
 

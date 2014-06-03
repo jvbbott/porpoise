@@ -37,7 +37,7 @@
 
         {{> status_messages }}
 
-        <!-- {{#if new_user }}
+        {{#if new_user }}
             <div class="row">
                 <div class="col-xs-12 call-to-action img-rounded">
                     <h2>Hey, welcome!<br /> Let's studybuddy!</h2>
@@ -46,168 +46,54 @@
                     <br />
                 </div>
             </div>
-        {{/if}} -->
-        {{#if has_game_requests}}
-        <h2>Challenges</h2>
-        <a style="text-align: center;" href="/pending">See Pending Challenges</a>
         {{/if}}
 
-
+        
         <h2>Current Games</h2>
         <div id="games-list">
         {{#each games_infos}}
-        <a href="/prompt?game={{this.game_id}}">
-            <h3>
-                <img class="profile-photo" src="/images/profile-icon.png">&nbsp;&nbsp;{{this.opponent_name}}</img>
+        <div class="row"><div class="col-xs-1"></div><a class="col-xs-10 game-option" href="/prompt?game={{this.game_id}}">
+            <div class="all-game-info">
+                <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;{{this.opponent_name}}
                  <span class="game-status"> 
-                    {{#if games.new_prompt}}
-                    <h3>NEW PROMPT </h3>
-                    {{/if}}
-                    Round {{round}} of {{this.total_rounds}}
-                </span>
-             </h3>
-        </a>
+                   <p>Round</p>
+                    <p class="round-number">{{round}}/{{this.total_rounds}}</p>
+               </div></a></div>
         {{/each}}
         </div>
 
-        <h2>Past Games</h2>
-        {{#if no_past_games}}
-            <h3 class="text-center">None</h3>
-        {{/if}}
+        <br></br>
+        {{#if has_past_games}}
+        <h2>Game History</h2>
         <div id="games-list">
-        {{#each past_games_infos}}
-        <a href="/prompt?game={{this.game_id}}">
-            <h3>
-                <img class="profile-photo" src="/images/profile-icon.png">&nbsp;&nbsp;{{this.opponent_name}}</img>
+        {{#each past_games_info}}
+        <div class="row"><div class="col-xs-1"></div><a class="col-xs-10 game-option" href="/prompt?game={{this.game_id}}">
+            <div class="all-game-info">
+                <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;{{this.opponent_name}}
                  <span class="game-status"> 
-                    Game Over!
-                </span>
-             </h3>
-        </a>
+                   <p>Round</p>
+                    <p class="round-number">{{round}}/{{this.total_rounds}}</p>
+               </div></a></div>
         {{/each}}
         </div>
+        {{/if}}
 
-        <!-- <div class="matches recent">
-            <h2 class="problems-header">Recent Matches</h2>
-            {{#if all_user_matches }}
-            {{#each all_user_matches}}
-            <div class="result row">
-                <div class="col-xs-12">
-                    <div class="accordion" id="accordion{{id}}">
-                        <div class="accordion-group">
-                            <div class="accordion-heading">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion{{id}}" href="#collapse{{id}}"> 
-                                <h4 class="class-name">
-                                    Match: {{other_user.first_name}} {{other_user.last_name}}
-                                    <i style="float: right;" class="fa fa-chevron-down fa-xs match-item"></i>
-                                 </h4>
-                                 <h4 class="class-name">
-                                    Assignment: {{course.code}}, {{assignment.name}}
-                                 </h4>
-                                </a>
-                                <div id="collapse{{id}}" class="accordion-body collapse">
-                                    <div class="contact-info details-left col-md-12 match_inf" id="{{id}}"> 
-
-                                        <a href="sms:{{other_user.phone_number}}" class="col-md-3 btn text"><i class="fa fa-phone fa-xs"></i> Text</a>
-                                        <a href="tel:{{other_user.phone_number}}" class="col-md-3 btn call"><i class="fa fa-phone fa-xs"></i> Call</a>
-                                        <a href="mailto:{{other_user.email}}" target="_blank" class="col-md-3 btn email"><i class="fa fa-envelope fa-xs"></i>  Email</a>
-                                    </div>
-
-                                    <form action="/delete-match" method="post" role="form">
-                                        <input type="hidden" name="match[id]" class="text" value="{{id}}">
-                                        <button type="submit" class="btn deletebtn" id="delete-{{id}}">
-                                            <i class="fa fa-ban fa-xs"></i> 
-                                            Reject/Clear Match
-                                        </button>
-                                    </form>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                 </div>
-            </div>
-            {{/each}}
-        </div>
-
-    {{else}}
-        <h4 class="results-header">No recent matches.</h4>
-    {{/if}} -->
+       
 
         
             <div class='row'>
-            <div id="logout-link" class="col-xs-12">
-                <a href="/logout"><span><i class="fa fa-sign-out fa-lg"></i>&nbsp;Log Out</span></a>
+                <div id="logout-link" class="col-xs-12">
+                    <a href="/logout"><span><i class="fa fa-sign-out fa-lg"></i>&nbsp;Log Out</span></a>
+                </div>
             </div>
-        </div>
+        
+            
     </div>
+
     
 	</div>
 
 	<script src="/js/bootstrap.min.js"></script>
     <script src="/js/studybuddy.js"></script>
-
-    <script>
-        // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        //ga('create', 'UA-48453653-2', 'studdybuddy.herokuapp.com');
-        //ga('create', 'UA-48453653-2', {'cookieDomain': 'none'});
-        //ga('send', 'pageview');
-
-
-       
-        // function initializeTracking() {
-
-        //     console.log("init tracking");
-        //     var startTime = new Date().getTime();
-
-            // Catch users before they go to the next page
-            // This is not registering on the GA dashboard for some reason...
-            /*
-            $("a").click(function(e) {
-                e.preventDefault();
-                var endTime = new Date().getTime();
-                var timeSpent = endTime - startTime;
-                var timeSpent = parseInt(timeSpent);
-                console.log("to GA: time spent - " + timeSpent);
-                console.log("New user flag: " + '{{new_user_call_to_action}}');
-                ga('send', 'timing', 'homepage', 'overallHompage', timeSpent, 'var{{new_user_call_to_action}}')
-            });
-            */
-
-            // log link clicks
-            // var link_ids = ['update-profile-link', 'new-user-match-link', 'matches-icon-link', 'search-icon-link', 'logout-nav-icon', 'home-nav-icon'];
-            // for (var i=0; i<link_ids.length; i++) {
-            //     $('#' + link_ids[i]).on('click', function() {
-            //         ga('send', 'event', 'homepage-button-click', 'click', link_ids[i]);
-            //     });
-            // }
-
-            // keep track of people going to "search"
-            // $('#new-user-match-link').on('click', function() {
-            //     ga('send', 'event', 'homepage2search', 'click');
-            // });
-            // $('#search-icon-link').on('click', function() {
-            //     ga('send', 'event', 'homepage2search', 'click');
-            // });
-
-        //}
-
-    </script>
-    <script>
-     $(document).ready(function() {
-            $('.menu-link').bigSlide();
-        });
-
-     $(function() {
-        $( "#accordion" ).accordion({
-          heightStyle: "content"
-        });
-      });
-
-    </script>
-
 </body>
 </html>
