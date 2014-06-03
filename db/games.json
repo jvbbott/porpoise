@@ -1,28 +1,6 @@
 {
-	"games": [
 		{
 			"id" : 0,
-			"game_over" : false,
-			"num_rounds" : 3,
-			"players" : [
-				{
-					"id": 1,
-					"score": 0,
-					"finished_round" : false
-				},
-				{
-					"id": 2,
-					"score": 0,
-					"finished_round" : false
-				}
-			],
-			"current_round" : 1,
-			"current_prompt" : "Take a photo of a neat pattern.",
-			"date_started" : "",
-			"rounds" : [0]
-		},
-		{
-			"id" : 1,
 			"game_over" : false,
 			"num_rounds" : 3,
 			"players" : [
