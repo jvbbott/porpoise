@@ -102,11 +102,11 @@ exports.handle_validation = function (req, res) {
     if (code_entered == curr_user.auth_code) {
         curr_user.phone_validated = true;
         user_data.update_user(curr_user);
-        if (curr_user.first_name == undefined) {
-            var status_messages = [{"text": "Welcome, "+curr_user.username+"! <a href=\"/num_rounds\">Create a new game now!</a>", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];
+        if (curr_user.first_name != undefined) {
+            var status_messages = [{"text": "Welcome, "+curr_user.first_name+"! <a href=\"/num_rounds\">Create a new game now!</a>", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];
         }
         else {
-          var status_messages = [{"text": "Welcome, "+curr_user.phone_number+"! <a href=\"/num_rounds\">Create a new game now!</a>", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];  
+          var status_messages = [{"text": "Welcome! <a href=\"/num_rounds\">Create a new game now!</a>", "class": "success-message", "glyphicon": "glyphicon-ok-sign"}];  
         }
         req.session.status_messages = status_messages;
         res.redirect("/");
@@ -128,7 +128,7 @@ exports.handle_create_profile = function(req, res) {
     console.log(req.body.phone);
     if (user_data.user_exists(req.body.phone)) {
         console.log("USER ALREADY EXISTS");
-        var status_messages = [{"text": "Username already exists.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
+        var status_messages = [{"text": "Phone already exists.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
         req.session.status_messages = status_messages;
         res.redirect("/new-profile");
         return;  
