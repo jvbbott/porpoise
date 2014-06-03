@@ -1,38 +1,8 @@
 {
 	"prompts":[
-
-		{
-			"prompt": "Take a photo that represents your current emotion."
-		},
-		
-		{
-			"prompt": "Take a photo of yourself pretending to be asleep."
-		},
-		{
-			"prompt": "Take a photo that represents your addiction."
-		},
-		{
-			"prompt": "Take a photo of the first animal you can find."
-		},
-		{
-			"prompt": "Take a photo of the least favorite thing around you."
-		},
-		{
-			"prompt": "Take a photo of somebody taking a photo of you."
-		},
-		{
-			"prompt": "Take a photo of the smallest thing you can find."
-		},
 		{
 			"prompt": "Take a seductive photo with an inanimate object."
-		},
-		{
-			"prompt": "Take a photo of the coolest shoes you can find."
-		},
-		{
-			"prompt": "Take a photo of a neat pattern."
 		}
-
 	]
 
 }
