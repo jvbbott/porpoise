@@ -36,7 +36,7 @@ exports.get_game = function(game_id) {
 exports.incrementScoreForUser = function(game_id, user_id, plus) {
 	var game = exports.get_game(game_id);
 	var players = game.players;
-	for (var i=0; i<players.length; i++) {
+	for (var i=0; i< players.length; i++) {
 		if (players[i].id == user_id) {
 			players[i].score = players[i].score + plus;
 		}
