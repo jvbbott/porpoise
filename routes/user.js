@@ -36,6 +36,7 @@ exports.login_or_signup = function(req, res) {
             // user_data.update_user(curr_user);
             // req.session.curr_user_id = curr_user.id;
             req.session.curr_user_phone = phone;
+            req.session.curr_user_password = password;
             req.session.numRound = 0;
             console.log("CURR ROUND IS "+ req.session.numRound);            
             res.redirect('new-profile');
@@ -85,12 +86,13 @@ exports.render_update_profile = function(req, res){
 /* GET - Renders form for creation of new profile */
 exports.create_new_profile = function(req, res) {
     var phone_number = req.session.curr_user_phone;
-    console.log(phone_number);
+    var password = req.session.curr_user_password;
     res.render('create_profile', {
             'title' : 'Create Profile',
             'no_home_button' : true,
             'status_messages' : req.session.status_messages,
-            'phone' : phone_number
+            'phone' : phone_number,
+            'password' : password
     });
 }
 

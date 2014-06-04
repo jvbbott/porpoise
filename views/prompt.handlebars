@@ -29,6 +29,8 @@
 	
      function uploadMessage() {
       	$("#photo-success").text("Successfully taken photo!");
+      	$("#camera-button").hide();
+      	$("#submit-button").show();
       }
 
     </script>
@@ -77,11 +79,11 @@
 			</div>
 			{{else}}
 				<form name="photoForm" id="photoForm" action="/post-prompt" method="post" enctype="multipart/form-data">
-						<div class="fileUpload btn btn-camera col-xs-8">
+						<div id="camera-button" class="fileUpload btn btn-camera col-xs-12">
 					    <span><i class="fa fa-camera fa-2x"></i></span>
 					    <input id="photoUpload" type="file" name="photo" class="upload" onchange="uploadMessage()" />
 					 </div>
-					 <div id="submit-button" class="fileUpload btn btn-submit col-xs-3">
+					 <div id="submit-button" style="display: none;" class="fileUpload btn btn-submit col-xs-12">
 					    <span><i class="fa fa-paper-plane fa-2x"></i></span>
 					    <input type="hidden" name="gameid" value={{gameid}}/>
 				    <input id="submitInput" name="formSubmit" type="submit" style="visibility: hidden; display: none;"/>

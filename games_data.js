@@ -20,7 +20,7 @@ exports.get_all_games = function() {
 exports.get_game = function(game_id) {
 	var all_games = game_data['games'];
 	console.log("ALL GAMES: "+ all_games);
-	for (var i = 0; i <= all_games.length; i++) {
+	for (var i = 0; i < all_games.length; i++) {
 		console.log("i = "+i+" all_games[i] = " + all_games[i] + " GAME_ID is: "+ game_id + " LENGTH = " + all_games.length);
 		if (all_games[i].id == game_id) {
 			console.log("GAME ID MATCH FOUND!");
@@ -142,7 +142,7 @@ exports.accept_request = function(request) {
 	client.messages.create({ 
         to: "+1"+user_2_info.phone_number, 
         from: "+19562051565", 
-        body: "New game created between you and "+user_1_info.first_name+"! Hurry and visit http://cliq.herokuapp.com to see your first prompt!",   
+        body: "New game created between you and "+user_1_info.first_name+"! Hurry and visit http://cliqme.herokuapp.com to see your first prompt!",   
     }, function(err, message) { 
         console.log(message.sid); 
     });
