@@ -18,41 +18,28 @@ exports.render_verification_page = function(req, res) {
 }
 
 exports.login_or_signup = function(req, res) {
-    var phone = req.body.phone;
+    var username = req.body.username;
     var password = req.body.password;
+    var curr_user = user_data.get_user_by_username(username);
     // if (password == "") {
     //     var status_messages = [{"text": "Invalid password.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
     //     req.session.status_messages = status_messages;
     //     res.redirect("/login");  
-    // }
-    var curr_user = user_data.get_user_by_phone(phone);
-    if (curr_user == undefined) {
-        // This is a new sign-up
-        // create blank user & redirect to set up profile page
-        if (phone.length == 10) {
-            console.log("FOUND PHONE, REDIRECTING FOR FULL SIGNUP");
-            // curr_user = user_data.get_new_user();
-            // curr_user.phone_number = phone;
-            // user_data.update_user(curr_user);
-            // req.session.curr_user_id = curr_user.id;
-            req.session.curr_user_phone = phone;
-            req.session.curr_user_password = password;
-            req.session.numRound = 0;
-            console.log("CURR ROUND IS "+ req.session.numRound);            
-            res.redirect('new-profile');
-        }
-        else {
-            var status_messages = [{"text": "Invalid phone number.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
-            req.session.status_messages = status_messages;
-            res.redirect("/login");  
-        }
-    } else if (password == curr_user.password) {
+    // }   
+    // if (curr_user == undefined) {
+    //         req.session.curr_user_username = username;
+    //         req.session.curr_user_password = password;
+    //     }
+    //     else {
+    //         var status_messages = [{"text": "Invalid phone number.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
+    //         req.session.status_messages = status_messages;
+    //         res.redirect("/login");  
+    //     }
+    if (password == curr_user.password) {
         console.log("THIS USER EXISTS");
         // This user exists. Send to homepage
         req.session.curr_user_id = curr_user.id;
         req.session.username = curr_user.first_name;
-        req.session.numRound = 0;
-        console.log("CURR ROUND IS "+ req.session.numRound);
         res.redirect("/");        
     } 
     else {
@@ -85,13 +72,13 @@ exports.render_update_profile = function(req, res){
 
 /* GET - Renders form for creation of new profile */
 exports.create_new_profile = function(req, res) {
-    var phone_number = req.session.curr_user_phone;
+    var username = req.session.username;
     var password = req.session.curr_user_password;
     res.render('create_profile', {
             'title' : 'Create Profile',
             'no_home_button' : true,
             'status_messages' : req.session.status_messages,
-            'phone' : phone_number,
+            'username' : username,
             'password' : password
     });
 }

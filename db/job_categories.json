@@ -1,0 +1,64 @@
+{
+	"categories": [
+		{
+			"id" : 1,
+			"category_name": "Accounting/Finance",
+			"icon" : "usd" 
+		},
+		{
+			"id" : 2,
+			"category_name": "Analyst",
+			"icon" : "line-chart"
+		},
+		{
+			"id" : 3,
+			"category_name": "Architecture/Drafting",
+			"icon" : "pencil"
+		},
+		{
+			"id" : 4,
+			"category_name": "Art/Design/Entertainment",
+			"icon" : "camera"
+		},
+		{
+			"id" : 5,
+			"category_name": "Banking",
+			"icon" : "bank"
+		},
+		{
+			"id" : 6,
+			"category_name": "Business Development/Consulting",
+			"icon" : "briefcase"
+		},
+		{
+			"id" : 7,
+			"category_name": "Education",
+			"icon" : "child"
+		},
+		{
+			"id" : 8,
+			"category_name": "Engineering",
+			"icon" : "calculator"
+		},
+		{
+			"id" : 9,
+			"category_name": "Product/Project Management",
+			"icon" : "clipboard"
+		},
+		{
+			"id" : 10,
+			"category_name": "Sales/Customer Care",
+			"icon" : "group"
+		},
+		{
+			"id" : 11,
+			"category_name": "Science/Research",
+			"icon" : "flask"
+		},
+		{
+			"id" : 12,
+			"category_name": "Software Development/IT",
+			"icon" : "code-fork"
+		}
+	]
+}

@@ -1,40 +1,26 @@
 @font-face {
- font-family: Raleway;
- src: url('/fonts/Raleway-Regular.otf');   
-}
-
-@font-face {
- font-family: Raleway-Light;
- src: url('/fonts/Raleway-Light.otf');   
-}
-
-@font-face
-{
-font-family: ProximaNova-Light;
-src: url('/fonts/ProximaNova-Light.otf');
+ font-family: Avenir;
+ src: url('/fonts/AvenirLTStd-Light.otf');   
 }
 
 body {
-    background-color: #C53922;
-    font-family: Raleway;
+    background-color: #16a085;
+    font-family: Avenir;
 }
 
-h2 {
-    margin: 5px auto 0px auto;
+h2#main-header {
+    font-family: Avenir;
     text-align: center;
     color: white;
     font-size: 36px;
-    font-family: Raleway-Light;
-    font-weight: 100;
-    padding: 0;
-
+    font-weight: lighter;
+    margin: 0;
+    margin-bottom: 10%;
 }
 
 
 .main-icon {
     width: 100px;
-    margin: 0px auto;
-    padding: 0px;
 }
 
 
@@ -43,54 +29,18 @@ h2 {
     width: 100px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 25px;
 }
 
 .btn.login {
+    margin-top: 10px;
 	color: white;
-	background-color: #E16451;
-	width: 100%;
-    height: 40px;
-    font-family: Raleway;
+	background-color: #1abc9c;
+    font-weight: bolder;
 }
 
 .btn.signup {
     margin-top: 10px;
-    color: white;
-    width: 100%;
-    height: 40px;
-    font-family: Raleway;
-    background-color: none;
-}
-
-p.signup-text {
-	font-size: 12px;
-	text-align: center;
-} 
-
-.row {
-    margin-left: -50px;
-    margin-right: -50px;
-}
-
-input#email {
-	box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    border-radius: 5px 5px 0px 0px;
-    border-bottom-color: white;
-    -webkit-appearance: none;
-
-}
-
-input#password {
-    inner-shadow: none;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    border-radius: 0px 0px 5px 5px;
-    border-color: none;
-    -webkit-appearance: none;
-
+    color: black;
+    background-color: #ecf0f1;
 }
 

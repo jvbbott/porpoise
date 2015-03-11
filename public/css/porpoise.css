@@ -1,0 +1,91 @@
+@font-face {
+ font-family: Avenir;
+ src: url('/fonts/AvenirLTStd-Light.otf');   
+}
+
+body, html {
+	font-family: Avenir;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Avenir;
+}
+.container input {
+	box-shadow: none;
+   /* background-repeat: no-repeat;*/
+    /*background-position: left center;*/
+    /*margin-left: 10px;
+    padding-left:30px;*/
+    vertical-align: center;
+    -webkit-appearance: none;
+   /* border: none;*/
+    border-width: 1px;
+    height: 45px;
+    /*box-shadow: none;*/
+    /*border-radius: 0px;*/
+    border-radius: 1px;
+
+}
+
+.main-content {
+    background-color: white;
+    font-family: Avenir;
+    font-weight: 400;
+    font-size: 14px;
+    height: 100%;
+    top: 60px;
+    bottom: 0px;
+    min-height: 340px;
+}
+
+.wrap {
+    position: relative;
+}
+
+h3.banner-text {
+	text-align: center;
+	font-weight: 800;
+	font-size: 20px;
+	color: #2c3e50;
+}
+
+label {
+	font-size: 18px;
+	padding-left: 5px;
+}
+
+button.take-med-action {
+	color: white;
+	background-color: #16a085;
+	width: 100%;
+	height: 50px;
+	font-size: 16px;
+	font-weight: 800;
+}
+
+.btn {
+    height: 50px;
+}
+
+.btn:hover {
+    
+}
+
+.btn-group .btn {
+	text-align: center;
+	height: 50px;
+	font-size: 16px;
+
+}
+
+.btn-selected, .btn-primary {
+	color: white;
+	background-color: #16a085;
+	font-weight: 800;
+}
+.btn-1 {
+    width: 100%;
+}
+.btn-3 {
+	width: 33%;
+}

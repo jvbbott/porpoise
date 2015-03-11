@@ -9,7 +9,6 @@ exports.view = function(req, res){
   // grab status message if there is one and flush
   var status_messages = req.session.status_messages;
   req.session.status_messages = [];
-
   res.render('login', {
         'title': 'Login',
         'status_messages': status_messages,

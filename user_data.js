@@ -8,7 +8,9 @@ var data = require("./db/users.json");
  * This user system depends on every
  * user's id being their index in the user list
  */
-
+ exports.get_all_users = function(curr_id) {
+  return data.users;
+ };
 
  exports.get_all_other_users = function(curr_id) {
     var other_users = new Array();
@@ -26,10 +28,10 @@ exports.get_new_id = function() {
     return new_id;
 };
 
-exports.get_user_by_phone = function(phone_number) {
+exports.get_user_by_username = function(username) {
   var curr_user = undefined;
   for (var i = 0; i < data.users.length; i++) {
-    if (data.users[i].phone_number == phone_number) {
+    if (data.users[i].username == username) {
       curr_user = data.users[i];
       break;
     }
@@ -42,12 +44,27 @@ exports.get_new_user = function() {
     var new_id = exports.get_new_id();
     return {
       "id": new_id,
-      "phone_number" : "",
+      "username" : "",
+      "email_is_username": false,
+      "has_email" : false,
+      "email" : "",
       "first_name" : "", 
       "last_name" : "",
       "password" : "",
-      "auth_code" : "",
-      "phone_validated": false
+      "birth_date" : 0,
+      "student" : false,
+      "teacher" : false,
+      "professional" : false,
+      "creation_time": 0,
+      "last_login" :0,
+      "city" : "San Francisco",
+      "state_code" : "CA",
+      "country" : "USA",
+      "active" : false,
+      "gender" : "",
+      "section_ids" : [],
+      "teacher_ids" : [],
+      "icon_path" : "images/default-icon.png"
     }
 };
 
@@ -68,16 +85,15 @@ exports.get_user_by_id = function(user_id) {
  * user to dataset
  */ 
 exports.update_user = function(user) {
-  console.log(user);
     var index = user.id;
     data.users[index] = user;
 };
 
 
-exports.user_exists= function(phone_number) {
-    console.log("CHECKING IF "+phone_number+" EXISTS");
+exports.user_exists = function(username) {
+    console.log("CHECKING IF "+username+" EXISTS");
     for (var i = 0; i < data.users.length; i++) {
-      if (data.users[i].phone_number == phone_number) {
+      if (data.users[i].username == username) {
         return true;
       }
     }

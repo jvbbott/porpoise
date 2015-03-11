@@ -1,8 +1,8 @@
 	
-var data = require('./db/games.json');
-var match_request_interface = require('./match_request_data.js');
-var user_data = require('./user_data.js');
-var course_data = require('./course_data.js');
+// var data = require('./db/games.json');
+// var match_request_interface = require('./match_request_data.js');
+// var user_data = require('./user_data.js');
+// var course_data = require('./course_data.js');
 
 /*-----------------------------------------------------*
  *	
@@ -110,80 +110,80 @@ var course_data = require('./course_data.js');
  *
  *-----------------------------------------------------*/
 
-exports.match_is_unseen = function(match, user_id) {
-	if (user_id == match.first_user_id) {
-		if (match.seen_by_first_user == 'unseen' || !match.seen_by_first_user) {
-			return true;
-		}
-	} else {
-		if (match.seen_by_second_user == 'unseen' || !match.seen_by_second_user) {
-			return true;
-		}
-	}
-	return false;
-}
+// exports.match_is_unseen = function(match, user_id) {
+// 	if (user_id == match.first_user_id) {
+// 		if (match.seen_by_first_user == 'unseen' || !match.seen_by_first_user) {
+// 			return true;
+// 		}
+// 	} else {
+// 		if (match.seen_by_second_user == 'unseen' || !match.seen_by_second_user) {
+// 			return true;
+// 		}
+// 	}
+// 	return false;
+// }
 
 
-exports.get_unseen_matches_by_user = function(user_id) {
-	var matches = exports.get_matches_by_user(user_id);
-	var unseen_matches = [];
-	for (var i=0; i<matches.length; i++) {
-		if (exports.match_is_unseen(matches[i], user_id)) {
-			unseen_matches[unseen_matches.length] = matches[i];
-		}
-	}
-	return unseen_matches;
-}
-
-
-
-exports.annotate_with_other_user_data = function(matches, curr_user_id) {
-	for (var i=0; i < matches.length; i++) {
-		var match = matches[i];
-		var other_user_id = match.first_user_id;
-		if (other_user_id == curr_user_id) {
-			other_user_id = match.second_user_id;
-		}
-		var user = user_data.get_user_by_id(other_user_id);
-		match['other_user'] = user;
-	}
-	return matches;
-}
-
- exports.annotate_with_course_info = function(matches) {
- 	if (matches == undefined) 
- 		return;
- 	for (var i = 0; i < matches.length; i++) {
- 		var request = match_request_interface.get_match_request_by_id(matches[i].first_user_request_id);
- 		var course = course_data.get_course_by_id(request.course_id);
- 		var assignment = course_data.get_assignment_by_id(request.assignment_id);
- 		matches[i]['course'] = course;
- 		matches[i]['assignment'] = assignment;
- 	}
- 	return matches;
- }
+// exports.get_unseen_matches_by_user = function(user_id) {
+// 	var matches = exports.get_matches_by_user(user_id);
+// 	var unseen_matches = [];
+// 	for (var i=0; i<matches.length; i++) {
+// 		if (exports.match_is_unseen(matches[i], user_id)) {
+// 			unseen_matches[unseen_matches.length] = matches[i];
+// 		}
+// 	}
+// 	return unseen_matches;
+// }
 
 
 
- exports.delete_match = function(match_id, deleting_user_id) {
- 	var match = exports.get_match_by_id(match_id);
- 	var first_match_request_id = match.first_user_request_id;
- 	var second_match_request_id = match.second_user_request_id;
+// exports.annotate_with_other_user_data = function(matches, curr_user_id) {
+// 	for (var i=0; i < matches.length; i++) {
+// 		var match = matches[i];
+// 		var other_user_id = match.first_user_id;
+// 		if (other_user_id == curr_user_id) {
+// 			other_user_id = match.second_user_id;
+// 		}
+// 		var user = user_data.get_user_by_id(other_user_id);
+// 		match['other_user'] = user;
+// 	}
+// 	return matches;
+// }
+
+//  exports.annotate_with_course_info = function(matches) {
+//  	if (matches == undefined) 
+//  		return;
+//  	for (var i = 0; i < matches.length; i++) {
+//  		var request = match_request_interface.get_match_request_by_id(matches[i].first_user_request_id);
+//  		var course = course_data.get_course_by_id(request.course_id);
+//  		var assignment = course_data.get_assignment_by_id(request.assignment_id);
+//  		matches[i]['course'] = course;
+//  		matches[i]['assignment'] = assignment;
+//  	}
+//  	return matches;
+//  }
+
+
+
+//  exports.delete_match = function(match_id, deleting_user_id) {
+//  	var match = exports.get_match_by_id(match_id);
+//  	var first_match_request_id = match.first_user_request_id;
+//  	var second_match_request_id = match.second_user_request_id;
  	
- 	//update both requests to pending again.
- 	match_request_interface.set_match_request_to_pending(first_match_request_id);
- 	console.log("peidng: " + first_match_request_id);
- 	console.log("peidng: " + second_match_request_id);
-	match_request_interface.set_match_request_to_pending(second_match_request_id);
- 	// now we find this match object and delete it
- 	var all_matches = data['matches'];
- 	for (var i = 0; i < all_matches.length; i++) {
- 		if (all_matches[i].id == match.id) {
- 			data['matches'].splice(i, 1);
- 			break;
- 		}
- 	}
- }
+//  	//update both requests to pending again.
+//  	match_request_interface.set_match_request_to_pending(first_match_request_id);
+//  	console.log("peidng: " + first_match_request_id);
+//  	console.log("peidng: " + second_match_request_id);
+// 	match_request_interface.set_match_request_to_pending(second_match_request_id);
+//  	// now we find this match object and delete it
+//  	var all_matches = data['matches'];
+//  	for (var i = 0; i < all_matches.length; i++) {
+//  		if (all_matches[i].id == match.id) {
+//  			data['matches'].splice(i, 1);
+//  			break;
+//  		}
+//  	}
+//  }
 
 
  // exports.get_match_by_id = function(id) {
@@ -218,8 +218,8 @@ exports.annotate_with_other_user_data = function(matches, curr_user_id) {
 // }
 
 exports.get_matches_by_user = function(user_id) {
-	var all_games = data['games']; //returning all games for now
-	console.log(all_games);
+	// var all_games = data['games']; //returning all games for now
+	// console.log(all_games);
 	// var relevant_matches = new Array();
 	//cycle through all mathces, if either user
 	// associated with this match is the user we want
@@ -231,11 +231,11 @@ exports.get_matches_by_user = function(user_id) {
 	// 	}
 	// }
 	// return relevant_matches;
-	return all_games;
+	//return all_games;
 }
 
 exports.get_all_games = function() {
-	return data['games'];
+	//return data['games'];
 }
 
 // exports.get_next_match_id = function() {

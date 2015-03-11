@@ -69,32 +69,32 @@ app.get('/confirmation', confirmation.view);
 app.get('/get_classes_query', search.get_classes_from_query);
 
 
-app.get('/new_game', games.view);
+//app.get('/new_game', games.view);
 
-app.get('/pending', game_requests.view);
+//app.get('/pending', game_requests.view);
 
 app.get('/new-profile', user.create_new_profile);
-app.get('/update-profile', user.render_update_profile);
+//app.get('/update-profile', user.render_update_profile);
 
 // for prompt page
-app.get('/prompt', prompt.view);
+//app.get('/prompt', prompt.view);
 
 // for end of round page
-app.get('/round_complete', round_complete.view);
+//app.get('/round_complete', round_complete.view);
 
-app.get('/num_rounds', num_rounds.view);
-app.post('/select_opponent', num_rounds.select_opponent);
+//app.get('/num_rounds', num_rounds.view);
+//app.post('/select_opponent', num_rounds.select_opponent);
 
 app.post('/post-login', user.login_or_signup);
 app.post('/post-create-profile', user.handle_create_profile);
-app.post('/create_game', games.handle_create_game);
-app.post('/verify-phone', user.handle_validation);
-app.post('/post-update-profile', user.handle_update_profile);
-app.post('/verification', verification.view);
-app.post('/post-prompt', prompt.picture_taken);
+//app.post('/create_game', games.handle_create_game);
+//app.post('/verify-phone', user.handle_validation);
+//app.post('/post-update-profile', user.handle_update_profile);
+//app.post('/verification', verification.view);
+//app.post('/post-prompt', prompt.picture_taken);
 
  //redirect here after create_game page
-app.post('/resolve_request', game_requests.resolve_request);
+//app.post('/resolve_request', game_requests.resolve_request);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

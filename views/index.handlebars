@@ -2,14 +2,14 @@
 
 <html>
 <head>
-	<title>cliq</title>	
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-	<link href="/css/cliq.css" rel="stylesheet">
+    <title>Home</title> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
     <link href="/css/header.css" rel="stylesheet">
-    <link href="/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" >
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> -->
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -33,7 +33,7 @@
 
     {{> header}}
 
-	<div class="container wrap push" id="main-content">
+    <div class="container wrap push main-content">
 
         {{> status_messages }}
 
@@ -48,22 +48,27 @@
             </div>
         {{/if}} -->
 
-        
-        <h2>Current Games</h2>
-        <div id="games-list">
-        {{#each games_infos}}
-        <div class="row"><div class="col-xs-1"></div><a class="col-xs-10 game-option" href="/prompt?game={{this.game_id}}">
-            <div class="all-game-info">
-                <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;{{this.opponent_name}}
-                 <span class="game-status"> 
-                   <p>Round</p>
-                    <p class="round-number">{{round}}/{{this.total_rounds}}</p>
-               </div></a></div>
+        <!-- <div class="form-group" id="search"> -->
+           <div class="row" id="search"><input type="text" class="form-control" name="query" id="search-main" placeholder="Search"></input></div>
+        <!-- </div> -->
+    
+        <div id="job-category-list">
+        {{#each job_categories}}
+        <div class="row">
+            <a class="col-xs-12 career-option" href="/job_category?id={{this.id}}">
+                <div class="row all-category-info">
+                    <i class="fa fa-{{this.icon}} fa-lg col-xs-2"></i><div class="col-xs-10">{{this.category_name}}</div>
+                        <!-- <span class="game-status"> 
+                        <p>Round</p>
+                        <p class="round-number">{{round}}/{{this.total_rounds}}</p> -->
+               </div></a>
+
+        </div>
         {{/each}}
         </div>
 
-        <br></br>
-        {{#if has_past_games}}
+        <!-- <br></br> -->
+        <!-- {{#if has_past_games}}
             <h2>Game History</h2>
             <div id="games-list">
             {{#each past_games_infos}}
@@ -76,21 +81,21 @@
                    </div></a></div>
             {{/each}}
             </div>
-        {{/if}}
+        {{/if}} -->
 
-            <div class='row'>
+            <!-- <div class='row'>
                 <div id="logout-link" class="col-xs-12">
                     <a href="/logout"><span><i class="fa fa-sign-out fa-lg"></i>&nbsp;Log Out</span></a>
                 </div>
-            </div>
+            </div> -->
         
             
     </div>
 
     
-	</div>
+    </div>
 
-	<script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script src="/js/studybuddy.js"></script>
 </body>
 </html>
