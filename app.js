@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 //added for partials
 var partials = require('express-partials');
 var index = require('./routes/index');
-var login = require('./routes/login');
+var auth = require('./routes/auth');
 var games = require('./routes/games');
 var game_requests = require('./routes/game_requests');
 var user = require('./routes/user');
@@ -58,22 +58,27 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
-app.get('/', index.view);
-//app.get('/nw-home', index.viewNewUserAlternate);
-app.get('/login', login.view);
-app.get('/logout', login.logout);
+app.get('/', index.view); // SPLASH PAGE
+
+app.get('/login', auth.view); // LOG IN BUTTON
+app.post('/login_or_signup', auth.login_or_signup); //LOG IN BUTTON
+app.get('/render_create_account', auth.render_create_account); // NEED AN ACCOUNT BUTTON
+app.get('/logout', auth.logout); // LOGOUT BUTTON
+
+app.post('/create_account', user.create_account);
+
 // app.get('/matches', matches.view);
-app.get('/search', search.view);
-app.get('/assignment', assignment.view);
-app.get('/confirmation', confirmation.view);
-app.get('/get_classes_query', search.get_classes_from_query);
+// app.get('/search', search.view);
+// app.get('/assignment', assignment.view);
+// app.get('/confirmation', confirmation.view);
+// app.get('/get_classes_query', search.get_classes_from_query);
 
 
 //app.get('/new_game', games.view);
 
 //app.get('/pending', game_requests.view);
 
-app.get('/new-profile', user.create_new_profile);
+
 //app.get('/update-profile', user.render_update_profile);
 
 // for prompt page
@@ -85,8 +90,8 @@ app.get('/new-profile', user.create_new_profile);
 //app.get('/num_rounds', num_rounds.view);
 //app.post('/select_opponent', num_rounds.select_opponent);
 
-app.post('/post-login', user.login_or_signup);
-app.post('/post-create-profile', user.handle_create_profile);
+
+// app.post('/post-create-profile', auth.handle_create_profile);
 //app.post('/create_game', games.handle_create_game);
 //app.post('/verify-phone', user.handle_validation);
 //app.post('/post-update-profile', user.handle_update_profile);

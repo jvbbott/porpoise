@@ -17,24 +17,85 @@ exports.render_verification_page = function(req, res) {
     return; 
 }
 
+exports.create_account = function(req, res) {
+    console.log(req.body);
+    var username = req.body.username;
+    var password = req.body.password;
+
+    console.log("ABOUT TO CREATE NEW ACCOUNT");
+    if (user_data.user_exists(req.body.username)) {
+        console.log("USERNAME ALREADY EXISTS");
+        var status_messages = [{"text": "Username already exists.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
+        req.session.status_messages = status_messages;
+        res.render("create_account", {
+            'title' : 'porpoise',
+            'status_messages' : status_messages
+        });
+    }
+    // var curr_user = user_data.get_new_user();
+    // curr_user.id = user_data.get_new_id();
+    // curr_user.phone_number = req.body.phone;
+    // curr_user.first_name = req.body.first_name;
+    // curr_user.last_name = req.body.last_name;
+    // curr_user.password = req.body.password;
+    // console.log("NEW USER CREATED ------");
+    // console.log(curr_user);
+
+    // this is a real user now - add to session
+    // console.log(curr_user.id);
+    // req.session.curr_user_id = curr_user.id;
+
+    // var auth_code = Math.floor((Math.random() * 9000) + 1000);
+
+    // Add a status message about what happened
+    
+    
+    // client.messages.create({ 
+    //     to: "+1"+curr_user.phone_number, 
+    //     from: "+19562051565", 
+    //     body: "Cliq Verification Code: "+auth_code,   
+    // }, function(err, message) { 
+    //     console.log(message.sid); 
+    // });
+
+    // curr_user.auth_code = auth_code;
+    // user_data.update_user(curr_user);
+    
+
+    
+    // let the homepage know this user is new
+    // req.session.new_user = true;
+
+    // send to verification page
+    // res.render('verification', {
+    //         'title' : 'Enter Verification Code',
+    //         'user': curr_user
+    // });
+    // return; 
+
+    return;
+}
+
 exports.login_or_signup = function(req, res) {
+    //encrypt password here and create salt
+    console.log(req);
     var username = req.body.username;
     var password = req.body.password;
     var curr_user = user_data.get_user_by_username(username);
-    // if (password == "") {
-    //     var status_messages = [{"text": "Invalid password.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
-    //     req.session.status_messages = status_messages;
-    //     res.redirect("/login");  
-    // }   
-    // if (curr_user == undefined) {
-    //         req.session.curr_user_username = username;
-    //         req.session.curr_user_password = password;
-    //     }
-    //     else {
-    //         var status_messages = [{"text": "Invalid phone number.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
-    //         req.session.status_messages = status_messages;
-    //         res.redirect("/login");  
-    //     }
+    if (password == "") {
+        var status_messages = [{"text": "Invalid password.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
+        req.session.status_messages = status_messages;
+        res.redirect("/login");  
+    }   
+    if (curr_user == undefined) {
+            req.session.active_username = username;
+            req.session.active_password = password;
+        }
+        else {
+            var status_messages = [{"text": "Invalid phone number.", "class": "error-message", "glyphicon": "glyphicon-exclamation-sign"}];
+            req.session.status_messages = status_messages;
+            res.redirect("/login");  
+        }
     if (password == curr_user.password) {
         console.log("THIS USER EXISTS");
         // This user exists. Send to homepage
@@ -70,18 +131,6 @@ exports.render_update_profile = function(req, res){
   	});
 };
 
-/* GET - Renders form for creation of new profile */
-exports.create_new_profile = function(req, res) {
-    var username = req.session.username;
-    var password = req.session.curr_user_password;
-    res.render('create_profile', {
-            'title' : 'Create Profile',
-            'no_home_button' : true,
-            'status_messages' : req.session.status_messages,
-            'username' : username,
-            'password' : password
-    });
-}
 
 /* POST - Handles phone number validation */
 exports.handle_validation = function (req, res) {
